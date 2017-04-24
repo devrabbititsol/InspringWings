@@ -1,7 +1,16 @@
 /********************Module Decleration ****************/
 var app=angular.module("InspiringWings",["ui.router"]);
+/********************App Run ****************/
+app.run(function($rootScope) {
+     $rootScope.memebers=true;
+});
+/********************ui Routing ****************/
 app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
-    $urlRouterProvider.otherwise('/Home');
+ $locationProvider.html5Mode({
+  enabled: false,
+  requireBase: false
+});
+   $urlRouterProvider.otherwise('/Home');
     $stateProvider
     .state("Home",{
             url:'/Home',
@@ -57,12 +66,74 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            })
            .state("SignUp",{
             url:'/SignUp',
-            templateUrl:'Pages/SignUp.html'
+            templateUrl:'Pages/SignUp.html',
+            controller : "signUp"
            })
            .state("Login",{
             url:'/Login',
-            templateUrl:'Pages/Login.html'
+            templateUrl:'Pages/Login.html',
+            controller : "loginCntrl"
+           })
+            .state("ForgotPassword",{
+            url:'/ForgotPassword',
+            templateUrl:'Pages/ForgotPassword.html',
+            controller : "forgotpassCntrl"
            });
-    
+     
 });
 
+/********************Login Controller****************/
+
+app.controller('loginCntrl',function($rootScope,$scope,$state){
+
+ $rootScope.memebers=false;
+    $scope.homepage=function()
+    {
+    $rootScope.memebers=true;
+       $state.go("Home");  
+    }
+     $scope.signUp=function()
+    {
+    $rootScope.memebers=false;
+       $state.go("SignUp");  
+    }
+       $scope.forgotPassword=function()
+    {
+    $rootScope.memebers=false;
+       $state.go("ForgotPassword");  
+    }
+});
+
+/********************SignUp Controller****************/
+
+app.controller('signUp',function($rootScope,$scope,$state){
+
+ $rootScope.memebers=false;
+    $scope.homepage=function()
+    {
+    $rootScope.memebers=true;
+       $state.go("Home");  
+    }
+     $scope.login=function()
+    {
+    $rootScope.memebers=false;
+       $state.go("Login");  
+    }
+
+});
+
+app.controller('forgotpassCntrl',function($rootScope,$scope,$state){
+
+ $rootScope.memebers=false;
+    $scope.homepage=function()
+    {
+    $rootScope.memebers=true;
+       $state.go("Home");  
+    }
+     $scope.login=function()
+    {
+    $rootScope.memebers=false;
+       $state.go("Login");  
+    }
+
+});

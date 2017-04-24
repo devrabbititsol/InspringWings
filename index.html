@@ -1,20 +1,31 @@
 <!doctype html>
-<html ng-app="InspiringWings" ng-cloak>
+<html ng-app="InspiringWings" >
 <head>
 <meta charset="utf-8">
 <title>Inspiring Wings</title>
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/css/main.css" rel="stylesheet" />
+ 		
+<link href="assets/css/main.css"  ng-if=" memebers== true " rel="stylesheet" />
 <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
 <link href="assets/css/Caurosel.css" rel="stylesheet" />
 <link href="assets/css/animate.min.css" rel="stylesheet" />
 <link href="assets/css/responsive.css" rel="stylesheet" />
 <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
+<link rel="stylesheet" href="dashboard/assets/css/datepicker3.css"/>
+<!-- Theme CSS -->
+		<link rel="stylesheet" ng-if=" memebers== false " href="assets/css/layout.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" ng-if=" memebers== false "  href="assets/css/style.css" />   
+    
+
+
+
 </head>
 
-<body>
-  <div class="navbar-wrapper">
-    <div class="container">
+<body ng-cloak >
+  <div class="navbar-wrapper" >
+    <div class="container"  ng-if=" memebers== true ">
       <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
           <div class="navbar-header"> <a class="navbar-brand" href="#"></a>
@@ -30,7 +41,7 @@
               </li>
               <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Wings of Opportunities <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
-                  <li><a ui-sref="Educations">Educations</a></li>
+                  <li><a ui-sref="Educations" >Educations</a></li>
                   <li><a ui-sref="Arts">Arts</a></li>
                   <li><a ui-sref="Business Opportunities">Business Opportunities</a></li>
                   <li><a ui-sref="Education">Education</a></li>
@@ -55,7 +66,7 @@
       <br />
     </div>
   </div>
-  <div class="container position-relative">
+  <div class="container position-relative" ng-if=" memebers== true " ng-cloak>
     <div class="row">
       <div class="logo-wraper col-sm-12">
         <div class="pull-left"> <img src="Assets/images/logo.png" onclick="window.top.location.href='index.aspx'" alt="logo" style="opacity:0.4;"></div>
@@ -67,7 +78,7 @@
   <!-- Carousel
     ================================================== -->
   
-  <div id="main-slider" class="carousel item" data-ride="carousel"> 
+  <div id="main-slider" class="carousel item" data-ride="carousel" ng-if=" memebers== true " ng-cloak> 
     <!-- Indicators -->
     <div class="carousel-inner">
       <ol class="carousel-indicators">
@@ -118,7 +129,7 @@
   
   <!-- /.carousel -->
   
-<div ui-view  ng-class="transition"></div>
+<ui-view autoscroll='false'/>
 <!--- Angularjs libriarys----->
 <script src="assets/Angularjs/angular.min.js"></script>
 <script src="assets/Angularjs/Angularjs_ui_routing.js"></script>
@@ -127,6 +138,11 @@
 <script src="assets/js/bootstrap.min.js"></script> 
 <script src="assets/js/main.js"></script> 
 <script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/bootstrap-datepicker.js"></script>
+		
+		<!--Components and Settings -->
+		<script src="assets/js/main1.js"></script>
 
+		<script src="assets/js/main.init.js"></script>
 </body>
 </html>

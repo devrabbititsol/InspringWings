@@ -1,1 +1,101 @@
-<div class="container">SignUp</div>
+<section class="body-sign" ng-controller="signUp" ng-if=" memebers== false ">
+  <div class="center-sign"> <a href="/" class="logo text-center">
+    <h2 class="text-bold">Inspiring wings</h2>
+    </a>
+    <div class="panel panel-sign">
+      <div class="panel-title-sign mt-xl text-left">
+        <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign Up</h2>
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group mb-lg has-error">
+            <label>First Name</label>
+            <div class="input-group input-group-icon">
+              <input name="firstname" type="text" class="form-control input-lg" />
+              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-user"></i> </span> </span> </div>
+              <label for="fullname" class="error">This field is required.</label>
+          </div>
+          <div class="form-group mb-lg">
+            <label>Last Name</label>
+            <div class="input-group input-group-icon">
+              <input name="lasttname" type="text" class="form-control input-lg" />
+              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-user"></i> </span> </span> </div>
+          </div>
+          <div class="form-group mb-lg">
+            <label>Date of Birth</label>
+            <div class="input-group input-group-icon">
+              <input type="text" data-plugin-datepicker class="form-control input-lg">
+              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-calendar"></i> </span> </span> </div>
+          </div>
+          <div class="form-group mb-lg">
+            <div class="radio-inline p-none">
+              <div class="radio-custom">
+                <input type="radio" id="male" name="male">
+                <label for="male">Male</label>
+              </div>
+            </div>
+            <div class="radio-inline">
+              <div class="radio-custom">
+                <input type="radio" id="female" name="female">
+                <label for="female">Female</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-lg">
+            <label>Email</label>
+            <div class="input-group input-group-icon">
+              <input name="email" type="email" class="form-control input-lg" />
+              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-envelope-o"></i> </span> </span> </div>
+          </div>
+          <div class="form-group mb-lg">
+            <label>Mobile</label>
+            <div class="input-group input-group-icon">
+              <input name="mobile" type="tel" class="form-control input-lg" />
+              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-mobile"></i> </span> </span> </div>
+          </div>
+          <div class="form-group mb-lg">
+            <label>Aadhar Number</label>
+            <div class="input-group input-group-icon">
+              <input name="mobile" type="tel" class="form-control input-lg" />
+              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> </span> </div>
+          </div>
+          <div class="form-group mb-lg">
+            <div class="radio-inline p-none">
+              <div class="radio-custom">
+                <input type="radio" id="Supporting" name="Supporting">
+                <label for="Supporting">Supporting Wing</label>
+              </div>
+            </div>
+            <div class="radio-inline">
+              <div class="radio-custom">
+                <input type="radio" id="Receiving" name="Receiving">
+                <label for="Receiving">Receiving Wing</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-none">
+            <div class="row">
+              <div class="col-sm-6 mb-lg">
+                <label>Password</label>
+                <input name="pwd" type="password" class="form-control input-lg" />
+              </div>
+              <div class="col-sm-6 mb-lg">
+                <label>Re Type Password</label>
+                <input name="pwd_confirm" type="password" class="form-control input-lg" />
+              </div>
+            </div>
+          </div>
+          <div class="row mb-lg">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-primary hidden-xs">Sign Up</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
+            </div>
+          </div>
+          <p class="text-center">Already have an account? <a ng-click="login()">Sign In!</a></p>
+          <p class="text-center"><a ng-click="homepage()"><i class="fa fa-arrow-left mr-xs"></i> Back to Home</a></p>
+        </form>
+      </div>
+    </div>
+    <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2017. All Rights Reserved.</p>
+  </div>
+</section>
