@@ -1,5 +1,5 @@
 /********************Module Decleration ****************/
-var app=angular.module("InspiringWings",["ui.router"]);
+var app=angular.module("InspiringWings",["ui.router",'ngMessages']);
 /********************App Run ****************/
 app.run(function($rootScope) {
      $rootScope.memebers=true;
@@ -79,30 +79,12 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             templateUrl:'Pages/ForgotPassword.html',
             controller : "forgotpassCntrl"
            });
-     
+
 });
 
 /********************Login Controller****************/
 
-app.controller('loginCntrl',function($rootScope,$scope,$state){
 
- $rootScope.memebers=false;
-    $scope.homepage=function()
-    {
-    $rootScope.memebers=true;
-       $state.go("Home");  
-    }
-     $scope.signUp=function()
-    {
-    $rootScope.memebers=false;
-       $state.go("SignUp");  
-    }
-       $scope.forgotPassword=function()
-    {
-    $rootScope.memebers=false;
-       $state.go("ForgotPassword");  
-    }
-});
 
 /********************SignUp Controller****************/
 
@@ -112,12 +94,12 @@ app.controller('signUp',function($rootScope,$scope,$state){
     $scope.homepage=function()
     {
     $rootScope.memebers=true;
-       $state.go("Home");  
+       $state.go("Home");
     }
      $scope.login=function()
     {
     $rootScope.memebers=false;
-       $state.go("Login");  
+       $state.go("Login");
     }
 
 });
@@ -128,12 +110,12 @@ app.controller('forgotpassCntrl',function($rootScope,$scope,$state){
     $scope.homepage=function()
     {
     $rootScope.memebers=true;
-       $state.go("Home");  
+       $state.go("Home");
     }
      $scope.login=function()
     {
     $rootScope.memebers=false;
-       $state.go("Login");  
+       $state.go("Login");
     }
 
 });
