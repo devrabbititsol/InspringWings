@@ -13,8 +13,8 @@ return {
               $http.post(url, data, {
                   headers: headers
               }).success(function(res) {
-                window.alert("post");
-                    window.alert(JSON.stringify(res));
+            //    window.alert("post");
+              //      window.alert(JSON.stringify(res));
                       deffered.resolve(res);
 
               }).error(function(error) {
