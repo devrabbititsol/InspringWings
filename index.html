@@ -11,21 +11,19 @@
 <link href="assets/css/animate.min.css" rel="stylesheet" />
 <link href="assets/css/responsive.css" rel="stylesheet" />
 <link href="assets/css/prettyPhoto.css" rel="stylesheet" />
-<link rel="stylesheet" href="dashboard/assets/css/datepicker3.css"/>
+<link href="assets/css/nanoscroller.css" rel="stylesheet" />  
 <!-- Theme CSS -->
-		<link rel="stylesheet" ng-if=" memebers== false " href="assets/css/layout.css" />
+<link rel="stylesheet" ng-if=" memebers== false " href="assets/css/layout.css" />
 
 		<!-- Skin CSS -->
 		<link rel="stylesheet" ng-if=" memebers== false "  href="assets/css/style.css" />
-
-
-
-
+<!-- Modernizr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 </head>
 
 <body ng-cloak >
   <div class="navbar-wrapper" >
-    <div class="container"  ng-if=" memebers== true ">
+    <div class="container"  ng-if=" memebers== true && session ==''">
       <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
           <div class="navbar-header"> <a class="navbar-brand" href="#"></a>
@@ -66,7 +64,7 @@
       <br />
     </div>
   </div>
-  <div class="container position-relative" ng-if=" memebers== true " ng-cloak>
+  <div class="container position-relative" ng-if=" memebers== true && session ==''" ng-cloak>
     <div class="row">
       <div class="logo-wraper col-sm-12">
         <div class="pull-left"> <img src="Assets/images/logo.png" onclick="window.top.location.href='index.aspx'" alt="logo" style="opacity:0.4;"></div>
@@ -78,7 +76,7 @@
   <!-- Carousel
     ================================================== -->
 
-  <div id="main-slider" class="carousel item" data-ride="carousel" ng-if=" memebers== true " ng-cloak>
+  <div id="main-slider" class="carousel item" data-ride="carousel" ng-if=" memebers== true && session ==''" ng-cloak>
     <!-- Indicators -->
     <div class="carousel-inner">
       <ol class="carousel-indicators">
@@ -128,24 +126,84 @@
     <a class="prev hidden-xs" href="#main-slider" data-slide="prev"> <i class="fa fa-chevron-left"></i> </a> <a class="next hidden-xs" href="#main-slider" data-slide="next"> <i class="fa fa-chevron-right"></i> </a> </div>
 
   <!-- /.carousel -->
-
-<ui-view autoscroll='false'/>
+  <!------ end dashboars------->
+    <section class="body" ng-show="session !=''"> 
+  
+  <!-- start: header -->
+  <header class="header ">
+    <div class="logo-container"> <a href="#" class="logo"> <span class="text-xl text-bold">Inspiring Wings</span> </a>
+      <div class="visible-xs toggle-sidebar-left cursor-pointer" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+        <div id="" class="fa fa-bars" aria-label="Toggle sidebar"></div>
+      </div>
+    </div>
+    
+    <!-- start: user box -->
+    <div class="header-right">
+      <div id="userbox" class="userbox"> <a href="#" data-toggle="dropdown">
+        <figure class="profile-picture"> <img src="assets/images/avatar.png" alt="Joseph Doe" class="img-circle bg-grey" data-lock-picture="assets/images/avatar.png" /> </figure>
+        <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com"> <span class="name">John Doe</span> </div>
+        <i class="fa custom-caret"></i> </a>
+        <div class="dropdown-menu">
+          <ul class="list-unstyled">
+            <li class="divider"></li>
+            <li> <a role="menuitem" tabindex="-1" href="#"><i class="fa fa-user"></i> My Profile</a> </li>
+            <li> <a role="menuitem" tabindex="-1" href="#"><i class="fa fa-power-off"></i> Logout</a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end: search & user box --> 
+  </header>
+  <!-- end: header -->
+  
+  <div class="inner-wrapper"> 
+    <!-- start: sidebar -->
+    <aside id="sidebar-left" class="sidebar-left">
+      <div class="sidebar-header">
+        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+          <div id="hamburger" aria-label="Toggle sidebar"><span></span> <span></span> <span></span></div>
+        </div>
+      </div>
+      <div class="nano">
+        <div class="nano-content">
+          <nav id="menu" class="nav-main" role="navigation">
+            <ul class="nav nav-main">
+              <li> <a ui-sref="Dashboard"> <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span> </a> </li>
+              <li> <a ui-sref="OpportunityType"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunity Types</span> </a> </li>
+              <li> <a ui-sref="Opportunities"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunities</span> </a> </li>
+              <li> <a ui-sref="StorysTypes"> <i class="fa fa-book" aria-hidden="true"></i> <span>Story Types</span> </a> </li>
+              <li> <a ui-sref="Stories"> <i class="fa fa-book" aria-hidden="true"></i> <span>Stories</span> </a> </li>
+              <li> <a ui-sref="Events"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Events</span> </a> </li>
+              <li> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </aside>
+    <!-- end: sidebar -->
+      <section role="main" class="content-body">
+ <div ui-view ng-show=" session !='' " autoscroll="false"></div>
+</section>
+  </div>
+</section>
+<div ui-view ng-show=" session=='' " autoscroll="false" ></div>
 <!--- Angularjs libriarys----->
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/Angularjs_ui_routing.js"></script>
-<script src="assets/scripts/App.js"></script>
 <script src="assets/js/jquery-1.9.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/wow.min.js"></script>
-<script src="assets/js/bootstrap-datepicker.js"></script>
+<script src="assets/js/nanoscroller.js"></script>
 <script src="assets/js/angular-messages.min.js"></script><!--Display Error Messages -->
+<script src="assets/js/admin.js"></script>
+<script src="assets/js/main.init.js"></script>
+<!----------------Scripts---------------->
+<script src="assets/scripts/App.js"></script>
+<script src="assets/scripts/httpService.js"></script>
 <script src="assets/scripts/login.js"></script>
 <script src="assets/scripts/register.js"></script>
-<script src="assets/scripts/httpService.js"></script>
-		<!--Components and Settings -->
-		<script src="assets/js/main1.js"></script>
-
-		<script src="assets/js/main.init.js"></script>
+<script src="assets/scripts/Forgotpassword.js"></script>
+		
 </body>
 </html>

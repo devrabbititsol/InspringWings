@@ -1,5 +1,4 @@
 app.controller('signUp',function($rootScope,$scope,$state){
-window.alert("reg");
  $rootScope.memebers=false;
     $scope.homepage=function()
     {

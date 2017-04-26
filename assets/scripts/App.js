@@ -3,6 +3,7 @@ var app=angular.module("InspiringWings",["ui.router",'ngMessages']);
 /********************App Run ****************/
 app.run(function($rootScope) {
      $rootScope.memebers=true;
+     $rootScope.session = '';
 });
 /********************ui Routing ****************/
 app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
@@ -78,30 +79,37 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/ForgotPassword',
             templateUrl:'Pages/ForgotPassword.html',
             controller : "forgotpassCntrl"
+           })
+            .state("Opportunities",{
+            url:'/Opportunities',
+            templateUrl:'dashboard/Opportunity.html'
+           })
+              .state("OpportunityType",{
+            url:'/OpportunityType',
+            templateUrl:'dashboard/Opportunity-type.html'
+           })
+            .state("StorysTypes",{
+            url:'/StorysTypes',
+            templateUrl:'dashboard/Story-Types.html'
+           })
+            .state("Stories",{
+            url:'/Stories',
+            templateUrl:'dashboard/Stories.html'
+           })
+            .state("Events",{
+            url:'/Events',
+            templateUrl:'dashboard/Events.html'
+           })
+            .state("Users",{
+            url:'/Users',
+            templateUrl:'dashboard/Users.html'
            });
-
 });
 
-/********************Login Controller****************/
 
 
 
-/********************SignUp Controller****************/
 
 
 
-app.controller('forgotpassCntrl',function($rootScope,$scope,$state){
 
- $rootScope.memebers=false;
-    $scope.homepage=function()
-    {
-    $rootScope.memebers=true;
-       $state.go("Home");
-    }
-     $scope.login=function()
-    {
-    $rootScope.memebers=false;
-       $state.go("Login");
-    }
-
-});

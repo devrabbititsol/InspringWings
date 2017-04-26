@@ -351,7 +351,7 @@ html.no-overflowscrolling .nano > .nano-pane > .nano-slider {
 
 .pagination > li a:hover,
 .pagination > li a:focus {
-	color: #0099e6;
+	color: #151515;
 }
 
 .pagination > li.active a,
@@ -944,4 +944,12 @@ html.dark .wizard-progress .wizard-steps li.active a span {
 /* Liquid Meter */
 .liquid-meter-wrapper .liquid-meter-selector a.active {
 	color: #c52d2f;
+}
+
+
+
+.modal-header{
+	background: rgb(246, 246, 246);
+    border-radius: 6px 6px 0px 0px;
+    border-bottom: 1px solid rgb(218, 218, 218);
 }

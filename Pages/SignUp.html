@@ -1,5 +1,5 @@
-<section class="body-sign" ng-controller="signUp" ng-if=" memebers== false ">
-  <div class="center-sign"> <a href="/" class="logo text-center">
+<section class="body-sign" ng-controller="signUp" ng-if=" memebers== false && session ==''"  >
+  <div class="center-sign"> <a ng-click="homepage()" class="logo text-center">
     <h2 class="text-bold">Inspiring wings</h2>
     </a>
     <div class="panel panel-sign">
@@ -7,21 +7,31 @@
         <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign Up</h2>
       </div>
       <div class="panel-body">
-        <form>
-          <div class="form-group mb-lg has-error">
-            <label>First Name</label>
-            <div class="input-group input-group-icon">
-              <input name="firstname" type="text" class="form-control input-lg" />
-              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-user"></i> </span> </span> </div>
-              <label for="fullname" class="error">This field is required.</label>
-          </div>
+        <form name="signUp" class="form-horizontal "  novalidate method="POST" enctype="multipart/form-data" ng-submit="onSubmit();" >
+       
+               <div class="form-group mb-lg">
+                        <label>First Name</label>
+                        <div class="input-group input-group-icon">
+                        <input type="text" class="form-control" name="firstname"  ng-model="register.first_name" ng-pattern="/^[a-zA-Z]*$/" required />
+                        <span class="input-group-addon"> <span class="icon"> <i class="fa fa-user"></i> </span> </span> 
+                        </div>  
+                        <span ng-show="signUp.firstname.$dirty && signUp.firstname.$invalid" style="color:red">
+                            <span style="color:red;" ng-show=" signUp.firstname.$error.required">The name is required.</span>
+                        <span ng-show="signUp.firstname.$error.pattern">Enter Only Alphabets</span>
+                   </span>
+                    </div> 
+         
           <div class="form-group mb-lg">
             <label>Last Name</label>
             <div class="input-group input-group-icon">
-              <input name="lasttname" type="text" class="form-control input-lg" />
-              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-user"></i> </span> </span> </div>
+            <input type="text" class="form-control" name="lasttname"  ng-model="register.last_name" ng-pattern="/^[a-zA-Z]*$/" required />
+              <span class="input-group-addon"> <span class="icon"> <i class="fa fa-user"></i> </span> </span> </div>
+               <span ng-show="signUp.lasttname.$dirty && signUp.lasttname.$invalid" style="color:red">
+                <span style="color:red;" ng-show=" signUp.lasttname.$error.required">The name is required.</span>
+                <span ng-show="signUp.lasttname.$error.pattern">Enter Only Alphabets</span>
+                   </span>
           </div>
-          <div class="form-group mb-lg">
+           <div class="form-group mb-lg">
             <label>Date of Birth</label>
             <div class="input-group input-group-icon">
               <input type="text" data-plugin-datepicker class="form-control input-lg">
@@ -30,13 +40,13 @@
           <div class="form-group mb-lg">
             <div class="radio-inline p-none">
               <div class="radio-custom">
-                <input type="radio" id="male" name="male">
+                <input type="radio" id="male" name="male" ng-model="register.gender" value="male">
                 <label for="male">Male</label>
               </div>
             </div>
             <div class="radio-inline">
               <div class="radio-custom">
-                <input type="radio" id="female" name="female">
+                <input type="radio" id="female" name="female" ng-model="register.gender" value="famale">
                 <label for="female">Female</label>
               </div>
             </div>
@@ -44,31 +54,31 @@
           <div class="form-group mb-lg">
             <label>Email</label>
             <div class="input-group input-group-icon">
-              <input name="email" type="email" class="form-control input-lg" />
-              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-envelope-o"></i> </span> </span> </div>
+              <input name="email" type="email" class="form-control" ng-model="register.email_id" />
+              <span class="input-group-addon"> <span class="icon"> <i class="fa fa-envelope-o"></i> </span> </span> </div>
           </div>
           <div class="form-group mb-lg">
             <label>Mobile</label>
             <div class="input-group input-group-icon">
-              <input name="mobile" type="tel" class="form-control input-lg" />
-              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-mobile"></i> </span> </span> </div>
+              <input name="mobile" type="tel" class="form-control" ng-model="register.contact_number"  />
+              <span class="input-group-addon"> <span class="icon"> <i class="fa fa-mobile"></i> </span> </span> </div>
           </div>
           <div class="form-group mb-lg">
             <label>Aadhar Number</label>
             <div class="input-group input-group-icon">
-              <input name="mobile" type="tel" class="form-control input-lg" />
-              <span class="input-group-addon"> <span class="icon icon-lg"> <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> </span> </div>
+              <input name="mobile" type="tel" class="form-control" ng-model="register.aadhar_card_number" />
+              <span class="input-group-addon"> <span class="icon"> <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> </span> </div>
           </div>
           <div class="form-group mb-lg">
             <div class="radio-inline p-none">
               <div class="radio-custom">
-                <input type="radio" id="Supporting" name="Supporting">
+                <input type="radio" id="Supporting" name="Supporting" value="Supporting" ng-model="register.is_active">
                 <label for="Supporting">Supporting Wing</label>
               </div>
             </div>
             <div class="radio-inline">
               <div class="radio-custom">
-                <input type="radio" id="Receiving" name="Receiving">
+                <input type="radio" id="Receiving" name="Receiving" value="Receiving" ng-model="register.is_active">
                 <label for="Receiving">Receiving Wing</label>
               </div>
             </div>
@@ -77,18 +87,18 @@
             <div class="row">
               <div class="col-sm-6 mb-lg">
                 <label>Password</label>
-                <input name="pwd" type="password" class="form-control input-lg" />
+                <input name="pwd" type="password" class="form-control" ng-model="register.password"/>
               </div>
               <div class="col-sm-6 mb-lg">
                 <label>Re Type Password</label>
-                <input name="pwd_confirm" type="password" class="form-control input-lg" />
+                <input name="pwd_confirm" type="password" class="form-control" ng-model="register.password"/>
               </div>
             </div>
           </div>
           <div class="row mb-lg">
             <div class="col-sm-12 text-right">
-              <button type="submit" class="btn btn-primary hidden-xs">Sign Up</button>
-              <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign Up</button>
+              <button type="submit" class="btn btn-primary hidden-xs" ng-disabled="signUp.firstname.$dirty && signUp.firstname.$invalid">Sign Up</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-disabled="signUp.firstname.$dirty && signUp.firstname.$invalid">Sign Up</button>
             </div>
           </div>
           <p class="text-center">Already have an account? <a ng-click="login()">Sign In!</a></p>
