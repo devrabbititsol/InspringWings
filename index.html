@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <title>Inspiring Wings</title>
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
-<link href="assets/css/main.css"  ng-if=" memebers== true " rel="stylesheet" />
+ 
+<link href="assets/css/main.css"  ng-if=" memebers== true && session == '' "  rel="stylesheet" />
 <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
 <link href="assets/css/Caurosel.css" rel="stylesheet" />
 <link href="assets/css/animate.min.css" rel="stylesheet" />
@@ -17,6 +17,10 @@
 
 		<!-- Skin CSS -->
 		<link rel="stylesheet" ng-if=" memebers== false "  href="assets/css/style.css" />
+<link rel="stylesheet" ng-if=" session != '' " href="assets/css/layout.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" ng-if=" session != '' "  href="assets/css/style.css" />
 <!-- Modernizr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 </head>
@@ -182,11 +186,32 @@
     </aside>
     <!-- end: sidebar -->
       <section role="main" class="content-body">
- <div ui-view ng-show=" session !='' " autoscroll="false"></div>
+ <div ui-view="Opportunities"   autoscroll="false"></div>
+ <div ui-view="OpportunityType"  autoscroll="false"></div>
+ <div ui-view="StorysTypes"  autoscroll="false"></div>
+ <div ui-view="Stories"   autoscroll="false"></div>
+ <div ui-view="Events"  autoscroll="false"></div>
+ <div ui-view="Users"  autoscroll="false"></div>
 </section>
   </div>
 </section>
-<div ui-view ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Home" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Engineering" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Tetee" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Educations" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Arts" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="BusinessOpportunities" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Education" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Sdfsdf" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="supportWings" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="ReceiveWings" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="EventCalendar" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="IncubationCenters" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="About" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="SignUp" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="Login" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="ForgotPassword" ng-show=" session=='' " autoscroll="false" ></div>
+
 <!--- Angularjs libriarys----->
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/Angularjs_ui_routing.js"></script>
@@ -198,6 +223,7 @@
 <script src="assets/js/angular-messages.min.js"></script><!--Display Error Messages -->
 <script src="assets/js/admin.js"></script>
 <script src="assets/js/main.init.js"></script>
+<script src="assets/js/ngStorage.min.js"></script>
 <!----------------Scripts---------------->
 <script src="assets/scripts/App.js"></script>
 <script src="assets/scripts/httpService.js"></script>

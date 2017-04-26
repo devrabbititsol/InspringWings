@@ -1,5 +1,5 @@
 /********************Module Decleration ****************/
-var app=angular.module("InspiringWings",["ui.router",'ngMessages']);
+var app=angular.module("InspiringWings",["ui.router",'ngMessages','ngStorage']);
 /********************App Run ****************/
 app.run(function($rootScope) {
      $rootScope.memebers=true;
@@ -15,95 +15,102 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
     $stateProvider
     .state("Home",{
             url:'/Home',
-            templateUrl:'Pages/Home.html'
+        views: { 'Home':{ templateUrl:'Pages/Home.html'}}
            })
-      .state("Engineering",{
+        .state("Engineering",{
             url:'/Engineering',
-            templateUrl:'Pages/Engineering.html'
+          views: { 'Engineering':{templateUrl:'Pages/Engineering.html'} }
            })
       .state("Tetee",{
             url:'/Tetee',
-            templateUrl:'Pages/Tetee.html'
+           views: { 'Tetee':{templateUrl:'Pages/Tetee.html'}}
            })
      .state("Educations",{
             url:'/Educations',
-            templateUrl:'Pages/Educations.html'
+             views: { 'Educations':{templateUrl:'Pages/Educations.html'} }
            })
      .state("Arts",{
             url:'/Arts',
-            templateUrl:'Pages/Arts.html'
+           views: { 'Arts':{templateUrl:'Pages/Arts.html'}}
            })
-     .state("Business Opportunities",{
+        .state("Business Opportunities",{
             url:'/BusinessOpportunities',
-            templateUrl:'Pages/Business Opportunities.html'
+             views: { 'BusinessOpportunities':{templateUrl:'Pages/Business Opportunities.html'}}
            })
-       .state("Education",{
+        .state("Education",{
             url:'/Education',
-            templateUrl:'Pages/Education.html'
+                views: { 'Education':{templateUrl:'Pages/Education.html'} }
            })
-        .state("Sdfsdf",{
+            .state("Sdfsdf",{
             url:'/Sdfsdf',
-            templateUrl:'Pages/Sdfsdf.html'
+                  views: { 'Sdfsdf':{templateUrl:'Pages/Sdfsdf.html'}}
            })
          .state("supportWings",{
             url:'/supportWings',
-            templateUrl:'Pages/supportWings.html'
+            views: {'supportWings':{templateUrl:'Pages/supportWings.html'} }
            })
           .state("ReceiveWings",{
             url:'/ReceiveWings',
-            templateUrl:'Pages/ReceiveWings.html'
+             views: {'ReceiveWings':{templateUrl:'Pages/ReceiveWings.html'} }
            })
            .state("EventCalendar",{
             url:'/EventCalendar',
-            templateUrl:'Pages/EventCalendar.html'
+           views: {'EventCalendar':{templateUrl:'Pages/EventCalendar.html'}}
            })
            .state("IncubationCenters",{
             url:'/IncubationCenters',
-            templateUrl:'Pages/IncubationCenters.html'
+               views: {'IncubationCenters':{templateUrl:'Pages/IncubationCenters.html'} }
            })
            .state("About",{
             url:'/About',
-            templateUrl:'Pages/About.html'
+                   views: {'About':{templateUrl:'Pages/About.html'}}
            })
            .state("SignUp",{
             url:'/SignUp',
-            templateUrl:'Pages/SignUp.html',
-            controller : "signUp"
+            views: {'SignUp':{templateUrl:'Pages/SignUp.html', controller : "signUp"}}
+     
            })
            .state("Login",{
             url:'/Login',
-            templateUrl:'Pages/Login.html',
-            controller : "loginCntrl"
+            views: {'Login':{templateUrl:'Pages/Login.html', controller : "loginCntrl"}}
            })
             .state("ForgotPassword",{
             url:'/ForgotPassword',
-            templateUrl:'Pages/ForgotPassword.html',
-            controller : "forgotpassCntrl"
+             views: {'ForgotPassword':{ templateUrl:'Pages/ForgotPassword.html', controller : "forgotpassCntrl"}}
            })
             .state("Opportunities",{
             url:'/Opportunities',
-            templateUrl:'dashboard/Opportunity.html'
+         views: {'Opportunities':{ templateUrl:'dashboard/Opportunity.html',controller : "OpportunitiesCntrl"}}
+      
            })
               .state("OpportunityType",{
             url:'/OpportunityType',
-            templateUrl:'dashboard/Opportunity-type.html'
+         views: {'OpportunityType':{templateUrl:'dashboard/Opportunity-type.html', controller : "OpportTypeCntrl"}}
+   
            })
             .state("StorysTypes",{
             url:'/StorysTypes',
-            templateUrl:'dashboard/Story-Types.html'
+         views:{'StorysTypes': {  templateUrl:'dashboard/Story-Types.html',controller : "StorysTypesCntrl"}}
+       
            })
             .state("Stories",{
             url:'/Stories',
-            templateUrl:'dashboard/Stories.html'
+         views: {'Stories':{  templateUrl:'dashboard/Stories.html', controller : "StoriesCntrl"}}
+      
            })
             .state("Events",{
             url:'/Events',
-            templateUrl:'dashboard/Events.html'
+         views: {'Events':{  templateUrl:'dashboard/Events.html', controller : "EventsCntrl"}}
+           
+             
            })
             .state("Users",{
             url:'/Users',
-            templateUrl:'dashboard/Users.html'
+         views: {'Users':{ templateUrl:'dashboard/Users.html',controller : "UsersCntrl"}}
+            
+             
            });
+     
 });
 
 

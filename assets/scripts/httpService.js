@@ -6,6 +6,7 @@ return {
       },
 
       httpRequest: function(url, method, data, headers) {
+         
           var deffered = $q.defer();
 
           if (method == 'P') {
@@ -13,8 +14,8 @@ return {
               $http.post(url, data, {
                   headers: headers
               }).success(function(res) {
-            //    window.alert("post");
-              //      window.alert(JSON.stringify(res));
+               
+                  window.alert(JSON.stringify(res));
                       deffered.resolve(res);
 
               }).error(function(error) {
