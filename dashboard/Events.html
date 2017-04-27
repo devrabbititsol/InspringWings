@@ -21,7 +21,6 @@
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Event Name</th>
                   <th>Event Date</th>
                   <th>Event Content</th>
@@ -29,46 +28,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Event Name</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>Disc</td>
+                <tr ng-repeat="Event in Events">
+                  <td>{{Event.event_name}}</td>
+                  <td>{{Event.event_date}}</td>
+                  <td>{{Event.event_content}}</td>
                   <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
-                 
-                 <tr>
-                  <td>2</td>
-                  <td>Event Name</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>Disc</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                
-                <tr>
-                  <td>3</td>
-                  <td>Event Name</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>Disc</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Event Name</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>Disc</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                
-                <tr>
-                  <td>5</td>
-                  <td>Event Name</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>Disc</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-
-                
               </tbody>
             </table>
           </div>

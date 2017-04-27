@@ -20,9 +20,6 @@
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Opportunity Id</th>
-                  <th>Opportunity Categroy Id</th>
                   <th>Opportunity Title</th>
                   <th>Opportunity Content</th>
                   <th>Created Date</th>
@@ -31,107 +28,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
+
+                <tr ng-repeat="opportunity in Opportunities">
+                  <td>{{opportunity.opportunity_title}}</td>
+                  <td>{{opportunity.opportunity_content}}</td>
+                  <td>{{opportunity.created_by}}</td>
+                  <td>{{opportunity.created_date}}</td>
+                
                   <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>21</td>
-                  <td>35</td>
-                  <td>Title</td>
-                  <td>Disc</td>
-                  <td>24/04/2014, 4:20 PM</td>
-                  <td>1</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-              </tbody>
+                </tbody>
             </table>
           </div>
           <ul class="pagination pull-right">

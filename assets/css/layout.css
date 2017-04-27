@@ -3,7 +3,7 @@ html,
 body {
 	background: #ecedf0;
 	width: 100%;
-    height: 100vh;
+	height: 100vh;
 }
 
 html {
@@ -14217,3 +14217,24 @@ html.dark .invoice table.table > tbody tr > td {
 .cursor-pointer{
 	cursor: pointer;
 }
+
+
+.text-success {
+    color: #7ACCBE;
+}
+
+.modal-body .i-circle {
+    border: 2px solid #f1f1f1;
+    border-radius: 50%;
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    margin-bottom: 15px;
+    line-height: 105px;
+}
+
+.i-circle i{
+    font-size: 37px;
+    margin-top: 20px;
+    vertical-align: top;
+	}

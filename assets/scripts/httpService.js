@@ -15,7 +15,7 @@ return {
                   headers: headers
               }).success(function(res) {
                
-                  window.alert(JSON.stringify(res));
+                  //window.alert(JSON.stringify(res));
                       deffered.resolve(res);
 
               }).error(function(error) {
