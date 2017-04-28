@@ -10,5 +10,8 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
 
              window.alert("err");
          });
+    $scope.onSubmit=function(){
+    window.alert('hi');
     
+    }
 });

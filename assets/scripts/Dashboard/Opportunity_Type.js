@@ -14,4 +14,9 @@ app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpSer
              window.alert("err");
          });
 
+    $scope.onSubmit=function(){
+    window.alert('hi');
+    
+    
+    }
 });

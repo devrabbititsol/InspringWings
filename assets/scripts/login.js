@@ -55,6 +55,7 @@ app.controller('loginCntrl',function($rootScope,$scope,$state,$http,httpService,
     }
 });
 
+/*
 app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData){
       $rootScope.session = localData.get();
     
@@ -136,6 +137,7 @@ app.controller('StorysTypesCntrl',function($rootScope,$scope,$state,$http,httpSe
 });
 
 
+*/
 
 
 
