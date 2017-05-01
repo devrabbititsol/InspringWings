@@ -20,9 +20,11 @@ app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData
         if(Eventdata.is_active==true){
              delete Eventdata.is_active;
          Eventdata.is_active="1";
+            
         }
         else{
             Eventdata.is_active="0";
+            
         }
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];
