@@ -1,75 +1,99 @@
-app.controller('EventsCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData){
+app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,preService){
       $rootScope.session = localData.get();
    
     $scope.Event={};
- 
-//Get 
-     var url = "http://devrabbit.com/inspiring_wings/web_services/events.php";
-      var data = {};
-      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-       httpService.httpRequest(url, "P", data,headers).then(function(res) {
+    var data = {};
+//Get Event data  
+   
+       preService.Eventget(data).then(function(res)
+        {
            $scope.Events= res;
          },function(err) {
 
              window.alert("err");
-           
          });
-//Insert
+
        $scope.addinfo=function(){
              $scope.Eventmodal="#Eventmodal";
            $scope.Event=null;
-        }
-    $scope.onSubmit=function(){
+       }
+//Insert Event
+    $scope.onSubmit=function()
+    {
          var Eventdata=$scope.Event;
         var sessiondata=$rootScope.session;
-    var geetingdata=sessiondata.response_info[0];
-    var userdata=geetingdata.user_id; 
-      Eventdata.created_by=userdata;
-                window.alert(Eventdata.created_by);
+        var geetingdata=sessiondata.response_info[0];
+        var userdata=geetingdata.user_id; 
+        Eventdata.created_by=userdata;
+        window.alert(Eventdata.created_by);
+        var data = Eventdata;
+        preService.Eventinsert(data).then(function(res) {
+           if(res.status==1)
+           {
+                var data = {};
+            preService.Eventget(data).then(function(res)
+            {
+                $scope.Events= res;
+            },function(err) {
 
-     var url = "http://devrabbit.com/inspiring_wings/web_services/events_action.php";
-      var data = Eventdata;
-      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-       httpService.httpRequest(url, "P", data,headers).then(function(res) {
-           window.alert(res.message);
+             window.alert("err");
+            });
+           }
+        else{
+        window.alert("err");
+        
+        }
          },function(err) {
 
              window.alert("err");
          });
    
     }
-    
-      $scope.editInfo=function(Event){
-    var result = confirm("Want to Edit?");
-     if(result == true){
-     
-       $scope.Eventmodal="#Eventmodal";
-         $scope.Event=Event;   
-           $scope.onSubmit=function(){
-               
-         var Eventdata=$scope.Event;
-        var sessiondata=$rootScope.session;
-    var geetingdata=sessiondata.response_info[0];
-    var userdata=geetingdata.user_id; 
-      Eventdata.created_by=userdata;
-                window.alert(Eventdata.created_by);
+ //Edit Event   
+      $scope.editInfo=function(Event)
+    {
+            var result = confirm("Want to Edit?");
+         if(result == true)
+         {
 
-     var url = "http://devrabbit.com/inspiring_wings/web_services/events_action.php";
-      var data = Eventdata;
-      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-       httpService.httpRequest(url, "P", data,headers).then(function(res) {
-           window.alert(res.message);
-         },function(err) {
+               $scope.Eventmodal="#Eventmodal";
+               $scope.Event=Event;   
+               $scope.onSubmit=function()
+            {
+                 var Eventdata=$scope.Event;
+                 var sessiondata=$rootScope.session;
+                 var geetingdata=sessiondata.response_info[0];
+                 var userdata=geetingdata.user_id; 
+                 Eventdata.created_by=userdata;
+                 window.alert(Eventdata.created_by);
+                 var data = Eventdata;
+                preService.Eventinsert(data).then(function(res) 
+                {
+                         if(res.status==1)
+           {
+                var data = {};
+            preService.Eventget(data).then(function(res)
+            {
+                $scope.Events= res;
+            },function(err) {
 
              window.alert("err");
-         });
-   
-    } 
-     }
-       else{
-                 console.log('Failure'); 
-                 $scope.Eventmodal=null;
-             }  
+            });
+           }
+        else{
+            window.alert("err");
+            }
+                 },function(err) {
+
+                     window.alert("err");
+                 });
+
+            } 
+         }
+           else{
+                     console.log('Failure'); 
+                     $scope.Eventmodal=null;
+                 }  
         
     }
 });
