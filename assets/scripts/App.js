@@ -68,7 +68,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            .state("SignUp",{
             url:'/SignUp',
             views: {'SignUp':{templateUrl:'Pages/SignUp.html', controller : "signUp"}}
-     
+
            })
            .state("Login",{
             url:'/Login',
@@ -81,42 +81,34 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("Opportunities",{
             url:'/Opportunities',
          views: {'Opportunities':{ templateUrl:'dashboard/Opportunity.html',controller : "OpportunitiesCntrl"}}
-      
+
            })
               .state("OpportunityType",{
             url:'/OpportunityType',
          views: {'OpportunityType':{templateUrl:'dashboard/Opportunity-type.html', controller : "OpportTypeCntrl"}}
-   
+
            })
             .state("StorysTypes",{
             url:'/StorysTypes',
          views:{'StorysTypes': {  templateUrl:'dashboard/Story-Types.html',controller : "StorysTypesCntrl"}}
-       
+
            })
             .state("Stories",{
             url:'/Stories',
          views: {'Stories':{  templateUrl:'dashboard/Stories.html', controller : "StoriesCntrl"}}
-      
+
            })
             .state("Events",{
             url:'/Events',
          views: {'Events':{  templateUrl:'dashboard/Events.html', controller : "EventsCntrl"}}
-           
-             
+
+
            })
             .state("Users",{
             url:'/Users',
          views: {'Users':{ templateUrl:'dashboard/Users.html',controller : "UsersCntrl"}}
-            
-             
+
+
            });
-     
+
 });
-
-
-
-
-
-
-
-
