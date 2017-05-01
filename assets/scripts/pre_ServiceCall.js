@@ -50,4 +50,16 @@ this.getAllOpp_categories=function(){
   var data = {};
 return httpService.httpRequest(url, "P", data,headers)
 }
+
+this.StoryTypeget=function(data){
+     var url = "http://devrabbit.com/inspiring_wings/web_services/story_categories.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+    }
+            this.StoryTypeinsert=function(data){
+     var url = "http://devrabbit.com/inspiring_wings/web_services/story_categories_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+    }
+
   });
