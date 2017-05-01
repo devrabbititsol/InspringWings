@@ -68,7 +68,7 @@
             <div class="col-sm-7">
 
               <select class="form-control" name="OpportunityType" ng-model="opportunity.opportunity_category_id" placeholder="select"ng-dropdown required>
-                    <option ng-repeat="opp in OpportTypes" value="{{opp.opportunity_category_name}}">{{opp.opportunity_category_name}}</option>
+                    <option ng-repeat="opp in OpportTypes" value="{{opp.opportunity_category_id}}">{{opp.opportunity_category_name}}</option>
 
               </select>
                   <span ng-show="opportunity.OpportunityType.$dirty && opportunity.OpportunityType.$invalid" style="color:red">
