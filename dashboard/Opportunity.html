@@ -68,9 +68,8 @@
             <div class="col-sm-7">
 
               <select class="form-control" name="OpportunityType" ng-model="opportunity.opportunity_category_id" placeholder="select"ng-dropdown required>
-                  <option ng-option value="1">Option 1</option>
-                  <option ng-option value="2">Option 2</option>
-                  <option ng-option value="3">Option 3</option>
+                    <option ng-repeat="opp in OpportTypes" value="{{opp.opportunity_category_name}}">{{opp.opportunity_category_name}}</option>
+
               </select>
                   <span ng-show="opportunity.OpportunityType.$dirty && opportunity.OpportunityType.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" opportunity.OpportunityType.$error.required">Opportunity Type required.</span>

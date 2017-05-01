@@ -42,4 +42,12 @@ app.service('preService',function($http,httpService){
    return httpService.httpRequest(url, "P", data,headers)
 
 }
+
+this.getAllOpp_categories=function(){
+  //alert("this");
+  var url ="http://devrabbit.com/inspiring_wings/web_services/opportunity_categories.php";
+  var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+  var data = {};
+return httpService.httpRequest(url, "P", data,headers)
+}
   });

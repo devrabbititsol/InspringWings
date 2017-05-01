@@ -13,6 +13,14 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
              window.alert("err");
          });
 
+         preService.getAllOpp_categories().then(function(res) {
+                  $scope.OpportTypes= res;
+                //  alert(JSON.stringify($scope.OpportTypes))
+                },function(err) {
+
+                    window.alert("err");
+                });
+
          $scope.addinfo=function(){
 
             $scope.opprtunitymodal="#opprtunitymodal";
@@ -43,7 +51,12 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
        var geetingdata=sessiondata.response_info[0];
        var userdata=geetingdata.user_id;
       opportunitydata.created_by=userdata;
-      alert("oppp")
+    //  alert("oppp")
+      if(opportunitydata.opportunity_id == null || undefined){
+    //    alert(opportunitydata.opportunity_id)
+  //      alert("if");
+         opportunitydata.opportunity_id = "0";
+      }
       alert(JSON.stringify(opportunitydata));
         window.alert(opportunitydata.created_by);
     // var url = "http://devrabbit.com/inspiring_wings/web_services/opportunities_action.php";
