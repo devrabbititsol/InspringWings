@@ -12,8 +12,13 @@ app.controller('EventsCntrl',function($rootScope,$scope,$state,$http,httpService
          },function(err) {
 
              window.alert("err");
+           
          });
 //Insert
+       $scope.addinfo=function(){
+             $scope.Eventmodal="#Eventmodal";
+           $scope.Event=null;
+        }
     $scope.onSubmit=function(){
          var Eventdata=$scope.Event;
         var sessiondata=$rootScope.session;
@@ -33,14 +38,42 @@ app.controller('EventsCntrl',function($rootScope,$scope,$state,$http,httpService
          });
    
     }
+    
+      $scope.editInfo=function(Event){
+    var result = confirm("Want to Edit?");
+     if(result == true){
+     
+       $scope.Eventmodal="#Eventmodal";
+         $scope.Event=Event;   
+           $scope.onSubmit=function(){
+               
+         var Eventdata=$scope.Event;
+        var sessiondata=$rootScope.session;
+    var geetingdata=sessiondata.response_info[0];
+    var userdata=geetingdata.user_id; 
+      Eventdata.created_by=userdata;
+                window.alert(Eventdata.created_by);
+
+     var url = "http://devrabbit.com/inspiring_wings/web_services/events_action.php";
+      var data = Eventdata;
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+       httpService.httpRequest(url, "P", data,headers).then(function(res) {
+           window.alert(res.message);
+         },function(err) {
+
+             window.alert("err");
+         });
+   
+    } 
+     }
+       else{
+                 console.log('Failure'); 
+                 $scope.Eventmodal=null;
+             }  
+        
+    }
 });
 
 
 
-/*app.service('Webservices',function($scope){
-
-    
-
-
-});*/
 

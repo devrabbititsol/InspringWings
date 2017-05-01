@@ -1,5 +1,4 @@
   <!-- end: sidebar -->
-    
     <div ng-controller="EventsCntrl">
       <header class="page-header">
         <h2>Events</h2>
@@ -15,7 +14,7 @@
       <section class="panel">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-12"> <a  data-toggle="modal" data-target="#event" class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Event</a> </div>
+            <div class="col-sm-12"> <a  data-toggle="modal" data-target="{{Eventmodal}}" ng-click="addinfo()"  class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Event</a> </div>
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-bordered mb-none table-hover">
@@ -32,7 +31,7 @@
                   <td>{{Event.event_name}}</td>
                   <td>{{Event.event_date}}</td>
                   <td>{{Event.event_content}}</td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(Event)"  data-toggle="modal" data-target="{{Eventmodal}}"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
               </tbody>
             </table>
@@ -49,7 +48,7 @@
         </div>
       </section>
       <!-- end: page --> 
-        <div id="event" class="modal fade" role="dialog">
+        <div id="Eventmodal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

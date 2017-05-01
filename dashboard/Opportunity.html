@@ -14,7 +14,7 @@
       <section class="panel">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-12"> <a  data-toggle="modal" data-target="#opprtunity" class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Opportunities</a> </div>
+            <div class="col-sm-12"> <a  data-toggle="modal" data-target="{{opprtunitymodal}}" ng-click="addinfo()"  class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Opportunities</a> </div>
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-bordered mb-none table-hover">
@@ -29,13 +29,13 @@
               </thead>
               <tbody>
 
-                <tr ng-repeat="opportunity in Opportunities">
-                  <td>{{opportunity.opportunity_title}}</td>
-                  <td>{{opportunity.opportunity_content}}</td>
-                  <td>{{opportunity.created_by}}</td>
-                  <td>{{opportunity.created_date}}</td>
+                <tr ng-repeat="opportunitydata in Opportunities">
+                  <td>{{opportunitydata.opportunity_title}}</td>
+                  <td>{{opportunitydata.opportunity_content}}</td>
+                  <td>{{opportunitydata.created_by}}</td>
+                  <td>{{opportunitydata.created_date}}</td>
                 
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(opportunitydata)" data-toggle="modal" data-target="{{opprtunitymodal}}" ><i class="fa fa-pencil"></i></a> <a ng-click="deleteInfo(opportunitydata)"><i class="fa fa-trash-o"></i></a></td>
                 </tr>
                 </tbody>
             </table>
@@ -54,7 +54,7 @@
       <!-- end: page --> 
   
 
-<div id="opprtunity" class="modal fade" role="dialog">
+<div id="opprtunitymodal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
