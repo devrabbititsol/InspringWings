@@ -1,4 +1,4 @@
-app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService){
+app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService,$timeout){
       $rootScope.session = localData.get();
 
 $scope.opportunitytype={}
@@ -82,7 +82,7 @@ $scope.pager={};
                // $scope.$dismss("nth")
                $timeout( function(){
                  $scope.success=false;
-                 $('#opprtunitymodal').modal('hide');
+                 $('#opprtunityTypes').modal('hide');
              }, 2000 );
             //   alert(JSON.stringify($scope.OpportTypes))
             //    alert($scope.OpportTypes.length);
