@@ -31,7 +31,7 @@
                   <td>{{Event.event_name}}</td>
                   <td>{{Event.event_date}}</td>
                   <td>{{Event.event_content}}</td>
-                  <td class="actions"><a ng-click="editInfo(Event)"  data-toggle="modal" data-target="{{Eventmodal}}"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(Event)"  data-toggle="modal" data-target="{{Eventmodal}}"><i class="fa fa-pencil" ></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
               </tbody>
             </table>
@@ -56,7 +56,7 @@
         <h4 class="modal-title">Add New Event</h4>
       </div>
       <div class="modal-body">
-          <div style="color:green;text-align:center">{{message}}</div>
+          <div style="color:green;text-align:center" ng-if=" status !=''">{{message}}</div>
          <form id="form" method="POST" name="Event" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
           <div class="form-group">
             <label class="col-sm-4 control-label">Event Name<span class="required">*</span></label>

@@ -14,7 +14,7 @@
       <section class="panel">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-12"> <a  data-toggle="modal" data-target="#storyType" class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Story Type</a> </div>
+            <div class="col-sm-12"> <a  data-toggle="modal" data-target="{{StoryTypeModal}}" ng-click="addinfo()" class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Story Type</a> </div>
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-bordered mb-none table-hover">
@@ -28,7 +28,7 @@
                 </tr>
               </thead>
               <tbody>
-             <tr ng-repeat="StorysType in StorysTypes">
+             <tr ng-repeat="StorysType in storiesTypes">
                 
                   <td>{{StorysType.story_category_name}}</td>
                   <td>{{StorysType.description}}</td>
@@ -37,7 +37,7 @@
                       <input type="checkbox" checked="" id="check1">
                       <label for="check1"></label>
                     </div></td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(StorysType)"  data-toggle="modal" data-target="{{StoryTypeModal}}"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
            
               </tbody>
@@ -58,7 +58,7 @@
   
 
 
-<div id="storyType" class="modal fade" role="dialog">
+<div id="StoryTypeModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,11 +66,12 @@
         <h4 class="modal-title">Add New Story Type</h4>
       </div>
       <div class="modal-body">
+           <div style="color:green;text-align:center">{{message}}</div>
          <form id="form" method="POST" name="StoryType" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
           <div class="form-group">
             <label class="col-sm-4 control-label">Story Category Name<span class="required">*</span></label>
             <div class="col-sm-7">
-                 <input type="text" name="storycategory" class="form-control" ng-model="StorysTypes.story_category_name" required>
+                 <input type="text" name="storycategory" class="form-control" ng-model="StorysTypesdata.story_category_name" required>
              <span ng-show="StoryType.storycategory.$dirty && StoryType.storycategory.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" StoryType.storycategory.$error.required">Story Category name is required.</span>
                    </span>
@@ -79,7 +80,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="textareaDefault">Description</label>
             <div class="col-md-7">
-                 <textarea class="form-control" rows="3" id="textareaDefault"  name="StoryDescription" ng-model="StorysTypes.description"  required></textarea>
+                 <textarea class="form-control" rows="3" id="textareaDefault"  name="StoryDescription" ng-model="StorysTypesdata.description"  required></textarea>
                     <span ng-show="StoryType.StoryDescription.$dirty && StoryType.StoryDescription.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" StoryType.StoryDescription.$error.required">Story Description is required.</span>
                    </span>
@@ -89,7 +90,7 @@
             <label class="col-md-4 control-label" for="textareaDefault">is Active</label>
             <div class="col-md-7">
              <div class="checkbox-custom checkbox-default">
-                   <input type="checkbox" checked id="is_active" value="1" ng-model="StorysTypes.is_active">
+                   <input type="checkbox" checked id="is_active" value="1" ng-model="StorysTypesdata.is_active">
                 <label for="is_active"></label>
               </div>
             </div>
