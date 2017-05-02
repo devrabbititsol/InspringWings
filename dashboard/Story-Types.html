@@ -67,28 +67,30 @@
       </div>
       <div class="modal-body">
          <form id="form" method="POST" name="StoryType" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
-          <div class="form-group has-error">
+          <div class="form-group">
             <label class="col-sm-4 control-label">Story Category Name<span class="required">*</span></label>
             <div class="col-sm-7">
-             
-                 <input type="text" name="title" class="form-control" ng-model="StorysTypes.story_category_name" required>
-             <span ng-show="StoryType.categoryname.$dirty && StoryType.categoryname.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" StoryType.categoryname.$error.required">Story Title is required.</span>
+                 <input type="text" name="storycategory" class="form-control" ng-model="StorysTypes.story_category_name" required>
+             <span ng-show="StoryType.storycategory.$dirty && StoryType.storycategory.$invalid" style="color:red">
+                    <span style="color:red;" ng-show=" StoryType.storycategory.$error.required">Story Category name is required.</span>
                    </span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-4 control-label" for="textareaDefault">Description</label>
             <div class="col-md-7">
-              <textarea class="form-control" rows="3" id="textareaDefault"></textarea>
+                 <textarea class="form-control" rows="3" id="textareaDefault"  name="StoryDescription" ng-model="StorysTypes.description"  required></textarea>
+                    <span ng-show="StoryType.StoryDescription.$dirty && StoryType.StoryDescription.$invalid" style="color:red">
+                    <span style="color:red;" ng-show=" StoryType.StoryDescription.$error.required">Story Description is required.</span>
+                   </span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-4 control-label" for="textareaDefault">is Active</label>
             <div class="col-md-7">
-              <div class="checkbox-custom checkbox-default">
-                <input type="checkbox" checked="" id="checka">
-                <label for="checka"></label>
+             <div class="checkbox-custom checkbox-default">
+                   <input type="checkbox" checked id="is_active" value="1" ng-model="StorysTypes.is_active">
+                <label for="is_active"></label>
               </div>
             </div>
           </div>

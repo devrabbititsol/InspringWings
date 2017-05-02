@@ -7,7 +7,12 @@ app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData
            $scope.Stories= res;
          },function(err) {
              window.alert("err");
-         }); 
+         });
+     preService.StoryTypeget(data).then(function(res) {
+           $scope.Stories_category= res;
+         },function(err) {
+             window.alert("err");
+         });
       $scope.addinfo=function(){
              $scope.Storymodal="#Storymodal";
            $scope.Storie=null;
@@ -39,7 +44,7 @@ app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData
                 var data = {};
             preService.Storyget(data).then(function(res)
             {
-                $scope.Events= res;
+                $scope.Stories= res;
             },function(err) {
 
              window.alert("err");

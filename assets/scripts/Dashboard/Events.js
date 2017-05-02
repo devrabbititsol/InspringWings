@@ -30,6 +30,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
         preService.Eventinsert(data).then(function(res) {
            if(res.status==1)
            {
+               $scope.message="Inserted successfully";
                 var data = {};
             preService.Eventget(data).then(function(res)
             {
