@@ -1,7 +1,9 @@
-app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService){
+app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService){
       $rootScope.session = localData.get();
 
 $scope.opportunitytype={}
+$scope.data = {};
+$scope.pager={};
       //$scope.loading = true;
     //  var url = "http://devrabbit.com/inspiring_wings/web_services/opportunity_categories.php";
   //    var data = {};
@@ -9,21 +11,38 @@ $scope.opportunitytype={}
   //     httpService.httpRequest(url, "P", data,headers).then(function(res) {
   preService.getAllOpp_categories().then(function(res) {
            $scope.OpportTypes= res;
-
+          // alert($scope.OpportTypes.length);
+              initController();
          },function(err) {
 
              window.alert("err");
          });
 
+
+         function initController() {
+              // initialize to page 1
+             $scope.setPage(1);
+          }
+
+          $scope.setPage=function(page) {
+           // alert("set");
+              if (page < 1 || page > $scope.pager.totalPages) {
+                  return;
+              }
+              $scope.pager =PaginationService.pagination($scope.OpportTypes.length,page);
+              //alert(JSON.stringify($scope.pager));
+               $scope.items = $scope.OpportTypes.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+          }
+
          $scope.addinfo=function(){
-                alert("add");
+              //  alert("add");
             $scope.opprtunitymodal="#opprtunityTypes";
           $scope.opportunitytype=null;
 
         }
 
          $scope.editInfo=function(opportunityDate){
-                 alert("edit");
+            //     alert("edit");
     $scope.opprtunitymodal="#opprtunityTypes";
        $scope.opportunitytype=opportunityDate;
 
@@ -31,18 +50,19 @@ $scope.opportunitytype={}
 
 
     $scope.onSubmit=function(){
-    window.alert('hi');
+      //  window.alert('hi');
 
            var opportunityDate=$scope.opportunitytype;
            var sessiondata=$rootScope.session;
            var geetingdata=sessiondata.response_info[0];
            var userdata=geetingdata.user_id;
-          opportunityDate.created_by=userdata;
+
           if(opportunityDate.is_active == true){
-            opportunityDate.is_active =="1";
+            opportunityDate.is_active ="1";
+          //  alert("true")
           }
           else{
-            opportunityDate.is_active =="0";
+            opportunityDate.is_active ="0";
           }
         //  alert("oppp")
           if(opportunityDate.opportunity_category_id == null || undefined){
@@ -50,13 +70,23 @@ $scope.opportunitytype={}
       //      alert("if");
              opportunityDate.opportunity_category_id = "0";
           }
-                     alert(JSON.stringify(opportunityDate))
+                //    alert("new");
+                //     alert(JSON.stringify(opportunityDate))
             preService.addNewOpp_categories(opportunityDate).then(function(res) {
               window.alert(res.message);
               if(res.status == 1){
                 preService.getAllOpp_categories().then(function(res) {
-              $scope.Opportunities= res;
-               alert(JSON.stringify($scope.Opportunities))
+              $scope.OpportTypes= res;
+                initController();
+                $scope.success=true;
+               // $scope.$dismss("nth")
+               $timeout( function(){
+                 $scope.success=false;
+                 $('#opprtunitymodal').modal('hide');
+             }, 2000 );
+            //   alert(JSON.stringify($scope.OpportTypes))
+            //    alert($scope.OpportTypes.length);
+
             },function(err) {
 
                 window.alert("err");
