@@ -1,17 +1,37 @@
-app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,preService){
+app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
 //Decleration
     $rootScope.session = localData.get();
     $scope.Event={};
     var data = {};
-//Get Event data  
+    $scope.pager={};
+//Get Event data
        preService.Eventget(data).then(function(res)
         {
             $scope.Events= res;
+            initController();
         },
-        function(err) 
+        function(err)
         {
            window.alert("err");
          });
+
+         function initController() {
+              // initialize to page 1
+             $scope.setPage(1);
+          }
+
+          $scope.setPage=function(page) {
+           // alert("set");
+              if (page < 1 || page > $scope.pager.totalPages) {
+                  return;
+              }
+              $scope.pager =PaginationService.pagination($scope.Events.length,page);
+              //alert(JSON.stringify($scope.pager));
+               $scope.items = $scope.Events.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+          }
+
+
+
 //Add Action
        $scope.addinfo=function()
        {
@@ -25,10 +45,10 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
         var Eventdata=$scope.Event;
         var sessiondata=$rootScope.session;
         var geetingdata=sessiondata.response_info[0];
-        var userdata=geetingdata.user_id; 
+        var userdata=geetingdata.user_id;
         Eventdata.created_by=userdata;
         var data = Eventdata;
-        preService.Eventinsert(data).then(function(res) 
+        preService.Eventinsert(data).then(function(res)
         {
             if(res.status==1)
             {
@@ -37,6 +57,13 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
                 preService.Eventget(data).then(function(res)
                 {
                     $scope.Events= res;
+                    initController();
+                    $scope.success=true;
+                   // $scope.$dismss("nth")
+                   $timeout( function(){
+                     $scope.success=false;
+                     $('#Eventmodal').modal('hide');
+                 }, 2000 );
                 },function(err) {
 
                  window.alert("err");
@@ -47,26 +74,26 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
             window.alert("err");
             }
          },
-        function(err) 
+        function(err)
         {
             window.alert("err");
          });
     }
- //Edit Event   
+ //Edit Event
     $scope.editInfo=function(Event)
     {
           $scope.Eventmodal="#Eventmodal";
           $scope.message="";
-          $scope.Event=Event;   
+          $scope.Event=Event;
           $scope.onSubmit=function()
           {
             var Eventdata=$scope.Event;
             var sessiondata=$rootScope.session;
             var geetingdata=sessiondata.response_info[0];
-            var userdata=geetingdata.user_id; 
+            var userdata=geetingdata.user_id;
             Eventdata.created_by=userdata;
             var data = Eventdata;
-            preService.Eventinsert(data).then(function(res) 
+            preService.Eventinsert(data).then(function(res)
             {
                 if(res.status==1)
                 {
@@ -88,15 +115,11 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
                     $scope.message="Invalid Data";
                 }
             },
-            function(err) 
+            function(err)
             {
                 window.alert("err");
             });
 
-        } 
+        }
     }
 });
-
-
-
-
