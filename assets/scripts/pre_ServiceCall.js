@@ -44,11 +44,11 @@ app.service('preService',function($http,httpService){
       var data = {};
     return httpService.httpRequest(url, "P", data,headers)
     }
-    this.addNewOpp_categories=function(){
+    this.addNewOpp_categories=function(data){
       //alert("this");
       var url ="http://devrabbit.com/inspiring_wings/web_services/opportunity_categories_action.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-      var data = {};
+      
     return httpService.httpRequest(url, "P", data,headers)
     }
     this.getStoryType=function(data){
