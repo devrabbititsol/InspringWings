@@ -29,16 +29,9 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
         }
 
         $scope.editInfo=function(opportunitydata){
- var result = confirm("Want to Edit?");
-  if(result == true){
 
    $scope.opprtunitymodal="#opprtunitymodal";
       $scope.opportunity=opportunitydata;
-  }
-    else{
-              console.log('Failure');
-              $scope.opprtunityTypes=null;
-          }
 
  }
 

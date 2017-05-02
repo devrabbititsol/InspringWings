@@ -8,18 +8,18 @@
           </ol>
         </div>
       </header>
-      
+
       <!-- start: page -->
       <section class="panel">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-12"> <a  data-toggle="modal" data-target="#opprtunityTypes" class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add Oppurtunity Type</a> </div>
+            <div class="col-sm-12"> <a  data-toggle="modal"  data-target="#opprtunityTypes" ng-click="addinfo()"class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add Oppurtunity Type</a> </div>
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr>
-                  
+
                   <th>Opportunity Categroy Name</th>
                   <th>Description</th>
                   <th>Is Active</th>
@@ -27,18 +27,18 @@
                 </tr>
               </thead>
               <tbody>
-                  
+
             <tr ng-repeat="OpportType in OpportTypes">
-                  
+
                   <td>{{OpportType.opportunity_category_name}}</td>
                   <td>{{OpportType.description}}</td>
                   <td><div class="checkbox-custom checkbox-default">
                       <input type="checkbox" checked="" id="check1">
                       <label for="check1"></label>
                     </div></td>
-                  <td class="actions"><a href=""><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(OpportType)" data-toggle="modal" data-target="#opprtunityTypes"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
-  
+
               </tbody>
             </table>
           </div>
@@ -53,11 +53,12 @@
           </ul>
         </div>
       </section>
-      <!-- end: page --> 
-   
+      <!-- end: page -->
 
 
-      <!-- end: page --> 
+
+      <!-- end: page -->
+      <!---modal --->
   <div id="opprtunityTypes" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -66,7 +67,7 @@
         <h4 class="modal-title">Add New Oppurtunity Type</h4>
       </div>
       <div class="modal-body">
-        <form id="form" method="POST" name="OpportunityType" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
+        <form novalidate id="form" method="POST" name="OpportunityType" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
           <div class="form-group ">
             <label class="col-sm-5 control-label">Opportunity categroy name </label>
             <div class="col-sm-7">
@@ -89,7 +90,7 @@
             <label class="col-md-5 control-label" for="textareaDefault">is Active</label>
             <div class="col-md-7">
               <div class="checkbox-custom checkbox-default">
-                <input type="checkbox" checked id="check" value="1" ng-model="OpportunityType.is_active">
+                <input type="checkbox" checked id="check" value="1" ng-model="opportunitytype.is_active">
                 <label for="check"></label>
               </div>
             </div>
@@ -100,9 +101,9 @@
       </div>
           </form>
       </div>
-      
+
     </div>
   </div>
 </div>
 
-</div> 
+</div>
