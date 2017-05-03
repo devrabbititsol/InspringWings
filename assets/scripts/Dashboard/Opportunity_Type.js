@@ -4,6 +4,7 @@ app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpSer
 $scope.opportunitytype={}
 $scope.data = {};
 $scope.pager={};
+$scope.loading=true;
       //$scope.loading = true;
     //  var url = "http://devrabbit.com/inspiring_wings/web_services/opportunity_categories.php";
   //    var data = {};
@@ -32,6 +33,8 @@ $scope.pager={};
               $scope.pager =PaginationService.pagination($scope.OpportTypes.length,page);
               //alert(JSON.stringify($scope.pager));
                $scope.items = $scope.OpportTypes.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+
+               $scope.loading=false;
           }
 
          $scope.addinfo=function(){
