@@ -4,6 +4,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
     $scope.Event={};
     var data = {};
     $scope.pager={};
+    $scope.loading=true;
 //Get Event data
        preService.Eventget(data).then(function(res)
         {
@@ -28,6 +29,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
               $scope.pager =PaginationService.pagination($scope.Events.length,page);
               //alert(JSON.stringify($scope.pager));
                $scope.items = $scope.Events.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+              $scope.loading=false;
           }
 
 
@@ -36,6 +38,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
        $scope.addinfo=function()
        {
             $scope.Eventmodal="#Eventmodal";
+            $scope.title="Add New";
             $scope.message="";
             $scope.Event=null;
            //Insert Event
@@ -46,6 +49,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
         var geetingdata=sessiondata.response_info[0];
         var userdata=geetingdata.user_id;
         Eventdata.created_by=userdata;
+         Eventdata.event_id='0';
         var data = Eventdata;
         preService.Eventinsert(data).then(function(res)
         {
@@ -79,6 +83,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
     $scope.editInfo=function(Event)
     {
           $scope.Eventmodal="#Eventmodal";
+          $scope.title="Edit";
           $scope.message="";
           $scope.Event=Event;
           $scope.onSubmit=function()

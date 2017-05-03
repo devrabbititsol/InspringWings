@@ -119,13 +119,6 @@ $scope.loading=true;
 
               }
 
-             if(opportunityDate.opportunity_category_id == null || undefined){
-           //    alert(opportunitydata.opportunity_id)
-         //      alert("if");
-                opportunityDate.opportunity_category_id = "0";
-             }
-                   //    alert("new");
-                //   alert(JSON.stringify(opportunityDate))
                preService.addNewOpp_categories(opportunityDate).then(function(res) {
                  window.alert(res.message);
                  if(res.status == 1){

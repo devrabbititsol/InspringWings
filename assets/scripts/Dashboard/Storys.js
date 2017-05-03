@@ -2,8 +2,9 @@ app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData
 //Decleration
 $rootScope.session = localData.get();
 $scope.Storiesdata={};
-var data = {};
+var data = {'is_active':'1'};
     $scope.pager={};
+$scope.loading=true;
 //Get stories
       preService.getStories(data).then(function(res) {
            $scope.Stories= res;
@@ -23,6 +24,7 @@ var data = {};
               $scope.pager =PaginationService.pagination( $scope.Stories.length,page);
               //alert(JSON.stringify($scope.pager));
                $scope.items =  $scope.Stories.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+              $scope.loading=false;
           }
      preService.getStoryType(data).then(function(res) {
            $scope.Stories_category= res;
@@ -32,6 +34,7 @@ var data = {};
       $scope.addinfo=function()
       {
             $scope.Storymodal="#Storymodal";
+            $scope.title="Add New";
             $scope.message="";
             $scope.Storiesdata=null;
     $scope.onSubmit=function()
@@ -41,6 +44,7 @@ var data = {};
         var gettingdata=sessiondata.response_info[0];
         var userdata=gettingdata.user_id;
         stories.created_by=userdata;
+        stories.story_id='0';
         if(stories.is_active == true){
          // opportunityDate.is_active ="1";
         }
@@ -55,7 +59,7 @@ var data = {};
            if(res.status==1)
            {
              $scope.message="Inserted successfully";
-             var data = {};
+             var data = {'is_active':'1'};
                 preService.getStories(data).then(function(res)
                 {
                     $scope.Stories= res;
@@ -82,6 +86,7 @@ var data = {};
       $scope.editInfo=function(Story)
     {
                $scope.Storymodal="#Storymodal";
+                $scope.title="Edit";
                 $scope.message="";
                $scope.Storiesdata=Story;
                $scope.onSubmit=function()
@@ -106,7 +111,7 @@ var data = {};
             if(res.status==1)
             {
              $scope.status=res.status;
-             var data = {};
+             var data = {'is_active':'1'};
             $scope.message="Updated SuccessFully";
             preService.getStories(data).then(function(res)
             {
@@ -130,7 +135,40 @@ var data = {};
 //Delete Story
     $scope.deleteInfo=function(Story)
     {
-        window.alert('hi');
+         var result = confirm("Want to Delete ?");
+             
+             if(result == true){
+             
+             $scope.Storiesdata=Story;
+               var Eventdata=$scope.Storiesdata;
+                 var sessiondata=$rootScope.session;
+                 var geetingdata=sessiondata.response_info[0];
+                 var userdata=geetingdata.user_id;
+                 Eventdata.created_by=userdata;
+                 delete Eventdata.is_active;
+                 Eventdata.is_active='0';
+                 var data = Eventdata;
+                preService.insertStory(data).then(function(res)
+                {
+            if(res.status==1)
+            {
+                var data = {'is_active':'1'};
+            preService.getStories(data).then(function(res)
+            {
+                $scope.Stories= res;
+                     initController();
+            },function(err) {
+             window.alert("err");
+            });
+           }
+        else{
+            window.alert("err");
+            }
+                 },function(err) {
+                     window.alert("err");
+                 });
+             }
+             else{}
     }
 
 });

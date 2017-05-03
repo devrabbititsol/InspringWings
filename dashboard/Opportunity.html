@@ -9,9 +9,11 @@
           </ol>
         </div>
       </header>
-
+   <div style="margin-top:20%;margin-left:40%" ng-show="loading">
+      <div class="loader"></div>
+      </div>
       <!-- start: page -->
-      <section class="panel">
+      <section ng-show="!loading" class="panel">
         <div class="panel-body">
           <div class="row">
             <div class="col-sm-12"> <a  data-toggle="modal" data-target="{{opprtunitymodal}}" ng-click="addinfo()"  class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Opportunities</a> </div>

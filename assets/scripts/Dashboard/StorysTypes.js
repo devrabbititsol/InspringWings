@@ -3,8 +3,9 @@ app.controller('StorysTypesCntrl',function($rootScope,$scope,$localStorage,local
 //Decleration
 $rootScope.session = localData.get();
 $scope.StorysTypesdata={};
-var data = {};
+var data = {'is_active':'1'};
 $scope.pager={};
+$scope.loading=true;
 //Get StoryType
        preService.getStoryType(data).then(function(res)
         {
@@ -28,11 +29,13 @@ $scope.pager={};
               $scope.pager =PaginationService.pagination( $scope.storiesTypes.length,page);
               //alert(JSON.stringify($scope.pager));
                $scope.items =  $scope.storiesTypes.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+              $scope.loading=false;
           }
 //Add Action
    $scope.addinfo=function()
            {
              $scope.StoryTypeModal="#StoryTypeModal";
+             $scope.title="Add New ";
              $scope.message="";
              $scope.StorysTypesdata=null;
              //Insert StoryType
@@ -43,6 +46,7 @@ $scope.pager={};
             var gettingdata=sessiondata.response_info[0];
             var userdata=gettingdata.user_id;
             stories.created_by=userdata;
+            stories.story_category_id='0';
             if(stories.is_active == true){
              // opportunityDate.is_active ="1";
             }
@@ -58,7 +62,7 @@ $scope.pager={};
                if(res.status==1)
                {
                     $scope.message="Inserted successfully";
-                    var data = {};
+                    var data = {'is_active':'1'};
                     preService.getStoryType(data).then(function(res)
                     {
                         $scope.storiesTypes= res;
@@ -89,8 +93,9 @@ $scope.pager={};
  //Edit StoryType
       $scope.editInfo=function(StorysType)
     {
-          window.alert(StorysType.is_active);
+          
       $scope.StoryTypeModal="#StoryTypeModal";
+      $scope.title="Edit";
       $scope.message="";
       $scope.StorysTypesdata=StorysType;
       $scope.onSubmit=function()
@@ -117,7 +122,7 @@ $scope.pager={};
                {
                      $scope.status=res.status;
                     $scope.message="Updated SuccessFully";
-                     var data = {};
+                     var data = {'is_active':'1'};
                     preService.getStoryType(data).then(function(res)
                     {
                         $scope.storiesTypes= res;
@@ -143,4 +148,43 @@ $scope.pager={};
     }
 
     }
+  //Delete StoryType     
+   $scope.deleteInfo=function(StorysType)
+    {
+         var result = confirm("Want to Delete ?");
+             
+             if(result == true){
+             
+             $scope.Storiesdata=StorysType;
+               var Eventdata=$scope.Storiesdata;
+                 var sessiondata=$rootScope.session;
+                 var geetingdata=sessiondata.response_info[0];
+                 var userdata=geetingdata.user_id;
+                 Eventdata.created_by=userdata;
+                 delete Eventdata.is_active;
+                 Eventdata.is_active='0';
+                 var data = Eventdata;
+                preService.insertStoryType(data).then(function(res)
+                {
+            if(res.status==1)
+            {
+                var data = {'is_active':'1'};
+            preService.getStoryType(data).then(function(res)
+            {
+                $scope.storiesTypes= res;
+                     initController();
+            },function(err) {
+             window.alert("err");
+            });
+           }
+        else{
+            window.alert("err");
+            }
+                 },function(err) {
+                     window.alert("err");
+                 });
+             }
+             else{}
+    }   
+      
 });

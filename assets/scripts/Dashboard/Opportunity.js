@@ -3,14 +3,7 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
        $scope.opportunity={};
        $scope.data = {};
        $scope.pager={};
-    //   $scope.modalVisible=true;
-    //    var url = "http://devrabbit.com/inspiring_wings/web_services/opportunities.php";
-    //    var data = {};
-  //      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-  //      httpService.httpRequest(url, "P", data,headers).then(function(res) {
-
-
-
+       $scope.loading=true;
              preService.allOpportunities().then(function(res) {
            $scope.Opportunities= res;
               initController();
@@ -33,6 +26,7 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
                    $scope.pager =PaginationService.pagination($scope.Opportunities.length,page);
                    //alert(JSON.stringify($scope.pager));
                     $scope.items = $scope.Opportunities.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+                   $scope.loading=false;
                }
 
 
@@ -112,9 +106,7 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
        var userdata=geetingdata.user_id;
       opportunitydata.created_by=userdata;
 
-      if(opportunitydata.opportunity_id == null || undefined){
-         opportunitydata.opportunity_id = "0";
-      }
+     
       //  window.alert(opportunitydata.created_by);
       if(opportunitydata.is_active == true){
        // opportunityDate.is_active ="1";
