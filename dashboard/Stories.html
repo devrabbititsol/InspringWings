@@ -29,12 +29,12 @@
                 </tr>
               </thead>
               <tbody>
-            <tr ng-repeat="Story in Stories">
+            <tr ng-repeat="Story in items">
                   <td>{{Story.story_person_name}}</td>
                   <td>{{Story.story_title}}</td>
                   <td>{{Story.story_content}}</td>
                   <td>
-                <input type="checkbox" ng-checked="{{Story.is_active=='1' ? true : false}}" disabled>
+                <input type="checkbox" ng-checked="{{Story.is_active}}" disabled>
                 <label ></label>
                   </td>
                   <td>{{Story.created_date}}</td>
@@ -45,15 +45,20 @@
               </tbody>
             </table>
           </div>
-          <ul class="pagination pull-right">
-            <li class="prev disabled"> <a href="#"> <i class="fa fa-chevron-left"></i> </a> </li>
-            <li class="active"> <a href="#">1</a> </li>
+             <div ng-if="pager.totalPages >1">
+          <ul ng-if="pager.pages.length" class="pagination pull-right">
+            <li ng-class="{disabled:pager.currentPage === 1}" class="prev disabled"> <a ng-click="setPage(pager.currentPage - 1)"> <i class="fa fa-chevron-left"></i> </a> </li>
+            <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                   <a ng-click="setPage(page)">{{page}}</a>
+               </li>
+            <!-- <li class="active"> <a href="#">1</a> </li>
             <li> <a href="#">2</a> </li>
             <li> <a href="#">3</a> </li>
             <li> <a href="#">4</a> </li>
-            <li> <a href="#">5</a> </li>
-            <li class="next"> <a href="#"> <i class="fa fa-chevron-right"></i> </a> </li>
+            <li> <a href="#">5</a> </li> -->
+            <li ng-class="{disabled:pager.currentPage === pager.totalPages}" class="next"> <a ng-click="setPage(pager.currentPage + 1)"> <i class="fa fa-chevron-right"></i> </a> </li>
           </ul>
+            </div>
         </div>
       </section>
       <!-- end: page --> 

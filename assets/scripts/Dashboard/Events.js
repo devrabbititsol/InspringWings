@@ -38,8 +38,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
             $scope.Eventmodal="#Eventmodal";
             $scope.message="";
             $scope.Event=null;
-       }
-//Insert Event
+           //Insert Event
     $scope.onSubmit=function()
     {
         var Eventdata=$scope.Event;
@@ -79,6 +78,8 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
             window.alert("err");
          });
     }
+       }
+
  //Edit Event
     $scope.editInfo=function(Event)
     {

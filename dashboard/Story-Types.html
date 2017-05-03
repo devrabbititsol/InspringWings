@@ -20,7 +20,6 @@
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr >
-                 
                   <th>Story Categroy Name</th>
                   <th>Description</th>
                   <th>Is Active</th>
@@ -28,30 +27,34 @@
                 </tr>
               </thead>
               <tbody>
-             <tr ng-repeat="StorysType in storiesTypes">
+             <tr ng-repeat="StorysType in items">
                 
                   <td>{{StorysType.story_category_name}}</td>
                   <td>{{StorysType.description}}</td>
-                  
-                  <td><div class="checkbox-custom checkbox-default">
-                      <input type="checkbox" checked="" id="check1">
-                      <label for="check1"></label>
-                    </div></td>
+                 <td>
+                <input type="checkbox" ng-checked="{{StorysType.is_active=='1' ? true : false}}" disabled>
+                <label ></label>
+                  </td>
                   <td class="actions"><a ng-click="editInfo(StorysType)"  data-toggle="modal" data-target="{{StoryTypeModal}}"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
            
               </tbody>
             </table>
           </div>
-          <ul class="pagination pull-right">
-            <li class="prev disabled"> <a href="#"> <i class="fa fa-chevron-left"></i> </a> </li>
-            <li class="active"> <a href="#">1</a> </li>
+               <div ng-if="pager.totalPages >1">
+          <ul ng-if="pager.pages.length" class="pagination pull-right">
+            <li ng-class="{disabled:pager.currentPage === 1}" class="prev disabled"> <a ng-click="setPage(pager.currentPage - 1)"> <i class="fa fa-chevron-left"></i> </a> </li>
+            <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                   <a ng-click="setPage(page)">{{page}}</a>
+               </li>
+            <!-- <li class="active"> <a href="#">1</a> </li>
             <li> <a href="#">2</a> </li>
             <li> <a href="#">3</a> </li>
             <li> <a href="#">4</a> </li>
-            <li> <a href="#">5</a> </li>
-            <li class="next"> <a href="#"> <i class="fa fa-chevron-right"></i> </a> </li>
+            <li> <a href="#">5</a> </li> -->
+            <li ng-class="{disabled:pager.currentPage === pager.totalPages}" class="next"> <a ng-click="setPage(pager.currentPage + 1)"> <i class="fa fa-chevron-right"></i> </a> </li>
           </ul>
+        </div>
         </div>
       </section>
       <!-- end: page --> 
@@ -90,8 +93,8 @@
             <label class="col-md-4 control-label" for="textareaDefault">is Active</label>
             <div class="col-md-7">
              <div class="checkbox-custom checkbox-default">
-                   <input type="checkbox" checked id="is_active" value="1" ng-model="StorysTypesdata.is_active">
-                <label for="is_active"></label>
+                   <input type="checkbox"  ng-checked="StorysTypesdata.is_active=='1' ? true : false" ng-true-value="1" ng-false-value="0" ng-model="StorysTypesdata.is_active">
+                <label ></label>
               </div>
             </div>
           </div>

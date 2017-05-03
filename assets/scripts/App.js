@@ -1,5 +1,5 @@
 /********************Module Decleration ****************/
-var app=angular.module("InspiringWings",["ui.router",'ngMessages','ngStorage',]);
+var app=angular.module("InspiringWings",["ui.router",'ngMessages','ngStorage','720kb.datepicker']);
 /********************App Run ****************/
 app.run(function($rootScope) {
      $rootScope.memebers=true;
@@ -112,7 +112,6 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            });
      
 });
-
 
 
 

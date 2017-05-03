@@ -1,30 +1,44 @@
-app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData,preService){
+app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
 //Decleration
 $rootScope.session = localData.get();
 $scope.Storiesdata={};
 var data = {};
+    $scope.pager={};
 //Get stories 
       preService.getStories(data).then(function(res) {
            $scope.Stories= res;
-          
+          initController();
          },function(err) {
              window.alert("err");
          });
+    
+        function initController() {
+              // initialize to page 1
+             $scope.setPage(1);
+          }
+
+          $scope.setPage=function(page) {
+           // alert("set");
+              if (page < 1 || page > $scope.pager.totalPages) {
+                  return;
+              }
+              $scope.pager =PaginationService.pagination( $scope.Stories.length,page);
+              //alert(JSON.stringify($scope.pager));
+               $scope.items =  $scope.Stories.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+          }
      preService.getStoryType(data).then(function(res) {
            $scope.Stories_category= res;
          },function(err) {
              window.alert("err");
          });
-      $scope.addinfo=function(){
-             $scope.Storymodal="#Storymodal";
-          $scope.message="";
-           $scope.Storiesdata=undefined;
-       }
-//Insert Story
+      $scope.addinfo=function()
+      {
+            $scope.Storymodal="#Storymodal";
+            $scope.message="";
+            $scope.Storiesdata=null;
     $scope.onSubmit=function()
-    {
+        {
         var stories=$scope.Storiesdata;
-        window.alert(stories.is_active);
         if(stories.is_active==true)
         {
              delete stories.is_active;
@@ -47,6 +61,13 @@ var data = {};
                 preService.getStories(data).then(function(res)
                 {
                     $scope.Stories= res;
+                    initController();
+                          $scope.success=true;
+                   // $scope.$dismss("nth")
+                   $timeout( function(){
+                     $scope.success=false;
+                     $('#Storymodal').modal('hide');
+                 }, 2000 );
                 },
             function(err) 
             {
@@ -61,12 +82,15 @@ var data = {};
          });
 
     }
+       }
+//Insert Story
+
 //Edit Story   
       $scope.editInfo=function(Story)
     {
                $scope.Storymodal="#Storymodal";
                 $scope.message="";
-               $scope.Storiesdata=Story;
+               $scope.Storiesdata=Story;   
                $scope.onSubmit=function()
             {
                  var Eventdata=$scope.Storiesdata;
@@ -85,6 +109,13 @@ var data = {};
             preService.getStories(data).then(function(res)
             {
                 $scope.Stories= res;
+                     initController();
+                          $scope.success=true;
+                   // $scope.$dismss("nth")
+                   $timeout( function(){
+                     $scope.success=false;
+                     $('#Storymodal').modal('hide');
+                 }, 2000 );
                
             },function(err) {
 
@@ -104,7 +135,7 @@ var data = {};
 //Delete Story 
     $scope.deleteInfo=function(Story)
     {
-       
+        window.alert('hi');
     }
       
 });
