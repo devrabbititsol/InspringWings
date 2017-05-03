@@ -22,6 +22,7 @@
                 <tr>
                   <th>Opportunity Title</th>
                   <th>Opportunity Content</th>
+                  <th>Is Active</th>
                   <th>Created Date</th>
                   <th>Created By</th>
                   <th>Actions</th>
@@ -32,6 +33,10 @@
                 <tr ng-repeat="opportunitydata in items">
                   <td>{{opportunitydata.opportunity_title}}</td>
                   <td>{{opportunitydata.opportunity_content}}</td>
+                  <td><div class="checkbox-custom checkbox-default">
+                      <input type="checkbox" ng-checked="{{opportunitydata.is_active}}" id="check1" disabled>
+                      <label for="check1"></label>
+                    </div></td>
                   <td>{{opportunitydata.created_by}}</td>
                   <td>{{opportunitydata.created_date}}</td>
 
@@ -67,6 +72,7 @@
         <h4 class="modal-title">Add New Oppurtunity</h4>
       </div>
       <div class="modal-body">
+        <div style="color:green;text-align:center" ng-if=" status !=''">{{message}}</div>
     <form id="form" method="POST" name="opportunity" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
           <div class="form-group">
             <label class="col-sm-4 control-label">Opportunity Type <span class="required">*</span></label>
@@ -76,28 +82,34 @@
                     <option ng-repeat="opp in OpportTypes" value="{{opp.opportunity_category_id}}">{{opp.opportunity_category_name}}</option>
 
               </select>
-                  <span ng-show="opportunity.OpportunityType.$dirty && opportunity.OpportunityType.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" opportunity.OpportunityType.$error.required">Opportunity Type required.</span>
-                   </span>
+
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-4 control-label">Opportunity Title <span class="required">*</span></label>
             <div class="col-sm-7">
                  <input type="text" name="OpportunityTitle" ng-model="opportunity.opportunity_title" class="form-control"  required>
-              <span ng-show="opportunity.OpportunityTitle.$dirty && opportunity.OpportunityTitle.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" opportunity.OpportunityTitle.$error.required">Opportunity Title required.</span>
-                   </span>
+
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-4 control-label" for="textareaDefault">Opportunity Description</label>
             <div class="col-md-7">
               <textarea class="form-control" rows="3" id="textareaDefault" name="OpportunityContent" ng-model="opportunity.opportunity_content" required></textarea>
-                 <span ng-show="opportunity.OpportunityContent.$dirty && opportunity.OpportunityContent.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" opportunity.OpportunityContent.$error.required">Opportunity Content required.</span>
-                   </span>
+                 
             </div>
+          </div>
+          <div class="form-group">
+
+
+            <label class="col-md-5 control-label"  for="check">is Active</label>
+            <div class="col-md-7">
+              <div class="checkbox-custom checkbox-default">
+                <input type="checkbox" id="check" ng-model="opportunity.is_active"  ng-checked="{{opportunity.is_active}}" >
+                <label for="check"></label>
+              </div>
+            </div>
+
           </div>
         <div class="modal-footer">
         <label ng-show="success" class="col-md-4 control-label" for="textareaDefault">Success</label>

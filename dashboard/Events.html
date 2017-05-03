@@ -67,9 +67,7 @@
             <label class="col-sm-4 control-label">Event Name<span class="required">*</span></label>
             <div class="col-sm-7">
               <input type="text" name="EventName" class="form-control" ng-model="Event.event_name"  required>
-                    <span ng-show="Event.EventName.$dirty && Event.EventName.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" Event.EventName.$error.required">Event Name is required.</span>
-                </span>
+
             </div>
           </div>
 
@@ -79,9 +77,7 @@
                 <datepicker date-format="yyyy-MM-dd">
                     <input type="text" name="EventDate" class="form-control" ng-model="Event.event_date"  required/>
                 </datepicker>
-                <span ng-show="Event.EventDate.$dirty && Event.EventDate.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" Event.EventDate.$error.required">Event Date is required.</span>
-                   </span>
+
             </div></div>
 
 
@@ -89,9 +85,7 @@
             <label class="col-md-4 control-label" for="textareaDefault">Content</label>
             <div class="col-md-7">
               <textarea class="form-control" rows="3" id="textareaDefault"  name="EventContent" ng-model="Event.event_content"  required></textarea>
-                    <span ng-show="Event.EventContent.$dirty && Event.EventContent.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" Event.EventContent.$error.required">Event Content is required.</span>
-                </span>
+                    
             </div>
           </div>
         <div class="modal-footer">

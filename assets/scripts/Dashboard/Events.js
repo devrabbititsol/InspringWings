@@ -100,7 +100,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
                         {
                             $scope.Events= res;
                             initController();
-                             $('#Eventmodal').modal('hide');   
+                             $('#Eventmodal').modal('hide');
                         },
                         function(err)
                         {

@@ -5,8 +5,8 @@ $rootScope.session = localData.get();
 $scope.StorysTypesdata={};
 var data = {};
 $scope.pager={};
-//Get StoryType   
-       preService.getStoryType(data).then(function(res) 
+//Get StoryType
+       preService.getStoryType(data).then(function(res)
         {
            $scope.storiesTypes= res;
            initController();
@@ -14,7 +14,7 @@ $scope.pager={};
         function(err)
         {
              window.alert("error");
-         }); 
+         });
      function initController() {
               // initialize to page 1
              $scope.setPage(1);
@@ -35,25 +35,25 @@ $scope.pager={};
              $scope.StoryTypeModal="#StoryTypeModal";
              $scope.message="";
              $scope.StorysTypesdata=null;
-             //Insert StoryType       
+             //Insert StoryType
     $scope.onSubmit=function()
         {
             var stories=$scope.StorysTypesdata;
-            if(stories.is_active==true)
-            {
-                 delete stories.is_active;
-                stories.is_active="1";
-            }
-            else
-            {
-                stories.is_active="0";
-            }
             var sessiondata=$rootScope.session;
             var gettingdata=sessiondata.response_info[0];
-            var userdata=gettingdata.user_id; 
+            var userdata=gettingdata.user_id;
             stories.created_by=userdata;
+            if(stories.is_active == true){
+             // opportunityDate.is_active ="1";
+            }
+            else if(stories.is_active == false || stories.is_active == undefined){
+             stories.is_active ="0";
+            }
+            else{
+
+            }
             var data = stories;
-            preService.insertStoryType(data).then(function(res) 
+            preService.insertStoryType(data).then(function(res)
             {
                if(res.status==1)
                {
@@ -64,9 +64,9 @@ $scope.pager={};
                         $scope.storiesTypes= res;
                         initController();
                          $('#StoryTypeModal').modal('hide');
-                            
+
                     },
-                    function(err) 
+                    function(err)
                     {
 
                      window.alert("err");
@@ -78,7 +78,7 @@ $scope.pager={};
 
                 }
            },
-           function(err) 
+           function(err)
             {
 
                  window.alert("err");
@@ -86,22 +86,32 @@ $scope.pager={};
     }
            }
 
- //Edit StoryType   
+ //Edit StoryType
       $scope.editInfo=function(StorysType)
     {
           window.alert(StorysType.is_active);
       $scope.StoryTypeModal="#StoryTypeModal";
       $scope.message="";
-      $scope.StorysTypesdata=StorysType;   
+      $scope.StorysTypesdata=StorysType;
       $scope.onSubmit=function()
       {
             var Eventdata=$scope.StorysTypesdata;
             var sessiondata=$rootScope.session;
             var geetingdata=sessiondata.response_info[0];
-            var userdata=geetingdata.user_id; 
+            var userdata=geetingdata.user_id;
             Eventdata.created_by=userdata;
+            if(Eventdata.is_active == true){
+             // opportunityDate.is_active ="1";
+            }
+            else if(Eventdata.is_active == false || Eventdata.is_active == undefined){
+             Eventdata.is_active ="0";
+            }
+            else{
+
+            }
             var data = Eventdata;
-            preService.insertStoryType(data).then(function(res) 
+
+            preService.insertStoryType(data).then(function(res)
             {
                 if(res.status==1)
                {
@@ -114,7 +124,7 @@ $scope.pager={};
                            initController();
                         $('#StoryTypeModal').modal('hide');
                     },
-                    function(err) 
+                    function(err)
                     {
                      window.alert("err");
                     });
@@ -125,12 +135,12 @@ $scope.pager={};
                   $scope.message="Invalid Data";
                 }
             },
-            function(err) 
+            function(err)
             {
                  window.alert("err");
             });
 
-    } 
-        
+    }
+
     }
 });

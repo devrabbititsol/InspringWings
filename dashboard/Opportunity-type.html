@@ -33,7 +33,7 @@
                   <td>{{OpportType.opportunity_category_name}}</td>
                   <td>{{OpportType.description}}</td>
                   <td><div class="checkbox-custom checkbox-default">
-                      <input type="checkbox" ng-checked="{{OpportType.is_active}}" id="check1">
+                      <input type="checkbox" ng-checked="{{OpportType.is_active}}" id="check1" disabled>
                       <label for="check1"></label>
                     </div></td>
                   <td class="actions"><a ng-click="editInfo(OpportType)" data-toggle="modal" data-target="#opprtunityTypes"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
@@ -78,18 +78,14 @@
             <label class="col-sm-5 control-label">Opportunity categroy name </label>
             <div class="col-sm-7">
               <input type="text" name="categoryname" ng-model="opportunitytype.opportunity_category_name" class="form-control"  required>
-                     <span ng-show="OpportunityType.categoryname.$dirty && OpportunityType.categoryname.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" OpportunityType.categoryname.$error.required">category name is required.</span>
-                   </span>
+
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-5 control-label" for="textareaDefault">Description</label>
             <div class="col-md-7">
               <textarea class="form-control" rows="3" id="textareaDefault" name="description" ng-model="opportunitytype.description" required></textarea>
-                <span ng-show="OpportunityType.description.$dirty && OpportunityType.description.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" OpportunityType.description.$error.required">Description is required.</span>
-                   </span>
+                
             </div>
           </div>
           <div class="form-group">

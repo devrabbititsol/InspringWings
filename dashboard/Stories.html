@@ -8,7 +8,7 @@
           </ol>
         </div>
       </header>
-      
+
       <!-- start: page -->
       <section class="panel">
         <div class="panel-body">
@@ -41,7 +41,7 @@
                   <td>{{Story.created_by}}</td>
                   <td class="actions"><a ng-click="editInfo(Story)"  data-toggle="modal" data-target="{{Storymodal}}"><i class="fa fa-pencil"></i></a> <a ng-click="deleteInfo(Story)"><i class="fa fa-trash-o"></i></a></td>
                 </tr>
-     
+
               </tbody>
             </table>
           </div>
@@ -61,8 +61,8 @@
             </div>
         </div>
       </section>
-      <!-- end: page --> 
-    
+      <!-- end: page -->
+
 
 
 <div id="Storymodal" class="modal fade" role="dialog">
@@ -81,11 +81,9 @@
                <select class="form-control" name="storyType" ng-model="Storiesdata.story_category_id" placeholder="select" ng-dropdown required>
                   <option ng-repeat="opp in Stories_category" value="{{opp.story_category_id}}">{{opp.story_category_name}}</option>
               </select>
-                
-                 
-                  <span ng-show="Story.storyType.$dirty && Story.storyType.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" Story.storyType.$error.required">Opportunity Type required.</span>
-                   </span>
+
+
+
             </div>
           </div>
           <div class="form-group">
@@ -101,42 +99,37 @@
             <label class="col-md-4 control-label" for="textareaDefault">Content</label>
             <div class="col-md-7">
                  <textarea class="form-control" rows="3" id="textareaDefault"  name="StoryContent" ng-model="Storiesdata.story_content"  required></textarea>
-                    <span ng-show="Story.StoryContent.$dirty && Story.StoryContent.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" Story.StoryContent.$error.required">Story Content is required.</span>
-                   </span>
+
             </div>
           </div>
-          
+
           <div class="form-group">
             <label class="col-sm-4 control-label">Person Name <span class="required">*</span></label>
             <div class="col-sm-7">
                 <input type="text" name="personname" class="form-control" ng-model="Storiesdata.story_person_name" required>
-             <span ng-show="Story.personname.$dirty && Story.personname.$invalid" style="color:red">
-                    <span style="color:red;" ng-show=" Story.personname.$error.required">Person name is required.</span>
-                   </span>
+            
             </div>
           </div>
-          
+
           <div class="form-group">
             <label class="col-md-4 control-label" for="textareaDefault">is Active</label>
             <div class="col-md-7">
               <div class="checkbox-custom checkbox-default">
-                  
-                   <input type="checkbox"  ng-checked="Storiesdata.is_active=='1' ? true : false" ng-true-value="1" ng-false-value="0" ng-model="Storiesdata.is_active">
+
+                   <input type="checkbox"  ng-model="Storiesdata.is_active"  ng-checked="{{Storiesdata.is_active}}">
                 <label ></label>
               </div>
             </div>
-          </div>    
-          
+          </div>
+
             <div class="modal-footer">
         <button type="button" class="btn btn-default mb-sm" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-primary mb-sm" >Save</button>
       </div>
         </form>
       </div>
-    
+
     </div>
   </div>
 </div>
-</div>   
-
+</div>

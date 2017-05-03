@@ -4,7 +4,7 @@ $rootScope.session = localData.get();
 $scope.Storiesdata={};
 var data = {};
     $scope.pager={};
-//Get stories 
+//Get stories
       preService.getStories(data).then(function(res) {
            $scope.Stories= res;
           initController();
@@ -37,19 +37,19 @@ var data = {};
     $scope.onSubmit=function()
         {
         var stories=$scope.Storiesdata;
-        if(stories.is_active==true)
-        {
-             delete stories.is_active;
-            stories.is_active="1";
-        }
-        else
-        {
-            stories.is_active="0";
-        }
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];
-        var userdata=gettingdata.user_id; 
+        var userdata=gettingdata.user_id;
         stories.created_by=userdata;
+        if(stories.is_active == true){
+         // opportunityDate.is_active ="1";
+        }
+        else if(stories.is_active == false || stories.is_active == undefined){
+         stories.is_active ="0";
+        }
+        else{
+
+        }
         var data = stories;
            preService.insertStory(data).then(function(res) {
            if(res.status==1)
@@ -62,7 +62,7 @@ var data = {};
                     initController();
                $('#Storymodal').modal('hide');
                 },
-            function(err) 
+            function(err)
             {
              window.alert("err");
             });
@@ -78,21 +78,30 @@ var data = {};
        }
 //Insert Story
 
-//Edit Story   
+//Edit Story
       $scope.editInfo=function(Story)
     {
                $scope.Storymodal="#Storymodal";
                 $scope.message="";
-               $scope.Storiesdata=Story;   
+               $scope.Storiesdata=Story;
                $scope.onSubmit=function()
             {
                  var Eventdata=$scope.Storiesdata;
                  var sessiondata=$rootScope.session;
                  var geetingdata=sessiondata.response_info[0];
-                 var userdata=geetingdata.user_id; 
+                 var userdata=geetingdata.user_id;
                  Eventdata.created_by=userdata;
+                 if(Eventdata.is_active == true){
+                  // opportunityDate.is_active ="1";
+                 }
+                 else if(Eventdata.is_active == false || Eventdata.is_active == undefined){
+                  Eventdata.is_active ="0";
+                 }
+                 else{
+
+                 }
                  var data = Eventdata;
-                preService.insertStory(data).then(function(res) 
+                preService.insertStory(data).then(function(res)
                 {
             if(res.status==1)
             {
@@ -116,12 +125,12 @@ var data = {};
                      window.alert("err");
                  });
 
-            } 
+            }
     }
-//Delete Story 
+//Delete Story
     $scope.deleteInfo=function(Story)
     {
         window.alert('hi');
     }
-      
+
 });
