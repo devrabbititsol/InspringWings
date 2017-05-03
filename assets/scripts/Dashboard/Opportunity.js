@@ -60,42 +60,24 @@ app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,http
  }
 
     $scope.onSubmit=function(){
-    //  $scope.modalVisible=true;
-    //      alert("hi")
       $scope.submitted = true;
-
        var opportunitydata=$scope.opportunity;
        var sessiondata=$rootScope.session;
        var geetingdata=sessiondata.response_info[0];
        var userdata=geetingdata.user_id;
       opportunitydata.created_by=userdata;
-    //  alert("oppp")
       if(opportunitydata.opportunity_id == null || undefined){
-    //    alert(opportunitydata.opportunity_id)
-  //      alert("if");
          opportunitydata.opportunity_id = "0";
       }
-    //  alert(JSON.stringify(opportunitydata));
         window.alert(opportunitydata.created_by);
-    // var url = "http://devrabbit.com/inspiring_wings/web_services/opportunities_action.php";
-  //    var data = opportunitydata;
-    //  var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-  //     httpService.httpRequest(url, "P", data,headers)
+
         preService.addORUpdateOpp(opportunitydata).then(function(res) {
            window.alert(res.message);
            if(res.status == 1){
              preService.allOpportunities().then(function(res) {
            $scope.Opportunities= res;
            initController();
-           $scope.success=true;
-          // $scope.$dismss("nth")
-          $timeout( function(){
-            $scope.success=false;
             $('#opprtunitymodal').modal('hide');
-        }, 2000 );
-
-          //    $scope.modalVisible=false;
-            //  $scope.modalVisible=true;
 
          },function(err) {
 

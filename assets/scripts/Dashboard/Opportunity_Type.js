@@ -70,12 +70,7 @@ $scope.pager={};
                     $scope.OpportTypes= res;
                       $scope.message="Inserted successfully";
                       initController();
-                      $scope.success=true;
-                     // $scope.$dismss("nth")
-                     $timeout( function(){
-                       $scope.success=false;
-                       $('#opprtunityTypes').modal('hide');
-                   }, 1500 );
+                  $('#opprtunityTypes').modal('hide');
                   //   alert(JSON.stringify($scope.OpportTypes))
                   //    alert($scope.OpportTypes.length);
 
@@ -130,16 +125,12 @@ $scope.pager={};
                preService.addNewOpp_categories(opportunityDate).then(function(res) {
                  window.alert(res.message);
                  if(res.status == 1){
+                      $scope.message="Updated SuccessFully";
                    preService.getAllOpp_categories().then(function(res) {
                  $scope.OpportTypes= res;
-                   $scope.message="Updated SuccessFully";
                    initController();
-                   $scope.success=true;
-                  // $scope.$dismss("nth")
-                  $timeout( function(){
-                    $scope.success=false;
                     $('#opprtunityTypes').modal('hide');
-                }, 2000 );
+               
                //   alert(JSON.stringify($scope.OpportTypes))
                //    alert($scope.OpportTypes.length);
 

@@ -57,12 +57,7 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
                 {
                     $scope.Events= res;
                     initController();
-                    $scope.success=true;
-                   // $scope.$dismss("nth")
-                   $timeout( function(){
-                     $scope.success=false;
-                     $('#Eventmodal').modal('hide');
-                 }, 2000 );
+                 $('#Eventmodal').modal('hide');
                 },function(err) {
 
                  window.alert("err");
@@ -100,10 +95,12 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
                 {
                     $scope.status=res.status;
                     var data = {};
+                    $scope.message="Updated SuccessFully";
                     preService.Eventget(data).then(function(res)
                         {
                             $scope.Events= res;
-                            $scope.message="Updated SuccessFully";
+                            initController();
+                             $('#Eventmodal').modal('hide');   
                         },
                         function(err)
                         {

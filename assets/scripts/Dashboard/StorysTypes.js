@@ -62,13 +62,9 @@ $scope.pager={};
                     preService.getStoryType(data).then(function(res)
                     {
                         $scope.storiesTypes= res;
-                            initController();
-                          $scope.success=true;
-                   // $scope.$dismss("nth")
-                   $timeout( function(){
-                     $scope.success=false;
-                     $('#Storymodal').modal('hide');
-                 }, 2000 );
+                        initController();
+                         $('#StoryTypeModal').modal('hide');
+                            
                     },
                     function(err) 
                     {
@@ -116,12 +112,7 @@ $scope.pager={};
                     {
                         $scope.storiesTypes= res;
                            initController();
-                          $scope.success=true;
-                   // $scope.$dismss("nth")
-                   $timeout( function(){
-                     $scope.success=false;
-                     $('#Storymodal').modal('hide');
-                 }, 2000 );
+                        $('#StoryTypeModal').modal('hide');
                     },
                     function(err) 
                     {

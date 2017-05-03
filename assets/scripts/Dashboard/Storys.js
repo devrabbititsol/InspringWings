@@ -11,12 +11,10 @@ var data = {};
          },function(err) {
              window.alert("err");
          });
-    
         function initController() {
               // initialize to page 1
              $scope.setPage(1);
           }
-
           $scope.setPage=function(page) {
            // alert("set");
               if (page < 1 || page > $scope.pager.totalPages) {
@@ -62,12 +60,7 @@ var data = {};
                 {
                     $scope.Stories= res;
                     initController();
-                          $scope.success=true;
-                   // $scope.$dismss("nth")
-                   $timeout( function(){
-                     $scope.success=false;
-                     $('#Storymodal').modal('hide');
-                 }, 2000 );
+               $('#Storymodal').modal('hide');
                 },
             function(err) 
             {
@@ -110,15 +103,8 @@ var data = {};
             {
                 $scope.Stories= res;
                      initController();
-                          $scope.success=true;
-                   // $scope.$dismss("nth")
-                   $timeout( function(){
-                     $scope.success=false;
                      $('#Storymodal').modal('hide');
-                 }, 2000 );
-               
             },function(err) {
-
              window.alert("err");
             });
            }
