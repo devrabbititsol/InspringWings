@@ -2,6 +2,7 @@ app.controller('logoutCntrl',function($rootScope,$scope,$state,$localStorage,loc
 
      $scope.logout = function() {
      $localStorage.$reset();
+     $rootScope.session='';
     $state.go("Home");
      }
 
