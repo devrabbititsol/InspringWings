@@ -11,7 +11,7 @@ $scope.pager={};
   //     httpService.httpRequest(url, "P", data,headers).then(function(res) {
   preService.getAllOpp_categories().then(function(res) {
            $scope.OpportTypes= res;
-          // alert($scope.OpportTypes.length);
+        //   alert(JSON.stringify($scope.OpportTypes));
               initController();
          },function(err) {
 
@@ -35,72 +35,132 @@ $scope.pager={};
           }
 
          $scope.addinfo=function(){
-              //  alert("add");
+              $scope.message="";
             $scope.opprtunitymodal="#opprtunityTypes";
           $scope.opportunitytype=null;
+          $scope.onSubmit=function(){
+            //  window.alert('hi');
+
+                 var opportunityDate=$scope.opportunitytype;
+                 var sessiondata=$rootScope.session;
+                 var geetingdata=sessiondata.response_info[0];
+                 var userdata=geetingdata.user_id;
+              //   alert(opportunityDate.is_active);
+                 if(opportunityDate.is_active == true){
+                  // opportunityDate.is_active ="1";
+                 }
+                 else if(opportunityDate.is_active == false || opportunityDate.is_active == undefined){
+                  opportunityDate.is_active ="0";
+                 }
+                 else{
+
+                 }
+
+                if(opportunityDate.opportunity_category_id == null || undefined){
+              //    alert(opportunitydata.opportunity_id)
+            //      alert("if");
+                   opportunityDate.opportunity_category_id = "0";
+                }
+                      //    alert("new");
+                //      alert(JSON.stringify(opportunityDate))
+                  preService.addNewOpp_categories(opportunityDate).then(function(res) {
+                    window.alert(res.message);
+                    if(res.status == 1){
+                      preService.getAllOpp_categories().then(function(res) {
+                    $scope.OpportTypes= res;
+                      $scope.message="Inserted successfully";
+                      initController();
+                      $scope.success=true;
+                     // $scope.$dismss("nth")
+                     $timeout( function(){
+                       $scope.success=false;
+                       $('#opprtunityTypes').modal('hide');
+                   }, 1500 );
+                  //   alert(JSON.stringify($scope.OpportTypes))
+                  //    alert($scope.OpportTypes.length);
+
+                  },function(err) {
+
+                      window.alert("err");
+                  });
+                }else{
+                      //  alert("else")
+                }
+                  },function(err) {
+
+                      window.alert("err");
+                  });
+
+
+             }
 
         }
 
          $scope.editInfo=function(opportunityDate){
             //     alert("edit");
-    $scope.opprtunitymodal="#opprtunityTypes";
-       $scope.opportunitytype=opportunityDate;
+       $scope.opprtunitymodal="#opprtunityTypes";
+       $scope.opportunitytype=opportunityDate
+    //   alert(JSON.stringify($scope.opportunitytype));
+            $scope.message="";
+       $scope.onSubmit=function(){
+         //  window.alert('hi');
 
+              var opportunityDate=$scope.opportunitytype;
+              var sessiondata=$rootScope.session;
+              var geetingdata=sessiondata.response_info[0];
+              var userdata=geetingdata.user_id;
+              alert(opportunityDate.is_active);
+              if(opportunityDate.is_active == true){
+               // opportunityDate.is_active ="1";
+              }
+              else if(opportunityDate.is_active == false || opportunityDate.is_active == undefined){
+               opportunityDate.is_active ="0";
+              }
+              else{
+
+              }
+
+             if(opportunityDate.opportunity_category_id == null || undefined){
+           //    alert(opportunitydata.opportunity_id)
+         //      alert("if");
+                opportunityDate.opportunity_category_id = "0";
+             }
+                   //    alert("new");
+                //   alert(JSON.stringify(opportunityDate))
+               preService.addNewOpp_categories(opportunityDate).then(function(res) {
+                 window.alert(res.message);
+                 if(res.status == 1){
+                   preService.getAllOpp_categories().then(function(res) {
+                 $scope.OpportTypes= res;
+                   $scope.message="Updated SuccessFully";
+                   initController();
+                   $scope.success=true;
+                  // $scope.$dismss("nth")
+                  $timeout( function(){
+                    $scope.success=false;
+                    $('#opprtunityTypes').modal('hide');
+                }, 2000 );
+               //   alert(JSON.stringify($scope.OpportTypes))
+               //    alert($scope.OpportTypes.length);
+
+               },function(err) {
+
+                   window.alert("err");
+               });
+             }else{
+                    // alert("else")
+             }
+               },function(err) {
+
+                   window.alert("err");
+               });
+
+
+          }
            }
 
 
-    $scope.onSubmit=function(){
-      //  window.alert('hi');
 
-           var opportunityDate=$scope.opportunitytype;
-           var sessiondata=$rootScope.session;
-           var geetingdata=sessiondata.response_info[0];
-           var userdata=geetingdata.user_id;
-
-          if(opportunityDate.is_active == true){
-            opportunityDate.is_active ="1";
-          //  alert("true")
-          }
-          else{
-            opportunityDate.is_active ="0";
-          }
-        //  alert("oppp")
-          if(opportunityDate.opportunity_category_id == null || undefined){
-        //    alert(opportunitydata.opportunity_id)
-      //      alert("if");
-             opportunityDate.opportunity_category_id = "0";
-          }
-                //    alert("new");
-                //     alert(JSON.stringify(opportunityDate))
-            preService.addNewOpp_categories(opportunityDate).then(function(res) {
-              window.alert(res.message);
-              if(res.status == 1){
-                preService.getAllOpp_categories().then(function(res) {
-              $scope.OpportTypes= res;
-                initController();
-                $scope.success=true;
-               // $scope.$dismss("nth")
-               $timeout( function(){
-                 $scope.success=false;
-                 $('#opprtunityTypes').modal('hide');
-             }, 2000 );
-            //   alert(JSON.stringify($scope.OpportTypes))
-            //    alert($scope.OpportTypes.length);
-
-            },function(err) {
-
-                window.alert("err");
-            });
-          }else{
-                  alert("else")
-          }
-            },function(err) {
-
-                window.alert("err");
-            });
-
-
-       }
 
 
 });

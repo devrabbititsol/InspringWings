@@ -33,7 +33,7 @@
                   <td>{{OpportType.opportunity_category_name}}</td>
                   <td>{{OpportType.description}}</td>
                   <td><div class="checkbox-custom checkbox-default">
-                      <input type="checkbox" checked="" id="check1">
+                      <input type="checkbox" ng-checked="{{OpportType.is_active}}" id="check1">
                       <label for="check1"></label>
                     </div></td>
                   <td class="actions"><a ng-click="editInfo(OpportType)" data-toggle="modal" data-target="#opprtunityTypes"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
@@ -72,6 +72,7 @@
         <h4 class="modal-title">Add New Oppurtunity Type</h4>
       </div>
       <div class="modal-body">
+        <div style="color:green;text-align:center" ng-if=" status !=''">{{message}}</div>
         <form novalidate id="form" method="POST" name="OpportunityType" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
           <div class="form-group ">
             <label class="col-sm-5 control-label">Opportunity categroy name </label>
@@ -92,16 +93,19 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-5 control-label" for="textareaDefault">is Active</label>
+
+
+            <label class="col-md-5 control-label"  for="check">is Active</label>
             <div class="col-md-7">
               <div class="checkbox-custom checkbox-default">
-                <input type="checkbox" checked id="check" value="1" ng-model="opportunitytype.is_active">
+                <input type="checkbox" id="check" ng-model="opportunitytype.is_active"  ng-checked="{{opportunitytype.is_active}}" >
                 <label for="check"></label>
               </div>
             </div>
+
           </div>
         <div class="modal-footer">
-        <label ng-show="success" class="col-md-4 control-label" for="textareaDefault">Success</label>
+
         <button type="button" class="btn btn-default mb-sm" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-primary mb-sm" >Save</button>
       </div>
