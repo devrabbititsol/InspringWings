@@ -1,6 +1,7 @@
 app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
 //Decleration
 $rootScope.session = localData.get();
+    
 $scope.Storiesdata={};
 var data = {'is_active':'1'};
     $scope.pager={};
@@ -39,6 +40,7 @@ $scope.loading=true;
             $scope.Storiesdata=null;
     $scope.onSubmit=function()
         {
+        window.alert('hi');
         var stories=$scope.Storiesdata;
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];

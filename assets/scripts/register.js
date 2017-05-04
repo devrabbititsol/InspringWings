@@ -27,8 +27,8 @@ app.controller('signUp',function($rootScope,$scope,$state,$http,httpService){
          if(res.status == 1){
              var x=res.message;
              window.alert(x);
-            localData.set(sessiondata);
-              $rootScope.session =res.status;
+            /*localData.set(sessiondata);
+              $rootScope.session =res.status;*/
           //$state.go("OpportunityType");
          }
          else{

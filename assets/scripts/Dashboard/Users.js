@@ -1,6 +1,7 @@
 app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService)
 {
     $rootScope.session = localData.get();
+    
     var data = {};
     $scope.pager={};
     $scope.loading=true;

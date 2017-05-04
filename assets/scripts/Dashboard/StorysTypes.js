@@ -2,6 +2,7 @@
 app.controller('StorysTypesCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
 //Decleration
 $rootScope.session = localData.get();
+    
 $scope.StorysTypesdata={};
 var data = {'is_active':'1'};
 $scope.pager={};

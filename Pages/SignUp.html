@@ -104,7 +104,7 @@
             <div class="row">
               <div class="col-sm-6 mb-lg">
                 <label>Password</label>
-                <input name="pwd" type="password" class="form-control" ng-model="cpassword" ng-pattern="/^[a-zA-Z0-9]\w{3,14}$/" required/>
+                <input name="pwd" type="password" class="form-control" ng-model="register.password" ng-pattern="/^[a-zA-Z0-9]\w{3,14}$/" required/>
                   <span ng-show="signUp.pwd.$dirty && signUp.pwd.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" signUp.pwd.$error.required">Password is required.</span>
                     <span ng-show="signUp.pwd.$error.pattern">Atleast 3 characters </span>
@@ -134,7 +134,7 @@
 
 
 <!--success modal --> 
-<div id="success" class="modal fade" role="dialog">
+<!--<div id="success" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -155,4 +155,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->

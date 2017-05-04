@@ -115,7 +115,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            })
             .state("View_Pending_Requests",{
             url:'/View_Pending_Requests',
-            views: {'View_Pending_Requests':{ templateUrl:'dashboard/View-All-Requets.html',controller : "viewPendingReqCntrl"}}
+            views: {'View_Pending_Requests':{ templateUrl:'dashboard/View-Pending-Requets.html',controller : "viewPendingReqCntrl"}}
            })
               .state("Closed_Requests",{
             url:'/Closed_Requests',
