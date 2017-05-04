@@ -1,70 +1,114 @@
 app.service('preService',function($http,httpService){
 
       this.login=function(data){
-        var url = "http://devrabbit.com/inspiring_wings/web_services/user_login.php";
-        var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-      return httpService.httpRequest(url, "P", data,headers)
-    }
-        this.Eventget=function(data){
-        var url = "http://devrabbit.com/inspiring_wings/web_services/events.php";
+      var url = "http://devrabbit.com/inspiring_wings/web_services/user_login.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
-    }
-        this.Eventinsert=function(data){
+      }
+
+      this.Eventget=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/events.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.Eventinsert=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/events_action.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
-    }
+      }
 
-        this.getStories=function(data){
+      this.getStories=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/stories.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
-    }
-        this.insertStory=function(data){
+      }
+
+      this.insertStory=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/stories_action.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
-    }
-    this.allOpportunities=function(){
+      }
+
+      this.allOpportunities=function(){
       var url = "http://devrabbit.com/inspiring_wings/web_services/opportunities.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       var data ={}
-    return httpService.httpRequest(url, "P", data,headers)
-    }
-   this.addORUpdateOpp=function(data){
-     var url ="http://devrabbit.com/inspiring_wings/web_services/opportunities_action.php";
-     var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-   return httpService.httpRequest(url, "P", data,headers)
-   }
-    this.getAllOpp_categories=function(){
-      //alert("this");
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.addORUpdateOpp=function(data){
+      var url ="http://devrabbit.com/inspiring_wings/web_services/opportunities_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.getAllOpp_categories=function(){
       var url ="http://devrabbit.com/inspiring_wings/web_services/opportunity_categories.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       var data = {};
-    return httpService.httpRequest(url, "P", data,headers)
-    }
-    this.addNewOpp_categories=function(data){
-      //alert("this");
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.addNewOpp_categories=function(data){
       var url ="http://devrabbit.com/inspiring_wings/web_services/opportunity_categories_action.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-      
-    return httpService.httpRequest(url, "P", data,headers)
-    }
-    this.getStoryType=function(data){
-         var url = "http://devrabbit.com/inspiring_wings/web_services/story_categories.php";
-          var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-          return httpService.httpRequest(url, "P", data,headers)
-        }
-    this.insertStoryType=function(data){
-     var url = "http://devrabbit.com/inspiring_wings/web_services/story_categories_action.php";
-      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
-    }
+     }
 
-       this.getUsers=function(data){
-        var url = "http://devrabbit.com/inspiring_wings/web_services/users.php";
+      this.getStoryType=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/story_categories.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
-    }
+      }
+
+      this.insertStoryType=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/story_categories_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.getUsers=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/users.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.addOrUp_Users=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/users_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.getTestimonials=function(){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/testimonials.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      var data={};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.addOrUp_Testimonials=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/testimonials_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.allRequest=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/requests.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.addOrUp_Request=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/requests_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
+      this.getQuotes=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/quotes.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+
 });

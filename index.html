@@ -174,12 +174,14 @@
           <nav id="menu" class="nav-main" role="navigation">
             <ul class="nav nav-main">
               <li> <a ui-sref="Dashboard"> <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span> </a> </li>
-              <li> <a ui-sref="OpportunityType"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunity Types</span> </a> </li>
+              <li ng-show="userType == 1 ? true : false"> <a ui-sref="OpportunityType"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunity Types</span> </a> </li>
+							<li ng-show="userType == 2 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>test</span> </a> </li>
               <li> <a ui-sref="Opportunities"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunities</span> </a> </li>
               <li> <a ui-sref="StorysTypes"> <i class="fa fa-book" aria-hidden="true"></i> <span>Story Types</span> </a> </li>
               <li> <a ui-sref="Stories"> <i class="fa fa-book" aria-hidden="true"></i> <span>Stories</span> </a> </li>
               <li> <a ui-sref="Events"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Events</span> </a> </li>
-              <li> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
+              <li ng-show="userType == 1 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
+							<li ng-show="userType == 2 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>test</span> </a> </li>
             </ul>
           </nav>
         </div>
@@ -239,6 +241,11 @@
 <script src="assets/scripts/Dashboard/Opportunity_Type.js"></script>
 <script src="assets/scripts/Dashboard/Events.js"></script>
 <script src="assets/scripts/Dashboard/Users.js"></script>
+<script src="assets/scripts/Dashboard/viewAllReq.js"></script>
+<script src="assets/scripts/Dashboard/viewPendingReq.js"></script>
+<script src="assets/scripts/Dashboard/closedReq.js"></script>
+<script src="assets/scripts/Dashboard/seekingforHelp.js"></script>
+<script src="assets/scripts/Dashboard/viewMyReq.js"></script>
 <script src="assets/scripts/Dashboard/Storys.js"></script>
 <script src="assets/scripts/logout.js"></script>
 <script src="assets/scripts/pre_ServiceCall.js"></script>

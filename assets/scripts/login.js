@@ -2,8 +2,8 @@ app.controller('loginCntrl',function($rootScope,$scope,$state,$http,httpService,
 
  $rootScope.memebers=false;
  $scope.submitForm = function(form) {
-   var x = httpService.test();
-     alert(x);
+   //var x = httpService.test();
+  //   alert(x);
     $scope.submitted = true;
    if ($scope.registrationForm.$valid) {
 
@@ -16,7 +16,10 @@ app.controller('loginCntrl',function($rootScope,$scope,$state,$http,httpService,
          if(res.status == 1){
              var sessiondata=res;
             localData.set(sessiondata);
-              $rootScope.session =res.status;
+            $rootScope.session =res.status;
+            var x = res;
+            $rootScope.userType = x.response_info[0].user_id;
+          //  alert($rootScope.userType);
           $state.go("OpportunityType");
          }
          else{
