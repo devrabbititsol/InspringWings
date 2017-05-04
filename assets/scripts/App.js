@@ -91,7 +91,6 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("StorysTypes",{
             url:'/StorysTypes',
          views:{'StorysTypes': {  templateUrl:'dashboard/Story-Types.html',controller : "StorysTypesCntrl"}}
-       
            })
             .state("Stories",{
             url:'/Stories',
@@ -101,14 +100,34 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("Events",{
             url:'/Events',
          views: {'Events':{  templateUrl:'dashboard/Events.html', controller : "EventsCntrl"}}
-           
-             
            })
             .state("Users",{
             url:'/Users',
          views: {'Users':{ templateUrl:'dashboard/Users.html',controller : "UsersCntrl"}}
-            
-             
+           })
+            .state("testimonials",{
+            url:'/Testimonials',
+            views: {'testimonials':{ templateUrl:'dashboard/Testimonials.html',controller : "TestimonialsCntrl"}}
+           })
+            .state("view_all_requests",{
+            url:'/View_All_Requests',
+            views: {'view_all_requests':{ templateUrl:'dashboard/View-All-Requets.html',controller : "viewAllReqCntrl"}}
+           })
+            .state("View_Pending_Requests",{
+            url:'/View_Pending_Requests',
+            views: {'View_Pending_Requests':{ templateUrl:'dashboard/View-All-Requets.html',controller : "viewPendingReqCntrl"}}
+           })
+              .state("Closed_Requests",{
+            url:'/Closed_Requests',
+            views: {'Closed_Requests':{ templateUrl:'dashboard/Closed-Requets.html',controller : "closedReqCntrl"}}
+           })
+            .state("Seeking_For_Help",{
+            url:'/Seeking_For_Help',
+            views: {'Seeking_For_Help':{ templateUrl:'dashboard/Seeking-For-Help.html',controller : "seekingforHelpCntrl"}}
+           })
+              .state("View_My_Requets",{
+            url:'/View_My_Requets',
+            views: {'View_My_Requets':{ templateUrl:'dashboard/View-My-Request.html',controller : "viewMyReqCntrl"}}
            });
      
 });

@@ -180,8 +180,13 @@
               <li> <a ui-sref="StorysTypes"> <i class="fa fa-book" aria-hidden="true"></i> <span>Story Types</span> </a> </li>
               <li> <a ui-sref="Stories"> <i class="fa fa-book" aria-hidden="true"></i> <span>Stories</span> </a> </li>
               <li> <a ui-sref="Events"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Events</span> </a> </li>
-              <li ng-show="userType == 1 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
-							<li ng-show="userType == 2 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>test</span> </a> </li>
+              <li> <a ui-sref="testimonials"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Testimonials</span> </a> </li>
+              <li> <a ui-sref="view_all_requests"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View All Requests</span> </a> </li>
+              <li> <a ui-sref="View_Pending_Requests"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View Pending Requests</span> </a> </li>
+              <li> <a ui-sref="Closed_Requests"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Closed Requests</span> </a> </li>
+              <li> <a ui-sref="Seeking_For_Help"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Seeking For Help ?</span> </a> </li>
+              <li> <a ui-sref="View_My_Requets"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View My Requets</span> </a> </li>
+               <li> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
             </ul>
           </nav>
         </div>
@@ -195,6 +200,12 @@
  <div ui-view="Stories"   autoscroll="false"></div>
  <div ui-view="Events"  autoscroll="false"></div>
  <div ui-view="Users"  autoscroll="false"></div>
+ <div ui-view="testimonials"  autoscroll="false"></div>
+<div ui-view="view_all_requests"  autoscroll="false"></div>
+ <div ui-view="View_Pending_Requests"  autoscroll="false"></div>
+<div ui-view="Closed_Requests"  autoscroll="false"></div>
+ <div ui-view="Seeking_For_Help"  autoscroll="false"></div>
+<div ui-view="View_My_Requets"  autoscroll="false"></div>
 </section>
   </div>
 </section>
