@@ -68,7 +68,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            .state("SignUp",{
             url:'/SignUp',
             views: {'SignUp':{templateUrl:'Pages/SignUp.html', controller : "signUp"}}
-     
+
            })
            .state("Login",{
             url:'/Login',
@@ -81,12 +81,12 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("Opportunities",{
             url:'/Opportunities',
          views: {'Opportunities':{ templateUrl:'dashboard/Opportunity.html',controller : "OpportunitiesCntrl"}}
-      
+
            })
               .state("OpportunityType",{
             url:'/OpportunityType',
          views: {'OpportunityType':{templateUrl:'dashboard/Opportunity-type.html', controller : "OpportTypeCntrl"}}
-   
+
            })
             .state("StorysTypes",{
             url:'/StorysTypes',
@@ -95,7 +95,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("Stories",{
             url:'/Stories',
          views: {'Stories':{  templateUrl:'dashboard/Stories.html', controller : "StoriesCntrl"}}
-      
+
            })
             .state("Events",{
             url:'/Events',
@@ -105,6 +105,10 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/Users',
          views: {'Users':{ templateUrl:'dashboard/Users.html',controller : "UsersCntrl"}}
            })
+           .state("changePassword",{
+           url:'/changePassword',
+        views: {'changePassword':{ templateUrl:'dashboard/changePassword.html',controller : "changePasswordCntrl"}}
+          })
             .state("testimonials",{
             url:'/Testimonials',
             views: {'testimonials':{ templateUrl:'dashboard/Testimonials.html',controller : "TestimonialsCntrl"}}
@@ -128,13 +132,10 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
               .state("View_My_Requets",{
             url:'/View_My_Requets',
             views: {'View_My_Requets':{ templateUrl:'dashboard/View-My-Request.html',controller : "viewMyReqCntrl"}}
-           });
-     
+           })
+           .state("Dashboard",{
+         url:'/Dashboard',
+         views: {'Dashboard':{ templateUrl:'dashboard/Dashboard.html',controller : "dashboardcntrl"}}
+        });
+
 });
-
-
-
-
-
-
-

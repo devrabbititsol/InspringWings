@@ -38,12 +38,15 @@ $scope.loading=true;
           }
 
          $scope.addinfo=function(){
+
               $scope.message="";
             $scope.opprtunitymodal="#opprtunityTypes";
           $scope.opportunitytype=null;
           $scope.onSubmit=function(){
             //  window.alert('hi');
-
+            $scope.submitted=true;
+            alert($scope.OpportunityType.$valid)
+                if($scope.OpportunityType.$valid){
                  var opportunityDate=$scope.opportunitytype;
                  var sessiondata=$rootScope.session;
                  var geetingdata=sessiondata.response_info[0];
@@ -90,7 +93,10 @@ $scope.loading=true;
                       window.alert("err");
                   });
 
-
+}
+else{
+  alert("esle")
+}
              }
 
         }
@@ -147,7 +153,16 @@ $scope.loading=true;
           }
            }
 
+$scope.cancel=function(){
+  //alert("can");
+  $scope.opportunitytype=null;
+  $scope.OpportunityType.$setPristine();
+    $scope.OpportunityType.$setUntouched();
+      //opportunitytype.$setPristine();
+      // opportunitytype.$setUntouched();
+       $('#opprtunityTypes').modal('hide');
 
+}
 
 
 

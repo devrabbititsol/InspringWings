@@ -4,7 +4,9 @@ app.controller('loginCntrl',function($rootScope,$scope,$state,$http,httpService,
  $scope.submitForm = function(form) {
    //var x = httpService.test();
   //   alert(x);
+  //alert(JSON.stringify(form))
     $scope.submitted = true;
+  //  alert($scope.registrationForm.$valid);
    if ($scope.registrationForm.$valid) {
 
       //$scope.loading = true;
@@ -19,8 +21,9 @@ app.controller('loginCntrl',function($rootScope,$scope,$state,$http,httpService,
             $rootScope.session =res.status;
             var x = res;
             $rootScope.userType = x.response_info[0].user_id;
+            localStorage.setItem("emailid",x.response_info[0].email_id);
           //  alert($rootScope.userType);
-          $state.go("OpportunityType");
+          $state.go("Dashboard");
          }
          else{
            window.alert("Invalid Credentials");

@@ -152,6 +152,7 @@
           <ul class="list-unstyled">
             <li class="divider"></li>
             <li> <a role="menuitem" tabindex="-1" href="#"><i class="fa fa-user"></i> My Profile</a> </li>
+						<li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>
             <li> <a role="menuitem" tabindex="-1" ng-click="logout()" ng-controller="logoutCntrl"><i class="fa fa-power-off"></i> Logout</a> </li>
           </ul>
         </div>
@@ -187,6 +188,7 @@
               <li> <a ui-sref="Seeking_For_Help"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Seeking For Help ?</span> </a> </li>
               <li> <a ui-sref="View_My_Requets"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View My Requets</span> </a> </li>
                <li> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
+
             </ul>
           </nav>
         </div>
@@ -206,6 +208,8 @@
 <div ui-view="Closed_Requests"  autoscroll="false"></div>
  <div ui-view="Seeking_For_Help"  autoscroll="false"></div>
 <div ui-view="View_My_Requets"  autoscroll="false"></div>
+<div ui-view="changePassword"  autoscroll="false"></div>
+<div ui-view="Dashboard"  autoscroll="false"></div>
 </section>
   </div>
 </section>
@@ -259,8 +263,10 @@
 <script src="assets/scripts/Dashboard/seekingforHelp.js"></script>
 <script src="assets/scripts/Dashboard/viewMyReq.js"></script>
 <script src="assets/scripts/Dashboard/Storys.js"></script>
+<script src="assets/scripts/Dashboard/dashboard.js"></script>
 <script src="assets/scripts/logout.js"></script>
 <script src="assets/scripts/pre_ServiceCall.js"></script>
 <script src="assets/scripts/PaginationService.js"></script>
+<script src="assets/scripts/changePassword.js"></script>
 </body>
 </html>

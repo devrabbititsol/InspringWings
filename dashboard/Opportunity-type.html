@@ -76,7 +76,7 @@
       </div>
       <div class="modal-body">
         <div style="color:green;text-align:center" ng-if=" status !=''">{{message}}</div>
-        <form novalidate id="form" method="POST" name="OpportunityType" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
+        <form novalidate id="form"  name="OpportunityType" class="form-horizontal"  ng-submit="onSubmit();">
           <div class="form-group ">
             <label class="col-sm-5 control-label">Opportunity categroy name </label>
             <div class="col-sm-7">
@@ -90,6 +90,11 @@
               <textarea class="form-control" rows="3" id="textareaDefault" name="description" ng-model="opportunitytype.description" required></textarea>
 
             </div>
+            <div ng-messages="OpportunityType.description.$error" ng-show="submitted">
+                 <small ng-message="required">
+                 Password is required!
+             </small>
+             </div>
           </div>
           <div class="form-group">
 
@@ -105,7 +110,7 @@
           </div>
         <div class="modal-footer">
 
-        <button type="button" class="btn btn-default mb-sm" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-default mb-sm" ng-click="cancel()">Cancel</button>
         <button type="submit" class="btn btn-primary mb-sm" >Save</button>
       </div>
           </form>
