@@ -11,7 +11,7 @@
         <div class="input-group input-group-icon">
             <datepicker date-format="yyyy-MM-dd">
                   <!--  <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>-->
-                  <input type="text" class="form-control datepicker" ng-model="event.from">
+                  <input type="text" class="form-control datepicker" ng-model="fromdate">
                 </datepicker>
         
           <span class="input-group-addon"> <span class="icon"> <i class="fa fa-calendar"></i> </span> </span> </div>
@@ -24,13 +24,13 @@
         <div class="input-group input-group-icon">
           <datepicker date-format="yyyy-MM-dd">
                   <!--  <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>-->
-                  <input type="text" class="form-control datepicker" ng-model="event.to">
+                  <input type="text" class="form-control datepicker" ng-model="todate">
                 </datepicker>
           <span class="input-group-addon"> <span class="icon"> <i class="fa fa-calendar"></i> </span> </span> </div>
       </div>
     </div>
     <div class="col-sm-3 page-search-wrap">
-      <button class="btn btn-primary" ng-click="dateRangeFilter(0,event.from,event.to);"><i class="fa fa-search"></i> Search</button>
+      <button class="btn btn-primary" ng-click="dateRangeFilter(fromdate,todate);"><i class="fa fa-search"></i> Search</button>
     </div>
         
   </div>
@@ -38,8 +38,7 @@
   
   <div class="row mt-30">
    
-   
-    <div class="col-sm-6" ng-repeat="Event in items | filter: dateRangeFilter('itemDate', startDate, endDate)">
+    <div class="col-sm-6" ng-repeat="Event in items | filter:fromdate1 || todate1 ">
       <div class="event-wrp-bg mb-20">
         <div class="date-wrap">
             <div class="date-wrap-date"><span ng-bind="convertToDate(Event.event_date) | date:'dd'"></span></div>

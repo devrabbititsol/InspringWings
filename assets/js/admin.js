@@ -1,6 +1,13 @@
 
 window.theme = {};
 
+$( document ).ready(function() {
+$(".social-menu").click(function(){
+    $(".social-icons").slideToggle();
+  });
+  });
+
+
 // hamburger
 	$('#hamburger').click(function(){
 		$(this).toggleClass('open');

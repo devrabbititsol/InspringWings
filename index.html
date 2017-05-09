@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="InspiringWings">
+<html ng-app="InspiringWings" ng-cloak>
 <head>
 <meta charset="utf-8">
 <title>Inspiring Wings</title>
@@ -27,7 +27,7 @@
      
 </head>
 
-<body >
+<body ng-cloak>
   <div class="navbar-wrapper" >
     <div class="container"  ng-if=" memebers== true && session ==''">
       <nav class="navbar navbar-inverse navbar-static-top">
@@ -64,6 +64,18 @@
               <li><a ui-sref="SignUp">Sign Up</a></li>
               <li><a ui-sref="Login">Login</a></li>
             </ul>
+              <div class="social-menu">
+				  <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+			  </div>
+			  <div class="social-icons">
+			  
+			  	<ul>
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+					<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			  	</ul>
+			  </div>
           </div>
         </div>
       </nav>
@@ -136,7 +148,7 @@
     <section class="body" ng-show="session !=''">
 
   <!-- start: header -->
-  <header class="header ">
+  <header class="header " ng-show="session !=''">
     <div class="logo-container"> <a href="#" class="logo"> <span class="text-xl text-bold">Inspiring Wings</span> </a>
       <div class="visible-xs toggle-sidebar-left cursor-pointer" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
         <div id="" class="fa fa-bars" aria-label="Toggle sidebar"></div>
@@ -273,6 +285,7 @@
 <script src="assets/scripts/events_calender.js"></script>
 <script src="assets/scripts/logout.js"></script>
 <script src="assets/scripts/pre_ServiceCall.js"></script>
-<script src="assets/scripts/PaginationService.js"></script>
+<script src="assets/scripts/stories_mainpage.js"></script>
+<script src="assets/scripts/paginationService.js"></script>
 </body>
 </html>

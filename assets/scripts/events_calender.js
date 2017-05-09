@@ -34,18 +34,9 @@ $scope.pageSize=6;
                    $scope.loading=false;
                }
                
-        $scope.onSubmit=function(property, startDate, endDate){
-           return function (item) {
-        if (item[property] === null) return false;
- 
-        var itemDate = moment(item[property]);
-        var s = moment(startDate, "DD-MM-YYYY");
-        var e = moment(endDate, "DD-MM-YYYY");
- 
-        if (itemDate >= s && itemDate <= e) return true;
-        return false;
-    }
-        
-        
+        $scope.dateRangeFilter=function(startDate, endDate){
+           
+        $scope.fromdate1=startDate;
+        $scope.todate1=endDate;
         }
 });

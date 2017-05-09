@@ -48,13 +48,12 @@ hr {
 }
 
 h2.page-header{
-	font-size: 24px;
+	font-size: 28px;
 	padding-bottom: 9px;
     margin:0px;
     border-bottom:0px;
 	color: #c52d2f;
-	margin-bottom:20px;
-    font-weight: 600;
+	margin-bottom:40px;
 }
 
 .btn-primary {
@@ -258,7 +257,7 @@ input.search-form:hover {
 	padding-bottom: 28px;
 }
 .navbar-inverse .navbar-nav > li > a {
-	padding: 5px 12px;
+	padding: 5px 10px;
 	margin: 0;
 	border-radius: 3px;
 	color: #fff;
@@ -2302,14 +2301,13 @@ label {
 	margin-top: 60px;
 }
 
-.mt-30{
-	margin-top: 30px;
-}
-
 .mt-20{
 	margin-top: 20px;
 }
 
+.mt-10{
+	margin-top: 10px;
+}
 .mt-15{
 	margin-top: 15px;
 }
@@ -2318,9 +2316,109 @@ label {
 	margin-bottom: 20px;
 }
 
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
+/*stories section*/
+
+.story-pannel-body{
+	background: #fafafa;
+	border-radius: 4px;
+	padding: 20px;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+
+.story-list ul{
+	padding:0px;
+	margin: 0px;
+}
+.story-list ul li{
+	list-style-type: none;
+}
+
+.story-list li span{
+	font-weight: bold;
+	color: #000000;
+}
+
+
+.story-pannel-body p{
+	margin-bottom: 0px;
+}
+
+.story-wrp-icon{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+
+.story-bg1{
+	background: #b2ebf2;
+}
+
+.story-bg2{
+	background: #f4b8ce;
+}
+
+.story-bg3{
+	background: #bddaf9;
+}
+
+.story-bg4{
+	background: #ffccbc;
+}
+
+.story-bg5{
+	background: #c1e1a3;
+}
+
+.story-bg6{
+	background: #d0bfe7;
+}
+
+.story-bg7{
+	background: #d7ccc8;
+}
+
+.story-bg8{
+	background: #cfd8dc;
+}
+
+
+
+.social-menu{
+display: none;
+	position: absolute;
+	right: 30px;
+    top: 35px;
+}
+.social-menu a i{
+	font-size: 22px;
+}
+
+.social-icons{
+	position: relative;
+	float:right;
+	margin-top: 18px;
+}
+
+.social-icons ul {
+	list-style: none;
+	margin: 0;
+	padding: 0px;
+}
+.social-icons ul li {
+	list-style: none;
+	float: left;
+	margin: 0;
+	padding:0px 8px;
+}
+
+.social-icons ul li a {
+	color: #FFFFFF;
+}
+
+
+.social-icons ul li a:hover {
+	color: #c52d2f;
 }

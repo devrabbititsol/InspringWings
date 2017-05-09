@@ -41,7 +41,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            })
             .state("Sdfsdf",{
             url:'/Sdfsdf',
-                  views: { 'Sdfsdf':{templateUrl:'Pages/Sdfsdf.html'}}
+                  views: { 'Sdfsdf':{templateUrl:'Pages/storyssite.html',controller:"storycntrl"}}
            })
          .state("supportWings",{
             url:'/supportWings',

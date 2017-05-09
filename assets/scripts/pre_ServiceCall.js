@@ -25,7 +25,7 @@ app.service('preService',function($http,httpService){
 
       this.getStories=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/stories.php";
-      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7","Access-Control-Allow-Origin": "*","Access-Control-Allow-Headers": "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With","Access-Control-Allow-Methods": "GET, PUT, POST"};
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
 
