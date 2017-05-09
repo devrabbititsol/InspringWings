@@ -11,4 +11,10 @@ app.controller('forgotpassCntrl',function($rootScope,$scope,$state){
        $state.go("Login");
     }
 
+     $scope.onSubmit=function(){
+     if ($scope.forgotpassword.$valid) {
+         
+     }
+     
+     }
 });

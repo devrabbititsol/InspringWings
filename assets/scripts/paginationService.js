@@ -1,7 +1,7 @@
 app.factory('PaginationService',function(){
   //alert("pager")
   return{
-    pagination:function(totalItems, currentPage) {
+    pagination:function(totalItems, currentPage,pageSize) {
 
       //      // default to first page
 

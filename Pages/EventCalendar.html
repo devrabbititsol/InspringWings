@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container" ng-controller="Events">
   <div class="row">
    <div class="col-sm-12">
     <h2 class="page-header">Events</h2>
@@ -9,32 +9,41 @@
       <div class="form-group mb-lg">
         <label>Event From</label>
         <div class="input-group input-group-icon">
-          <input type="text" class="form-control datepicker">
+            <datepicker date-format="yyyy-MM-dd">
+                  <!--  <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>-->
+                  <input type="text" class="form-control datepicker" ng-model="event.from">
+                </datepicker>
+        
           <span class="input-group-addon"> <span class="icon"> <i class="fa fa-calendar"></i> </span> </span> </div>
       </div>
     </div>
+      
     <div class="col-sm-3">
       <div class="form-group mb-lg">
         <label>Event to</label>
         <div class="input-group input-group-icon">
-          <input type="text" class="form-control datepicker">
+          <datepicker date-format="yyyy-MM-dd">
+                  <!--  <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>-->
+                  <input type="text" class="form-control datepicker" ng-model="event.to">
+                </datepicker>
           <span class="input-group-addon"> <span class="icon"> <i class="fa fa-calendar"></i> </span> </span> </div>
       </div>
     </div>
     <div class="col-sm-3 page-search-wrap">
-      <button class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+      <button class="btn btn-primary" ng-click="dateRangeFilter(0,event.from,event.to);"><i class="fa fa-search"></i> Search</button>
     </div>
+        
   </div>
   
   
   <div class="row mt-30">
    
    
-    <div class="col-sm-6">
+    <div class="col-sm-6" ng-repeat="Event in items | filter: dateRangeFilter('itemDate', startDate, endDate)">
       <div class="event-wrp-bg mb-20">
         <div class="date-wrap">
-          <div class="date-wrap-date">05</div>
-          <div class="date-wrap-monthyear mt-15">Apr-17</div>
+            <div class="date-wrap-date"><span ng-bind="convertToDate(Event.event_date) | date:'dd'"></span></div>
+          <div class="date-wrap-monthyear mt-15"><span ng-bind="convertToDate(Event.event_date) | date:'MMM-yy'"></span></div>
         </div>
         <div class="date-disc-wrap">
           <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
@@ -44,86 +53,24 @@
         </div>
       </div>
     </div>
-    
-    <div class="col-sm-6">
-      <div class="event-wrp-bg mb-20">
-        <div class="date-wrap">
-          <div class="date-wrap-date">08</div>
-          <div class="date-wrap-monthyear mt-15">Apr-17</div>
+           <div ng-if="pager.totalPages >1">
+          <ul ng-if="pager.pages.length" class="pagination pull-right">
+            <li ng-class="{disabled:pager.currentPage === 1}" class="prev disabled"> <a ng-click="setPage(pager.currentPage - 1)"> <i class="fa fa-chevron-left"></i> </a> </li>
+            <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+                   <a ng-click="setPage(page)">{{page}}</a>
+               </li>
+            <!-- <li class="active"> <a href="#">1</a> </li>
+            <li> <a href="#">2</a> </li>
+            <li> <a href="#">3</a> </li>
+            <li> <a href="#">4</a> </li>
+            <li> <a href="#">5</a> </li> -->
+            <li ng-class="{disabled:pager.currentPage === pager.totalPages}" class="next"> <a ng-click="setPage(pager.currentPage + 1)"> <i class="fa fa-chevron-right"></i> </a> </li>
+          </ul>
         </div>
-        <div class="date-disc-wrap">
-          <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
-          <div class="event-disc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod mi varius efficitur consectetur. Duis molestie feugiat tincidunt. Nam tempus sit amet ipsum ut suscipit. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-    <div class="col-sm-6">
-      <div class="event-wrp-bg mb-20">
-        <div class="date-wrap">
-          <div class="date-wrap-date">10</div>
-          <div class="date-wrap-monthyear mt-15">Apr-17</div>
-        </div>
-        <div class="date-disc-wrap">
-          <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
-          <div class="event-disc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod mi varius efficitur consectetur. Duis molestie feugiat tincidunt. Nam tempus sit amet ipsum ut suscipit. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-sm-6">
-      <div class="event-wrp-bg mb-20">
-        <div class="date-wrap">
-          <div class="date-wrap-date">13</div>
-          <div class="date-wrap-monthyear mt-15">Apr-17</div>
-        </div>
-        <div class="date-disc-wrap">
-          <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
-          <div class="event-disc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod mi varius efficitur consectetur. Duis molestie feugiat tincidunt. Nam tempus sit amet ipsum ut suscipit. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-sm-6">
-      <div class="event-wrp-bg mb-20">
-        <div class="date-wrap">
-          <div class="date-wrap-date">18</div>
-          <div class="date-wrap-monthyear mt-15">Apr-17</div>
-        </div>
-        <div class="date-disc-wrap">
-          <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
-          <div class="event-disc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod mi varius efficitur consectetur. Duis molestie feugiat tincidunt. Nam tempus sit amet ipsum ut suscipit. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-sm-6">
-      <div class="event-wrp-bg mb-20">
-        <div class="date-wrap">
-          <div class="date-wrap-date">20</div>
-          <div class="date-wrap-monthyear mt-15">Apr-17</div>
-        </div>
-        <div class="date-disc-wrap">
-          <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
-          <div class="event-disc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod mi varius efficitur consectetur. Duis molestie feugiat tincidunt. Nam tempus sit amet ipsum ut suscipit. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
+     
     
     
     
   </div>
+       
 </div>

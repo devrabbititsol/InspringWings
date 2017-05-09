@@ -1,5 +1,7 @@
 <section class="body-sign" ng-controller="signUp" ng-if=" memebers== false && session ==''" >
   <div class="center-sign"> <a ng-click="homepage()" class="logo text-center">
+       <div style="color:red;text-align:center" ng-if=" status ==''">{{message}}</div>
+                     <div style="color:green;text-align:center" ng-if=" status !=''">{{message}}</div>
     <h2 class="text-bold">Inspiring wings</h2>
     </a>
     <div class="panel panel-sign">
@@ -8,44 +10,45 @@
       </div>
       <div class="panel-body">
         <form name="signUp" class="form-horizontal "  novalidate method="POST" enctype="multipart/form-data" ng-submit="onSubmit();" >
-       
-               <div class="form-group mb-lg">
+               <div class="form-group mb-lg" ng-class="{'has-error' : signUp.firstname.$invalid && !signUp.firstname.$pristine}">
                         <label>First Name</label>
                         <div class="input-group input-group-icon">
                         <input type="text" class="form-control" name="firstname"  ng-model="register.first_name" ng-pattern="/^[a-zA-Z .]*$/" required />
                         <span class="input-group-addon"> <span class="icon"> <i class="fa fa-user"></i> </span> </span> 
                         </div>  
-                        <span ng-show="signUp.firstname.$dirty && signUp.firstname.$invalid" style="color:red">
+                        <span ng-show="signUp.firstname.$invalid && !signUp.firstname.$pristine" style="color:red">
                             <span style="color:red;" ng-show=" signUp.firstname.$error.required">The name is required.</span>
                         <span ng-show="signUp.firstname.$error.pattern">Enter Only Alphabets</span>
                    </span>
                     </div> 
          
-          <div class="form-group mb-lg">
+       <div class="form-group mb-lg"  ng-class="{'has-error' : signUp.lasttname.$invalid && !signUp.lasttname.$pristine}">
             <label>Last Name</label>
             <div class="input-group input-group-icon">
             <input type="text" class="form-control" name="lasttname"  ng-model="register.last_name" ng-pattern="/^[a-zA-Z . ]*$/" required />
               <span class="input-group-addon"> <span class="icon"> <i class="fa fa-user"></i> </span> </span> </div>
-               <span ng-show="signUp.lasttname.$dirty && signUp.lasttname.$invalid" style="color:red">
+               <span ng-show="signUp.lasttname.$invalid && !signUp.lasttname.$pristine" style="color:red">
                 <span style="color:red;" ng-show=" signUp.lasttname.$error.required">The name is required.</span>
                 <span ng-show="signUp.lasttname.$error.pattern">Enter Only Alphabets</span>
                    </span>
           </div>
-         <div class="form-group mb-lg">
+            <div class="form-group mb-lg" ng-class="{'has-error' : signUp.dateofbirth.$invalid && !signUp.dateofbirth.$pristine}">
             <label>Date of Birth</label>
             <div class="input-group input-group-icon">
-            <input type="text" class="form-control" name="dateofbirth"  ng-model="register.dob" required />
+                <datepicker date-format="yyyy-MM-dd">
+                    <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>
+                </datepicker>
               <span class="input-group-addon"> <span class="icon "> <i class="fa fa-calendar"></i> </span> </span> </div>
-               <span ng-show="signUp.dateofbirth.$dirty && signUp.dateofbirth.$invalid" style="color:red">
+               <span ng-show="signUp.dateofbirth.$invalid && !signUp.dateofbirth.$pristine" style="color:red">
                 <span style="color:red;" ng-show=" signUp.dateofbirth.$error.required">The Date Of Birth  is required.</span>
                    </span>
           </div>
        
-          <div class="form-group mb-lg">
+         <div class="form-group mb-lg">
             <div class="radio-inline p-none">
               <div class="radio-custom">
-                <input type="radio" id="male" name="male" ng-model="register.gender" value="1">
-                <label for="male">Male</label>
+                <input type="radio" id="male" name="male" ng-model="register.gender" value="1" >
+                <label for="male" >Male</label>
               </div>
             </div>
             <div class="radio-inline">
@@ -55,52 +58,52 @@
               </div>
             </div>
           </div>
-             <div class="form-group mb-lg">
+              <div class="form-group mb-lg" ng-class="{'has-error' : signUp.email.$invalid && !signUp.email.$pristine}">
             <label>Email</label>
             <div class="input-group input-group-icon">
-            <input type="email" class="form-control" name="email"  ng-model="register.email_id" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required />
+            <input type="email" class="form-control" name="email"  ng-model="register.email_id" type="email" required />
                <span class="input-group-addon"> <span class="icon"> <i class="fa fa-envelope-o"></i> </span> </span> </div>
-               <span ng-show="signUp.email.$dirty && signUp.email.$invalid" style="color:red">
+               <span ng-show="signUp.email.$invalid && !signUp.email.$pristine" style="color:red">
                 <span style="color:red;" ng-show=" signUp.email.$error.required">Email is required.</span>
-                <span ng-show="signUp.email.$error.pattern">Enter Exact EmailId</span>
+               
                    </span>
           </div>
-           <div class="form-group mb-lg">
+          <div class="form-group mb-lg" ng-class="{'has-error' : signUp.mobile.$invalid && !signUp.mobile.$pristine}">
             <label>Mobile</label>
             <div class="input-group input-group-icon">
             <input type="tel" class="form-control" name="mobile"  ng-model="register.contact_number"  required ng-pattern="/^[0-9]{10,10}$/" />
                <span class="input-group-addon"> <span class="icon"> <i class="fa fa-mobile"></i> </span> </span> </div>
-               <span ng-show="signUp.mobile.$dirty && signUp.mobile.$invalid" style="color:red">
+               <span ng-show="signUp.mobile.$invalid && !signUp.mobile.$pristine" style="color:red">
                 <span style="color:red;" ng-show=" signUp.mobile.$error.required">Mobile is required.</span>
                 <span ng-show="signUp.mobile.$error.pattern">Enter Exact MobileNo</span>
                    </span>
           </div>
-          <div class="form-group mb-lg">
+          <div class="form-group mb-lg" ng-class="{'has-error' : signUp.aadhar.$invalid && !signUp.aadhar.$pristine}">
             <label>Aadhar Number</label>
             <div class="input-group input-group-icon">
             <input type="tel" class="form-control" name="aadhar"  ng-model="register.aadhar_card_number"  required ng-pattern="/^[0-9]{12,12}$/" />
                <span class="input-group-addon"> <span class="icon"> <i class="fa fa-id-card-o" aria-hidden="true"></i> </span> </span> </div>
-               <span ng-show="signUp.aadhar.$dirty && signUp.aadhar.$invalid" style="color:red">
+               <span ng-show="signUp.aadhar.$invalid && !signUp.aadhar.$pristine" style="color:red">
                 <span style="color:red;" ng-show=" signUp.aadhar.$error.required">Aadhar is required.</span>
                 <span ng-show="signUp.aadhar.$error.pattern">Enter Exact aadharNo</span>
                    </span>
           </div>
        
-          <div class="form-group mb-lg">
+          <div class="form-group mb-lg" >
             <div class="radio-inline p-none">
               <div class="radio-custom">
-                <input type="radio" id="Supporting" name="Supporting" value="1" ng-model="register.role_id">
+                <input type="radio" id="Supporting" name="Supporting" value="2" ng-model="register.role_id">
                 <label for="Supporting">Supporting Wing</label>
               </div>
             </div>
             <div class="radio-inline">
               <div class="radio-custom">
-                <input type="radio" id="Receiving" name="Receiving" value="2" ng-model="register.role_id">
+                <input type="radio" id="Receiving" name="Receiving" value="3" ng-model="register.role_id">
                 <label for="Receiving">Receiving Wing</label>
               </div>
             </div>
           </div>
-          <div class="form-group mb-none">
+         <div class="form-group mb-none">
             <div class="row">
               <div class="col-sm-6 mb-lg">
                 <label>Password</label>
@@ -110,17 +113,17 @@
                     <span ng-show="signUp.pwd.$error.pattern">Atleast 3 characters </span>
                   </span>
               </div>
-              <div class="col-sm-6 mb-lg">
+              <!--<div class="col-sm-6 mb-lg">
                 <label>Re Type Password</label>
                 <input name="pwd_confirm" type="password" class="form-control" ng-keyup="compare(register)" ng-model="register.password"  ng-pattern="/^[a-zA-Z0-9]\w{3,14}$/"/>
                     <span ng-show="isconfirm || signUp.pwd_confirm.$dirty " ng-class="{true:'green',false:'red'}[isconfirm]">Password {{isconfirm==true?'':'not'}} match</span>
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="row mb-lg">
             <div class="col-sm-12 text-right">
-              <button type="submit" class="btn btn-primary hidden-xs" data-toggle="modal" data-target="#success">Sign Up</button>
-              <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-disabled="signUp.firstname.$dirty && signUp.firstname.$invalid">Sign Up</button>
+              <button type="submit" class="btn btn-primary hidden-xs" data-toggle="modal" data-target="{{success}}" ng-disabled="signUp.$invalid">Sign Up</button>
+              <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-disabled="signUp.$invalid" data-toggle="modal" data-target="{{success}}">Sign Up</button>
             </div>
           </div>
           <p class="text-center">Already have an account? <a ng-click="login()">Sign In!</a></p>
@@ -131,10 +134,8 @@
     <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2017. All Rights Reserved.</p>
   </div>
 </section>
-
-
 <!--success modal --> 
-<!--<div id="success" class="modal fade" role="dialog">
+<div id="success" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -155,4 +156,4 @@
       </div>
     </div>
   </div>
-</div>-->
+</div>

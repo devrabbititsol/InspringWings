@@ -1,32 +1,25 @@
 app.controller('loginCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService){
-
+$scope.data={};
  $rootScope.memebers=false;
- $scope.submitForm = function(form) {
-   //var x = httpService.test();
-  //   alert(x);
-  //alert(JSON.stringify(form))
     $scope.submitted = true;
-  //  alert($scope.registrationForm.$valid);
+ $scope.submitForm = function() {
    if ($scope.registrationForm.$valid) {
-
-      //$scope.loading = true;
-  //    var url = "http://devrabbit.com/inspiring_wings/web_services/user_login.php";
-  //    var data = form;
-  //    var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-  //     httpService.httpRequest(url, "P", data,headers).then(function(res) {
-         preService.login(form).then(function(res) {
-         if(res.status == 1){
+       var data = $scope.data;
+         preService.login(data).then(function(res) {
+         if(res.status == 1)
+         {
+             $scope.status=res.status;
              var sessiondata=res;
             localData.set(sessiondata);
             $rootScope.session =res.status;
             var x = res;
-            $rootScope.userType = x.response_info[0].user_id;
-            localStorage.setItem("emailid",x.response_info[0].email_id);
-          //  alert($rootScope.userType);
+             $rootScope.username=x.response_info[0].first_name;
+            $rootScope.userType = x.response_info[0].role_id;
+           
           $state.go("Dashboard");
          }
          else{
-           window.alert("Invalid Credentials");
+          $scope.message="Invalid Credentials";
          }
 
          },function(err) {

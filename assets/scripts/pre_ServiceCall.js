@@ -1,5 +1,10 @@
 app.service('preService',function($http,httpService){
 
+          this.register=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/user_register.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
       this.login=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/user_login.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
@@ -20,7 +25,7 @@ app.service('preService',function($http,httpService){
 
       this.getStories=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/stories.php";
-      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7","Access-Control-Allow-Origin": "*","Access-Control-Allow-Headers": "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With","Access-Control-Allow-Methods": "GET, PUT, POST"};
       return httpService.httpRequest(url, "P", data,headers)
       }
 
@@ -30,11 +35,10 @@ app.service('preService',function($http,httpService){
       return httpService.httpRequest(url, "P", data,headers)
       }
 
-      this.allOpportunities=function(){
+      this.allOpportunities=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/opportunities.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-      var data ={}
-      return httpService.httpRequest(url, "P", data,headers)
+      return httpService.httpRequest(url, "P",data,headers)
       }
 
       this.addORUpdateOpp=function(data){
@@ -43,10 +47,10 @@ app.service('preService',function($http,httpService){
       return httpService.httpRequest(url, "P", data,headers)
       }
 
-      this.getAllOpp_categories=function(){
+      this.getAllOpp_categories=function(data){
       var url ="http://devrabbit.com/inspiring_wings/web_services/opportunity_categories.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-      var data = {};
+           
       return httpService.httpRequest(url, "P", data,headers)
       }
 
@@ -80,10 +84,9 @@ app.service('preService',function($http,httpService){
       return httpService.httpRequest(url, "P", data,headers)
       }
 
-      this.getTestimonials=function(){
+      this.getTestimonials=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/testimonials.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-      var data={};
       return httpService.httpRequest(url, "P", data,headers)
       }
 
@@ -110,11 +113,15 @@ app.service('preService',function($http,httpService){
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
-
-      this.changePassword=function(data){
-      var url = "http://devrabbit.com/inspiring_wings/web_services/change_password_action.php";
+         this.addtakeupproblem=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/request_takeup_action.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
-
+        this.takeupcomments=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/takeup_comments.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
 });
+
