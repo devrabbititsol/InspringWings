@@ -37,19 +37,16 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="dropdown"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tales of Inspiring Wings <span class="caret"></span></a>
+              <li class="dropdown" ng-controller="storycntrl"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tales of Inspiring Wings <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
-                  <li><a ui-sref="Engineering">Engineering</a></li>
+                  <li ng-repeat="StoryType in StoryTypes"><a ui-sref="wings_storys" ng-click="selectedstory(StoryType.story_category_name)">{{StoryType.story_category_name}}</a></li>
                   
                 </ul>
               </li>
-              <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Wings of Opportunities <span class="caret"></span></a>
+              <li class="dropdown"  ng-controller="Main_opportunitesCntrl"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Wings of Opportunities <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
-                  <li><a ui-sref="Educations" >Educations</a></li>
-                  <li><a ui-sref="Arts">Arts</a></li>
-                  <li><a ui-sref="Business Opportunities">Business Opportunities</a></li>
-                  <li><a ui-sref="Education">Education</a></li>
-                  <li><a ui-sref="Sdfsdf">Sdfsdf</a></li>
+                  <li ng-repeat="opportunitescategory in opportunitiestypes"><a ui-sref="wings_opportunites"  ng-click="selectedopportunity(opportunitescategory.opportunity_category_name)">{{opportunitescategory.opportunity_category_name}}</a></li>
+                 
                 </ul>
               </li>
               <li class="dropdown"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inspiring Support <span class="caret"></span></a>
@@ -233,11 +230,10 @@
 <div ui-view="Home" autoscroll="false" ></div>
 <div ui-view="Engineering" ng-show=" session=='' " autoscroll="false" ></div>
 <div ui-view="Tetee" ng-show=" session=='' " autoscroll="false" ></div>
-<div ui-view="Educations" ng-show=" session=='' " autoscroll="false" ></div>
 <div ui-view="Arts" ng-show=" session=='' " autoscroll="false" ></div>
 <div ui-view="BusinessOpportunities" ng-show=" session=='' " autoscroll="false" ></div>
-<div ui-view="Education" ng-show=" session=='' " autoscroll="false" ></div>
-<div ui-view="Sdfsdf" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="wings_opportunites" ng-show=" session=='' " autoscroll="false" ></div>
+<div ui-view="wings_storys" ng-show=" session=='' " autoscroll="false" ></div>
 <div ui-view="supportWings" ng-show=" session=='' " autoscroll="false" ></div>
 <div ui-view="ReceiveWings" ng-show=" session=='' " autoscroll="false" ></div>
 <div ui-view="EventCalendar" ng-show=" session=='' " autoscroll="false" ></div>
@@ -261,6 +257,7 @@
 <script src="assets/js/main.init.js"></script>
 <script src="assets/js/ngStorage.min.js"></script>
 <script src="assets/js/lodash.js"></script>
+<script src="assets/js/moment.js"></script>
 <script src="assets/js/node_modules/angularjs-datepicker/src/js/angular-datepicker.js"></script>
 <!----------------Scripts---------------->
 <script src="assets/scripts/changePassword.js"></script>
@@ -282,10 +279,12 @@
 <script src="assets/scripts/seekingforHelp.js"></script>
 <script src="assets/scripts/viewMyReq.js"></script>
 <script src="assets/scripts/Storys.js"></script>
-<script src="assets/scripts/events_calender.js"></script>
 <script src="assets/scripts/logout.js"></script>
 <script src="assets/scripts/pre_ServiceCall.js"></script>
-<script src="assets/scripts/stories_mainpage.js"></script>
 <script src="assets/scripts/paginationService.js"></script>
+<!----------------Homepage---------------->
+<script src="assets/scripts/stories_mainpage.js"></script>
+<script src="assets/scripts/events_calender.js"></script>
+<script src="assets/scripts/Main_opportunitesCntrl.js"></script>  
 </body>
 </html>

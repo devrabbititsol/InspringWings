@@ -23,10 +23,6 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/Tetee',
            views: { 'Tetee':{templateUrl:'Pages/Tetee.html'}}
            })
-     .state("Educations",{
-            url:'/Educations',
-             views: { 'Educations':{templateUrl:'Pages/Educations.html'} }
-           })
      .state("Arts",{
             url:'/Arts',
            views: { 'Arts':{templateUrl:'Pages/Arts.html'}}
@@ -35,21 +31,21 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/BusinessOpportunities',
              views: { 'BusinessOpportunities':{templateUrl:'Pages/Business Opportunities.html'}}
            })
-        .state("Education",{
-            url:'/Education',
-                views: { 'Education':{templateUrl:'Pages/Education.html'} }
+        .state("wings_opportunites",{
+            url:'/wings_opportunites',
+                views: { 'wings_opportunites':{templateUrl:'Pages/Wings_Opportunites.html',controller:"Main_opportunitesCntrl"} }
            })
-            .state("Sdfsdf",{
-            url:'/Sdfsdf',
-                  views: { 'Sdfsdf':{templateUrl:'Pages/storyssite.html',controller:"storycntrl"}}
+            .state("wings_storys",{
+            url:'/wings_storys',
+                  views: { 'wings_storys':{templateUrl:'Pages/storyssite.html',controller:"storycntrl"}}
            })
          .state("supportWings",{
             url:'/supportWings',
-            views: {'supportWings':{templateUrl:'Pages/supportWings.html'} }
+            views: {'supportWings':{templateUrl:'Pages/supportWings.html',controller :"supportCntrl"} }
            })
           .state("ReceiveWings",{
             url:'/ReceiveWings',
-             views: {'ReceiveWings':{templateUrl:'Pages/ReceiveWings.html'} }
+             views: {'ReceiveWings':{templateUrl:'Pages/ReceiveWings.html',controller :"reciverCntrl"} }
            })
            .state("EventCalendar",{
             url:'/EventCalendar',
@@ -61,7 +57,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            })
            .state("About",{
             url:'/About',
-                   views: {'About':{templateUrl:'Pages/About.html'}}
+                   views: {'About':{templateUrl:'Pages/About.html',controller :"aboutCntrl"}}
            })
            .state("SignUp",{
             url:'/SignUp',

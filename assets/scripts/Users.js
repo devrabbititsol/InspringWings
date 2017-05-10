@@ -1,14 +1,17 @@
 app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService)
 {
+    
     $rootScope.session = localData.get();
     var sessiondata=$rootScope.session;
      var geetingdata=sessiondata.response_info[0];
     $rootScope.userType = geetingdata.role_id  ;
     $rootScope.username = geetingdata.first_name; 
+    
     $scope.register={};
     var data = {};
     $scope.pager={};
     $scope.loading=true;
+   
     preService.getUsers(data).then(function(res)
     {
             $scope.Users= res;
@@ -34,13 +37,23 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
     //Add Action
    $scope.addinfo=function()
            {
+           
              $scope.usermodal="#usermodal";
+            
              $scope.title="Add New staff";
              $scope.staff=true;
              $scope.message="";
-             $scope.register=null;
+             $scope.register.first_name=null;
+             $scope.register.last_name=null;
+             $scope.register.dob=null;
+             $scope.register.email_id=null;
+             $scope.register.contact_number=null;
+             $scope.register.aadhar_card_number=null;
+             $scope.register.password=null;
+             $scope.register.gender=null;
        $scope.signUp.$setPristine();
              //Insert StoryType 
+        $scope.register.role_id = "4";
         if ($scope.signUp.$valid) 
         {
             
@@ -68,9 +81,9 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
                {
                     $scope.message="Inserted successfully";
                     var data = {};
-                    preService.getStoryType(data).then(function(res)
+                    preService.getUsers(data).then(function(res)
                     {
-                        $scope.storiesTypes= res;
+                        $scope.Users= res;
                         initController();
                          $('#usermodal').modal('hide');
                     },
@@ -118,7 +131,7 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
                      $scope.status=res.status;
                     $scope.message="Updated SuccessFully";
                      var data = {};
-                    preService.register(data).then(function(res)
+                    preService.getUsers(data).then(function(res)
                     {
                         $scope.Users= res;
                            initController();

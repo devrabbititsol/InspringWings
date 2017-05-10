@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="page-header">Opportunity</h2>
+    </div>
+  </div>
+  <div class="row" >
+    <div class="h-scroll-page">
+    <div class="col-sm-6" ng-repeat="opportunity in opportunities | filter: selectedname">
+      <div class="story-pannel-body story-bg1">
+        <div class="story-list">
+          <ul>
+            <li><span>Opportunity:</span> Story</li>
+            <li><span>Title</span> {{opportunity.opportunity_title}}</li>
+            <li><span>Person Name:</span> {{opportunity.created_by}}</li>
+          </ul>
+        </div>
+        <p class="mt-10">{{opportunity.opportunity_content}} </p>
+        <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
+      </div>
+    </div>
+</div>
+  </div>
+
+</div>
