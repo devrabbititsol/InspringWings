@@ -24,7 +24,7 @@
 		<link rel="stylesheet" ng-if=" session != '' "  href="assets/css/style.css" />
 <!-- Modernizr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-     
+
 </head>
 
 <body ng-cloak>
@@ -40,13 +40,13 @@
               <li class="dropdown" ng-controller="storycntrl"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tales of Inspiring Wings <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
                   <li ng-repeat="StoryType in StoryTypes"><a ui-sref="wings_storys" ng-click="selectedstory(StoryType.story_category_name)">{{StoryType.story_category_name}}</a></li>
-                  
+
                 </ul>
               </li>
               <li class="dropdown"  ng-controller="Main_opportunitesCntrl"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Wings of Opportunities <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
                   <li ng-repeat="opportunitescategory in opportunitiestypes"><a ui-sref="wings_opportunites"  ng-click="selectedopportunity(opportunitescategory.opportunity_category_name)">{{opportunitescategory.opportunity_category_name}}</a></li>
-                 
+
                 </ul>
               </li>
               <li class="dropdown"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inspiring Support <span class="caret"></span></a>
@@ -65,7 +65,7 @@
 				  <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
 			  </div>
 			  <div class="social-icons">
-			  
+
 			  	<ul>
 					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -163,7 +163,9 @@
           <ul class="list-unstyled">
             <li class="divider"></li>
             <li> <a role="menuitem" tabindex="-1" ><i class="fa fa-user"></i> My Profile</a> </li>
-             <!--<li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>-->
+						<li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>
+
+						 <!--<li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>-->
             <li> <a role="menuitem" tabindex="-1" ng-click="logout11()" ng-controller="logoutCntrl"><i class="fa fa-power-off"></i> Logout</a> </li>
           </ul>
         </div>
@@ -187,7 +189,7 @@
             <ul class="nav nav-main">
               <li> <a ui-sref="Dashboard"> <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span> </a> </li>
               <li ng-show="userType == 1 ? true : false"> <a ui-sref="OpportunityType"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunity Types</span> </a> </li>
-							
+
               <li ng-show="userType == 1  ? true : false"> <a ui-sref="Opportunities"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunities</span> </a> </li>
               <li ng-show="userType == 1 ? true : false"> <a ui-sref="StorysTypes"> <i class="fa fa-book" aria-hidden="true"></i> <span>Story Types</span> </a> </li>
               <li ng-show="userType == 1  ? true : false"> <a ui-sref="Stories"> <i class="fa fa-book" aria-hidden="true"></i> <span>Stories</span> </a> </li>
@@ -220,10 +222,11 @@
 <div ui-view="view_all_requests"  autoscroll="false"></div>
  <div ui-view="View_Pending_Requests"  autoscroll="false"></div>
 <div ui-view="Closed_Requests"  autoscroll="false"></div>
+<div ui-view="changePassword"  autoscroll="false"></div>
  <div ui-view="Seeking_For_Help"  autoscroll="false"></div>
 <div ui-view="View_My_Requets"  autoscroll="false"></div>
 <div ui-view="Dashboard"  autoscroll="false"></div>
-<div ui-view="changePassword"  autoscroll="false"></div>
+
 </section>
   </div>
 </section>
@@ -282,9 +285,10 @@
 <script src="assets/scripts/logout.js"></script>
 <script src="assets/scripts/pre_ServiceCall.js"></script>
 <script src="assets/scripts/paginationService.js"></script>
+<script src="assets/scripts/changePassword.js"></script>
 <!----------------Homepage---------------->
 <script src="assets/scripts/stories_mainpage.js"></script>
 <script src="assets/scripts/events_calender.js"></script>
-<script src="assets/scripts/Main_opportunitesCntrl.js"></script>  
+<script src="assets/scripts/Main_opportunitesCntrl.js"></script>
 </body>
 </html>

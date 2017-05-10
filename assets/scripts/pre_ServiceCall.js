@@ -50,7 +50,7 @@ app.service('preService',function($http,httpService){
       this.getAllOpp_categories=function(data){
       var url ="http://devrabbit.com/inspiring_wings/web_services/opportunity_categories.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
-           
+
       return httpService.httpRequest(url, "P", data,headers)
       }
 
@@ -123,5 +123,10 @@ app.service('preService',function($http,httpService){
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
-});
 
+      this.changePassword=function(data){
+      var url = "http://devrabbit.com/inspiring_wings/web_services/change_password_action.php";
+      var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
+      return httpService.httpRequest(url, "P", data,headers)
+      }
+});

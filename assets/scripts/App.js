@@ -4,7 +4,7 @@ var app=angular.module("InspiringWings",["ui.router",'ngMessages','ngStorage','7
 app.run(function($rootScope) {
      $rootScope.memebers=true;
      $rootScope.session = '';
-    
+
 });
 /********************ui Routing ****************/
 app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
@@ -43,6 +43,10 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/supportWings',
             views: {'supportWings':{templateUrl:'Pages/supportWings.html',controller :"supportCntrl"} }
            })
+           .state("changePassword",{
+            url:'/changePassword',
+            views: {'changePassword':{ templateUrl:'Pages/changePassword.html',controller : "changePasswordCntrl"}}
+          })
           .state("ReceiveWings",{
             url:'/ReceiveWings',
              views: {'ReceiveWings':{templateUrl:'Pages/ReceiveWings.html',controller :"reciverCntrl"} }
@@ -62,32 +66,32 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            .state("SignUp",{
             url:'/SignUp',
             views: {'SignUp':{templateUrl:'Pages/SignUp.html', controller : "signUp"}}
-     
+
            })
            .state("Login",{
             url:'/Login',
             views: {'Login':{templateUrl:'Pages/Login.html', controller : "loginCntrl"}}
            })
-        
+
             .state("ForgotPassword",{
             url:'/ForgotPassword',
              views: {'ForgotPassword':{ templateUrl:'Pages/ForgotPassword.html', controller : "forgotpassCntrl"}}
            })
-    
+
               .state("Dashboard",{
             url:'/Dashboard',
             views: {'Dashboard':{templateUrl:'inspiringwings_dashboard/inspiring_dashboard.html', controller : "dashboardcntrl"}}
            })
-    
+
             .state("Opportunities",{
             url:'/Opportunities',
          views: {'Opportunities':{ templateUrl:'inspiringwings_dashboard/Opportunity.html',controller : "OpportunitiesCntrl"}}
-      
+
            })
               .state("OpportunityType",{
             url:'/OpportunityType',
          views: {'OpportunityType':{templateUrl:'inspiringwings_dashboard/Opportunity-type.html', controller : "OpportTypeCntrl"}}
-   
+
            })
             .state("StorysTypes",{
             url:'/StorysTypes',
@@ -96,7 +100,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("Stories",{
             url:'/Stories',
          views: {'Stories':{  templateUrl:'inspiringwings_dashboard/Stories.html', controller : "StoriesCntrl"}}
-      
+
            })
             .state("Events",{
             url:'/Events',
@@ -129,18 +133,6 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
               .state("View_My_Requets",{
             url:'/View_My_Requets',
             views: {'View_My_Requets':{ templateUrl:'inspiringwings_dashboard/View-My-Request.html',controller : "viewMyReqCntrl"}}
-           })
-     .state("changePassword",{
-           url:'/changePassword',
-        views: {'changePassword':{ templateUrl:'inspiringwings_dashboard/changePassword.html',controller : "changePasswordCntrl"}}
-          })
-    
-            ;
-     
+           });
+
 });
-
-
-
-
-
-

@@ -17,7 +17,7 @@ app.controller('changePasswordCntrl',function($rootScope,$scope,$state,$localSto
       $scope.message = res.message;
       $timeout(function(){
         $state.go("Dashboard")
-      },1000);
+      },1500);
       //   $state.go("Dashboard")
         }
 
