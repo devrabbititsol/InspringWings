@@ -38,7 +38,7 @@
 
   <div class="row mt-30" ng-show="len">
 
-    <div class="col-sm-6" ng-repeat="Event in items">
+    <div class="col-sm-6" ng-repeat="Event in items | orderBy: 'event_date'">
       <div class="event-wrp-bg mb-20">
         <div class="date-wrap">
             <div class="date-wrap-date"><span ng-bind="Event.event_date | date:'dd'"></span></div>
