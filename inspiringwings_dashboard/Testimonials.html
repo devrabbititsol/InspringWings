@@ -31,7 +31,8 @@
               <tbody>
              <tr ng-repeat="testimonial in items">
 
-                  <td ng-click="DescInfo(testimonial.testimonial_content)"  data-toggle="modal" data-target="{{DescModal}}">{{testimonial.testimonial_content | limitTo:letterLimit}}</td>
+                  <td ng-show="testimonial.testimonial_content.length <=15" >{{testimonial.testimonial_content | limitTo:letterLimit}}</td>
+                  <td  ng-show="testimonial.testimonial_content.length >16" ng-click="DescInfo(testimonial.testimonial_content)"  data-toggle="modal" data-target="{{DescModal}}">{{testimonial.testimonial_content | limitTo:letterLimit}}{{"......"}}{{" "}}{{" "}}<span style="color:red">{{"click for more"}}</span></td>
                   <td>{{testimonial.person_name}}</td>
                  <td>
                 <input type="checkbox" ng-checked="{{testimonial.is_active}}" disabled>
@@ -111,5 +112,29 @@
   </div>
 </div>
 
+<div id="DescModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Description</h4>
+      </div>
+      <div class="modal-body">
 
 
+          <div class="form-group">
+
+            <div class="col-md-15">
+                 <textarea class="form-control" rows="10" id="textareaDefault"  name="StoryDescription" ng-model="descripton"  required disabled></textarea>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>

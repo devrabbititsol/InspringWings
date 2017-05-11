@@ -97,11 +97,12 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/StorysTypes',
          views:{'StorysTypes': {  templateUrl:'inspiringwings_dashboard/Story-Types.html',controller : "StorysTypesCntrl"}}
            })
-            .state("Stories",{
-            url:'/Stories',
-         views: {'Stories':{  templateUrl:'inspiringwings_dashboard/Stories.html', controller : "StoriesCntrl"}}
 
-           })
+           .state("Stories",{
+             url:'/Stories',
+          views: {'Stories':{  templateUrl:'inspiringwings_dashboard/Stories.html', controller : "StoriesCntrl"}}
+
+            })
             .state("Events",{
             url:'/Events',
          views: {'Events':{  templateUrl:'inspiringwings_dashboard/Events.html', controller : "EventsCntrl"}}

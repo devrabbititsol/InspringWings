@@ -4,8 +4,8 @@ $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id  ;
-$rootScope.username = geetingdata.first_name; 
-    
+$rootScope.username = geetingdata.first_name;
+
      $scope.letterLimit = 18;
      $scope.testimonial ={};
      $scope.loading=true;
@@ -84,7 +84,7 @@ $rootScope.username = geetingdata.first_name;
        });
 
         }
-        
+
      }
 
 
@@ -136,14 +136,14 @@ $rootScope.username = geetingdata.first_name;
 
            }
    }
-     
-     
+
+
      $scope.deleteInfo=function(testimonial)
          {
          var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.Storiesdata=testimonial;
                var Eventdata=$scope.Storiesdata;
                  delete Eventdata.is_active;
