@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h2 class="page-header">Stories</h2>
+        <h2 class="page-header">Stories <span style="color:black"> : {{selectedname}}</span></h2>
     </div>
   </div>
   <div class="row" >
       <div class="h-scroll-page">
-    <div class="col-sm-6" ng-repeat="Story in Storys | filter: selectedname ">
+    <div class="col-sm-6" ng-repeat="Story in Storys | filter: {story_category_id:selectedid} ">
       <div class="story-pannel-body story-bg1">
         <div class="story-list">
           <ul>
-            <li><span>Story:</span> Story</li>
             <li><span>Title</span> {{Story.story_title}}</li>
             <li><span>Person Name:</span> {{Story.story_person_name}}</li>
           </ul>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Inspiring Wings</title>
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link href="assets/css/main.css"  ng-if=" memebers== true && session == '' "  rel="stylesheet" />
 <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
 <link href="assets/css/Caurosel.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
 		<link rel="stylesheet" ng-if=" session != '' "  href="assets/css/style.css" />
 <!-- Modernizr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-
+ 
 </head>
 
 <body ng-cloak>
@@ -39,14 +39,15 @@
             <ul class="nav navbar-nav">
               <li class="dropdown" ng-controller="storycntrl"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tales of Inspiring Wings <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
-                  <li ng-repeat="StoryType in StoryTypes"><a ui-sref="wings_storys" ng-click="selectedstory(StoryType.story_category_name)">{{StoryType.story_category_name}}</a></li>
-
+                  <li ng-repeat="StoryType in StoryTypes"><a ui-sref="wings_storys" ng-click="selectedstory(StoryType)">{{StoryType.story_category_name}}</a></li>
+                  
                 </ul>
+
               </li>
               <li class="dropdown"  ng-controller="Main_opportunitesCntrl"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Wings of Opportunities <span class="caret"></span></a>
                 <ul id="" class="dropdown-menu" role="menu">
-                  <li ng-repeat="opportunitescategory in opportunitiestypes"><a ui-sref="wings_opportunites"  ng-click="selectedopportunity(opportunitescategory.opportunity_category_name)">{{opportunitescategory.opportunity_category_name}}</a></li>
-
+                  <li ng-repeat="opportunitescategory in opportunitiestypes"><a ui-sref="wings_opportunites"  ng-click="selectedopportunity(opportunitescategory)">{{opportunitescategory.opportunity_category_name}}</a></li>
+                 
                 </ul>
               </li>
               <li class="dropdown"> <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inspiring Support <span class="caret"></span></a>
@@ -65,7 +66,7 @@
 				  <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
 			  </div>
 			  <div class="social-icons">
-
+			  
 			  	<ul>
 					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -163,9 +164,7 @@
           <ul class="list-unstyled">
             <li class="divider"></li>
             <li> <a role="menuitem" tabindex="-1" ><i class="fa fa-user"></i> My Profile</a> </li>
-						<li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>
-
-						 <!--<li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>-->
+             <li> <a role="menuitem" tabindex="-1" ui-sref="changePassword"><i class="fa fa-user"></i> Change Password</a> </li>
             <li> <a role="menuitem" tabindex="-1" ng-click="logout11()" ng-controller="logoutCntrl"><i class="fa fa-power-off"></i> Logout</a> </li>
           </ul>
         </div>
@@ -189,22 +188,26 @@
             <ul class="nav nav-main">
               <li> <a ui-sref="Dashboard"> <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span> </a> </li>
               <li ng-show="userType == 1 ? true : false"> <a ui-sref="OpportunityType"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunity Types</span> </a> </li>
-
+							
               <li ng-show="userType == 1  ? true : false"> <a ui-sref="Opportunities"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunities</span> </a> </li>
               <li ng-show="userType == 1 ? true : false"> <a ui-sref="StorysTypes"> <i class="fa fa-book" aria-hidden="true"></i> <span>Story Types</span> </a> </li>
               <li ng-show="userType == 1  ? true : false"> <a ui-sref="Stories"> <i class="fa fa-book" aria-hidden="true"></i> <span>Stories</span> </a> </li>
               <li ng-show="userType == 1 ? true : false"> <a ui-sref="Events"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Events</span> </a> </li>
               <li ng-show="userType == 1 ? true : false"> <a ui-sref="testimonials"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Testimonials</span> </a> </li>
+              <li ng-show="userType == 1 ? true : false"> <a ui-sref="IncubationCenter"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Incubation Centers</span> </a> </li>  
+              <li ng-show="userType == 1 ? true : false"> <a ui-sref="IncubationCenterCategorys"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Incubation Types</span> </a> </li>  
               <li ng-show="userType == 2 ? true : false"> <a ui-sref="view_all_requests"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View All Requests</span> </a> </li>
               <li ng-show="userType == 2 ? true : false"> <a ui-sref="View_Pending_Requests"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View Pending Requests</span> </a> </li>
               <li ng-show="userType == 2 ? true : false"> <a ui-sref="Closed_Requests"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Closed Requests</span> </a> </li>
               <li ng-show="userType == 3 ? true : false"> <a ui-sref="Seeking_For_Help"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Seeking For Help ?</span> </a> </li>
               <li ng-show="userType == 3 ? true : false"> <a ui-sref="View_My_Requets"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>View My Requets</span> </a> </li>
-              <li ng-show="userType == 1 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
-              <li ng-show="userType == 4  ? true : false"> <a ui-sref="Opportunities"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunities</span> </a> </li>
+               <li ng-show="userType == 1 ? true : false"> <a ui-sref="Users"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <span>Users</span> </a> </li>
+                  <li ng-show="userType == 4  ? true : false"> <a ui-sref="Opportunities"> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Opportunities</span> </a> </li>
               <li ng-show="userType == 4  ? true : false"> <a ui-sref="Stories"> <i class="fa fa-book" aria-hidden="true"></i> <span>Stories</span> </a> </li>
               <li ng-show="userType == 4 ? true : false"> <a ui-sref="Events"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Events</span> </a> </li>
               <li ng-show="userType == 4 ? true : false"> <a ui-sref="testimonials"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Testimonials</span> </a> </li>
+                 <li ng-show="userType == 4 ? true : false"> <a ui-sref="IncubationCenter"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Incubation Centers</span> </a> </li>  
+              <li ng-show="userType == 4 ? true : false"> <a ui-sref="IncubationCenterCategorys"> <i class="fa fa-calendar" aria-hidden="true"></i> <span>Incubation Types</span> </a> </li>  
             </ul>
           </nav>
         </div>
@@ -222,11 +225,12 @@
 <div ui-view="view_all_requests"  autoscroll="false"></div>
  <div ui-view="View_Pending_Requests"  autoscroll="false"></div>
 <div ui-view="Closed_Requests"  autoscroll="false"></div>
-<div ui-view="changePassword"  autoscroll="false"></div>
  <div ui-view="Seeking_For_Help"  autoscroll="false"></div>
 <div ui-view="View_My_Requets"  autoscroll="false"></div>
 <div ui-view="Dashboard"  autoscroll="false"></div>
-
+<div ui-view="changePassword"  autoscroll="false"></div>
+<div ui-view="IncubationCenter"  autoscroll="false"></div>
+<div ui-view="IncubationCenterCategorys"  autoscroll="false"></div>
 </section>
   </div>
 </section>
@@ -249,7 +253,6 @@
 <!--- Angularjs libriarys----->
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/Angularjs_ui_routing.js"></script>
-
 <script src="assets/js/jquery-1.9.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/main.js"></script>
@@ -263,32 +266,36 @@
 <script src="assets/js/moment.js"></script>
 <script src="assets/js/node_modules/angularjs-datepicker/src/js/angular-datepicker.js"></script>
 <!----------------Scripts---------------->
-<script src="assets/scripts/changePassword.js"></script>
-<script src="assets/scripts/App.js"></script>
-<script src="assets/scripts/httpService.js"></script>
-<script src="assets/scripts/login.js"></script>
-<script src="assets/scripts/register.js"></script>
-<script src="assets/scripts/Forgotpassword.js"></script>
-<script src="assets/scripts/inspring_dashboard.js"></script>
-<script src="assets/scripts/Opportunity.js"></script>
-<script src="assets/scripts/StorysTypes.js"></script>
-<script src="assets/scripts/Opportunity_Type.js"></script>
-<script src="assets/scripts/Events.js"></script>
-<script src="assets/scripts/Users.js"></script>
-<script src="assets/scripts/viewAllReq.js"></script>
-<script src="assets/scripts/viewPendingReq.js"></script>
-<script src="assets/scripts/Testimonials.js"></script>
-<script src="assets/scripts/closedReq.js"></script>
-<script src="assets/scripts/seekingforHelp.js"></script>
-<script src="assets/scripts/viewMyReq.js"></script>
-<script src="assets/scripts/Storys.js"></script>
-<script src="assets/scripts/logout.js"></script>
-<script src="assets/scripts/pre_ServiceCall.js"></script>
-<script src="assets/scripts/paginationService.js"></script>
-<script src="assets/scripts/changePassword.js"></script>
 <!----------------Homepage---------------->
-<script src="assets/scripts/stories_mainpage.js"></script>
-<script src="assets/scripts/events_calender.js"></script>
-<script src="assets/scripts/Main_opportunitesCntrl.js"></script>
+<script src="assets/Inspring_wings_mainpage/App.js"></script>
+<script src="assets/Inspring_wings_mainpage/Forgotpassword.js"></script>
+<script src="assets/Inspring_wings_mainpage/httpService.js"></script>
+<script src="assets/Inspring_wings_mainpage/login.js"></script>
+<script src="assets/Inspring_wings_mainpage/logout.js"></script>
+<script src="assets/Inspring_wings_mainpage/Main_opportunitesCntrl.js"></script>  
+<script src="assets/Inspring_wings_mainpage/pre_ServiceCall.js"></script>
+<script src="assets/Inspring_wings_mainpage/paginationService.js"></script>
+<script src="assets/Inspring_wings_mainpage/register.js"></script>
+<script src="assets/Inspring_wings_mainpage/stories_mainpage.js"></script>
+<script src="assets/Inspring_wings_mainpage/events_calender.js"></script>
+   <!----------------Dashboard----------------> 
+<script src="assets/Inspring_wings_dashboard/inspring_dashboard.js"></script>
+<script src="assets/Inspring_wings_dashboard/Opportunity.js"></script>
+<script src="assets/Inspring_wings_dashboard/StorysTypes.js"></script>
+<script src="assets/Inspring_wings_dashboard/Opportunity_Type.js"></script>
+<script src="assets/Inspring_wings_dashboard/Events.js"></script>
+<script src="assets/Inspring_wings_dashboard/Users.js"></script>
+<script src="assets/Inspring_wings_dashboard/viewAllReq.js"></script>
+<script src="assets/Inspring_wings_dashboard/viewPendingReq.js"></script>
+<script src="assets/Inspring_wings_dashboard/Testimonials.js"></script>
+<script src="assets/Inspring_wings_dashboard/closedReq.js"></script>
+<script src="assets/Inspring_wings_dashboard/seekingforHelp.js"></script>
+<script src="assets/Inspring_wings_dashboard/viewMyReq.js"></script>
+<script src="assets/Inspring_wings_dashboard/Storys.js"></script>
+<script src="assets/Inspring_wings_dashboard/IncubationCenter.js"></script>
+<script src="assets/Inspring_wings_dashboard/IncubationTypes.js"></script>
+<script src="assets/Inspring_wings_dashboard/changePassword.js"></script> 
+
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 app.controller('storycntrl',function($rootScope,$scope,$localStorage,localData,preService,PaginationService){
-    var data={};
+    var data={'is_active':'1'};
 $scope.pager={};
 $scope.pageSize=6;
     
@@ -13,10 +13,10 @@ $scope.pageSize=6;
         {
            window.alert("err");
          });
-       $scope.selectedstory=function(name){
+       $scope.selectedstory=function(StoryType){
    
-      $rootScope.selectedname=name;
-      
+        $rootScope.selectedname=StoryType.story_category_name;
+       $rootScope.selectedid=StoryType.story_category_id;
       
       }
      

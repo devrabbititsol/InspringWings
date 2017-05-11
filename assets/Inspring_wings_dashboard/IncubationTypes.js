@@ -1,5 +1,5 @@
 
-app.controller('StorysTypesCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
+app.controller('incubationCenterCategoryCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
 //Decleration
 $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
@@ -8,14 +8,14 @@ $rootScope.userType = geetingdata.role_id ;
 $rootScope.username = geetingdata.first_name;
     
     
-$scope.StorysTypesdata={};
+$scope.IncubationTypesdata={};
 var data = {'is_active':'1'};
 $scope.pager={};
 $scope.loading=true;
 //Get StoryType
-       preService.getStoryType(data).then(function(res)
+       preService.getIncubationsTypes(data).then(function(res)
         {
-           $scope.storiesTypes= res;
+           $scope.IncbationTypes= res;
            initController();
          },
         function(err)
@@ -32,49 +32,49 @@ $scope.loading=true;
               if (page < 1 || page > $scope.pager.totalPages) {
                   return;
               }
-              $scope.pager =PaginationService.pagination( $scope.storiesTypes.length,page);
+              $scope.pager =PaginationService.pagination( $scope.IncbationTypes.length,page);
               //alert(JSON.stringify($scope.pager));
-               $scope.items =  $scope.storiesTypes.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+               $scope.items =  $scope.IncbationTypes.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
               $scope.loading=false;
           }
 //Add Action
    $scope.addinfo=function()
            {
-             $scope.StoryTypeModal="#StoryTypeModal";
-             $scope.title="Add New ";
+             $scope.IncbationTypeModal="#IncbationTypeModal";
+             $scope.title="Add New";
              $scope.message="";
-             $scope.StorysTypesdata=null;
-             $scope.StoryType.$setPristine();
-             if ($scope.StoryType.$valid) { }
+             $scope.IncubationTypesdata=null;
+             $scope.IncubationType.$setPristine();
+             if ($scope.IncubationType.$valid) { }
     $scope.onSubmit=function()
         {
-            var stories=$scope.StorysTypesdata;
+            var addIncubationType=$scope.IncubationTypesdata;
             var sessiondata=$rootScope.session;
             var gettingdata=sessiondata.response_info[0];
             var userdata=gettingdata.user_id;
-            stories.created_by=userdata;
-            stories.story_category_id='0';
-            if(stories.is_active == true){
+            addIncubationType.created_by=userdata;
+            addIncubationType.story_category_id='0';
+            if(addIncubationType.is_active == true){
              // opportunityDate.is_active ="1";
             }
-            else if(stories.is_active == false || stories.is_active == undefined){
-             stories.is_active ="0";
+            else if(addIncubationType.is_active == false || addIncubationType.is_active == undefined){
+             addIncubationType.is_active ="0";
             }
             else{
 
             }
-            var data = stories;
-            preService.insertStoryType(data).then(function(res)
+            var data = addIncubationType;
+            preService.addIncubationsTypes(data).then(function(res)
             {
                if(res.status==1)
                {
                     $scope.message="Inserted successfully";
                     var data = {'is_active':'1'};
-                    preService.getStoryType(data).then(function(res)
+                    preService.getIncubationsTypes(data).then(function(res)
                     {
-                        $scope.storiesTypes= res;
+                        $scope.IncbationTypes= res;
                         initController();
-                         $('#StoryTypeModal').modal('hide');
+                         $('#IncbationTypeModal').modal('hide');
 
                     },
                     function(err)
@@ -99,43 +99,43 @@ $scope.loading=true;
            }
 
  //Edit StoryType
-      $scope.editInfo=function(StorysType)
+      $scope.editInfo=function(IncbationType)
     {
           
-      $scope.StoryTypeModal="#StoryTypeModal";
+      $scope.IncbationTypeModal="#IncbationTypeModal";
       $scope.title="Edit";
       $scope.message="";
-      $scope.StorysTypesdata=StorysType;
+      $scope.IncubationTypesdata=IncbationType;
       $scope.onSubmit=function()
       {
-            var Eventdata=$scope.StorysTypesdata;
-            var sessiondata=$rootScope.session;
+            var editIncubationType=$scope.IncubationTypesdata;
+         /*   var sessiondata=$rootScope.session;
             var geetingdata=sessiondata.response_info[0];
             var userdata=geetingdata.user_id;
-            Eventdata.created_by=userdata;
-            if(Eventdata.is_active == true){
+            editIncubationType.created_by=userdata;*/
+            if(editIncubationType.is_active == true){
              // opportunityDate.is_active ="1";
             }
-            else if(Eventdata.is_active == false || Eventdata.is_active == undefined){
-             Eventdata.is_active ="0";
+            else if(editIncubationType.is_active == false || Eventdata.is_active == undefined){
+             editIncubationType.is_active ="0";
             }
             else{
 
             }
-            var data = Eventdata;
+            var data = editIncubationType;
 
-            preService.insertStoryType(data).then(function(res)
+            preService.addIncubationsTypes(data).then(function(res)
             {
                 if(res.status==1)
                {
                      $scope.status=res.status;
                     $scope.message="Updated SuccessFully";
                      var data = {'is_active':'1'};
-                    preService.getStoryType(data).then(function(res)
+                    preService.getIncubationsTypes(data).then(function(res)
                     {
-                        $scope.storiesTypes= res;
+                        $scope.IncbationTypes= res;
                            initController();
-                        $('#StoryTypeModal').modal('hide');
+                        $('#IncbationTypeModal').modal('hide');
                     },
                     function(err)
                     {
@@ -157,29 +157,25 @@ $scope.loading=true;
 
     }
   //Delete StoryType     
-   $scope.deleteInfo=function(StorysType)
+   $scope.deleteInfo=function(IncbationType)
     {
          var result = confirm("Want to Delete ?");
              
              if(result == true){
              
-             $scope.Storiesdata=StorysType;
-               var Eventdata=$scope.Storiesdata;
-                 var sessiondata=$rootScope.session;
-                 var geetingdata=sessiondata.response_info[0];
-                 var userdata=geetingdata.user_id;
-                 Eventdata.created_by=userdata;
-                 delete Eventdata.is_active;
-                 Eventdata.is_active='0';
-                 var data = Eventdata;
-                preService.insertStoryType(data).then(function(res)
+             $scope.IncubationTypesdata=IncbationType;
+               var deleteincubationtype=$scope.IncubationTypesdata;
+                 delete deleteincubationtype.is_active;
+                 deleteincubationtype.is_active='0';
+                 var data = deleteincubationtype;
+                preService.addIncubationsTypes(data).then(function(res)
                 {
             if(res.status==1)
             {
                 var data = {'is_active':'1'};
-            preService.getStoryType(data).then(function(res)
+            preService.getIncubationsTypes(data).then(function(res)
             {
-                $scope.storiesTypes= res;
+                $scope.IncbationTypes= res;
                      initController();
             },function(err) {
              window.alert("err");

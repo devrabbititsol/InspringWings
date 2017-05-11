@@ -45,9 +45,9 @@
           <div class="date-wrap-monthyear mt-15"><span ng-bind="Event.event_date | date:'MMM-yy'"></span></div>
         </div>
         <div class="date-disc-wrap">
-          <div class="event-header">Lorem ipsum dolor sit amet, consectetur elit.</div>
+          <div class="event-header">{{Event.event_name}}</div>
           <div class="event-disc">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod mi varius efficitur consectetur. Duis molestie feugiat tincidunt. Nam tempus sit amet ipsum ut suscipit. </p>
+            <p>{{Event.event_content}} </p>
           </div>
         </div>
       </div>

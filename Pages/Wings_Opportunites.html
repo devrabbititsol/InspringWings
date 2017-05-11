@@ -1,21 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h2 class="page-header">Opportunity</h2>
+      <h2 class="page-header">Opportunity <span style="color:black"> : {{selectedname}}</span></h2>
     </div>
   </div>
   <div class="row" >
     <div class="h-scroll-page">
-    <div class="col-sm-6" ng-repeat="opportunity in opportunities | filter: selectedname">
-      <div class="story-pannel-body story-bg1">
+    <div class="col-sm-6" ng-repeat="(i,opportunity) in opportunities | filter: {opportunity_category_id:selectedid}" ng-init="i=0">
+    
+
+        <div class="story-pannel-body" style="background-color:{{persons[i]}}">
         <div class="story-list">
           <ul>
-            <li><span>Opportunity:</span> Story</li>
             <li><span>Title</span> {{opportunity.opportunity_title}}</li>
             <li><span>Person Name:</span> {{opportunity.created_by}}</li>
           </ul>
         </div>
-        <p class="mt-10">{{opportunity.opportunity_content}} </p>
+           <p class="mt-10" ng-show="opportunity.opportunity_content.length <=15">{{opportunity.opportunity_content |  limitTo:numLimit}} </p>
+          
+        <p class="mt-10" data-toggle="collapse" data-target="#{{opportunity.opportunity_id}}" ng-show="opportunity.opportunity_content.length >16" >{{opportunity.opportunity_content |  limitTo:numLimit}}<span style="color:black" > {{"......click for more"}}</span> </p>
+           <div id="{{opportunity.opportunity_id}}" class="collapse">
+   {{opportunity.opportunity_content}}
+  </div>
         <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
       </div>
     </div>
@@ -23,3 +29,4 @@
   </div>
 
 </div>
+ 

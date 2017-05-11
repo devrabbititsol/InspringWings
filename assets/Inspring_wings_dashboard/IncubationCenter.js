@@ -1,4 +1,4 @@
-app.controller('StoriesCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
+app.controller('incubationCenterCntrl',function($rootScope,$scope,$localStorage,localData,preService,$timeout,PaginationService){
 //Decleration
 $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
@@ -6,15 +6,15 @@ var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id;
 $rootScope.username = geetingdata.first_name; 
     
-$scope.Storiesdata={};
+$scope.Incubationdata={};
 var data = {'is_active':'1'};
     $scope.pager={};
 $scope.loading=true;
 //Get stories
     
     
-      preService.getStories(data).then(function(res) {
-           $scope.Stories= res;
+      preService.getIncubations(data).then(function(res) {
+           $scope.Incubations= res;
           initController();
          },function(err) {
              window.alert("err");
@@ -28,54 +28,54 @@ $scope.loading=true;
               if (page < 1 || page > $scope.pager.totalPages) {
                   return;
               }
-              $scope.pager =PaginationService.pagination( $scope.Stories.length,page);
+              $scope.pager =PaginationService.pagination( $scope.Incubations.length,page);
               //alert(JSON.stringify($scope.pager));
-               $scope.items =  $scope.Stories.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+               $scope.items =  $scope.Incubations.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
               $scope.loading=false;
           }
-     preService.getStoryType(data).then(function(res) {
-           $scope.Stories_category= res;
+     preService.getIncubationsTypes(data).then(function(res) {
+           $scope.IncubationsTypes= res;
          },function(err) {
              window.alert("err");
          });
       $scope.addinfo=function()
       {
-            $scope.Storymodal="#Storymodal";
+            $scope.Incubationmodal="#Incubationmodal";
             $scope.title="Add New";
             $scope.message="";
-           $scope.Storiesdata={};
-            $scope.Story.$setPristine();
-         if ($scope.Story.$valid) { } 
+           $scope.Incubationdata={};
+            $scope.Incubation.$setPristine();
+         if ($scope.Incubation.$valid) { } 
     $scope.onSubmit=function()
         {
         
         
-        var stories=$scope.Storiesdata;
+        var Incubationsadd=$scope.Incubationdata;
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];
         var userdata=gettingdata.user_id;
-        stories.created_by=userdata;
-        stories.story_id='0';
-        if(stories.is_active == true){
+        Incubationsadd.created_by=userdata;
+        Incubationsadd.incubation_center_id='0';
+        if(Incubationsadd.is_active == true){
          // opportunityDate.is_active ="1";
         }
-        else if(stories.is_active == false || stories.is_active == undefined){
-         stories.is_active ="0";
+        else if(Incubationsadd.is_active == false || Incubationsadd.is_active == undefined){
+         Incubationsadd.is_active ="0";
         }
         else{
 
         }
-        var data = stories;
-           preService.insertStory(data).then(function(res) {
+        var data = Incubationsadd;
+           preService.addIncubations(data).then(function(res) {
            if(res.status==1)
            {
              $scope.message="Inserted successfully";
              var data = {'is_active':'1'};
-                preService.getStories(data).then(function(res)
+                preService.getIncubations(data).then(function(res)
                 {
-                    $scope.Stories= res;
+                    $scope.Incubations= res;
                     initController();
-               $('#Storymodal').modal('hide');
+               $('#Incubationmodal').modal('hide');
                 },
             function(err)
             {
@@ -92,44 +92,44 @@ $scope.loading=true;
     }
      
        }
-//Insert Story
+
 
 //Edit Story
-      $scope.editInfo=function(Story)
+      $scope.editInfo=function(Incubation)
     {
-               $scope.Storymodal="#Storymodal";
+               $scope.Incubationmodal="#Incubationmodal";
                 $scope.title="Edit";
                 $scope.message="";
-               $scope.Storiesdata=Story;
+               $scope.Incubationdata=Incubation;
                $scope.onSubmit=function()
             {
-                 var Eventdata=$scope.Storiesdata;
+                 var Incubationsedit=$scope.Incubationdata;
                  var sessiondata=$rootScope.session;
                  var geetingdata=sessiondata.response_info[0];
                  var userdata=geetingdata.user_id;
-                 Eventdata.created_by=userdata;
-                 if(Eventdata.is_active == true){
+                 Incubationsedit.created_by=userdata;
+                 if(Incubationsedit.is_active == true){
                   // opportunityDate.is_active ="1";
                  }
-                 else if(Eventdata.is_active == false || Eventdata.is_active == undefined){
-                  Eventdata.is_active ="0";
+                 else if(Incubationsedit.is_active == false || Incubationsedit.is_active == undefined){
+                  Incubationsedit.is_active ="0";
                  }
                  else{
 
                  }
-                 var data = Eventdata;
-                preService.insertStory(data).then(function(res)
+                 var data = Incubationsedit;
+                preService.addIncubations(data).then(function(res)
                 {
             if(res.status==1)
             {
              $scope.status=res.status;
              var data = {'is_active':'1'};
             $scope.message="Updated SuccessFully";
-            preService.getStories(data).then(function(res)
+            preService.getIncubations(data).then(function(res)
             {
-                $scope.Stories= res;
+                $scope.Incubations= res;
                      initController();
-                     $('#Storymodal').modal('hide');
+                     $('#Incubationmodal').modal('hide');
             },function(err) {
              window.alert("err");
             });
@@ -144,30 +144,34 @@ $scope.loading=true;
 
             }
     }
+      
+      
 //Delete Story
-    $scope.deleteInfo=function(Story)
+      
+      
+    $scope.deleteInfo=function(Incubation)
     {
          var result = confirm("Want to Delete ?");
              
              if(result == true){
              
-             $scope.Storiesdata=Story;
-               var Eventdata=$scope.Storiesdata;
+             $scope.Incubationdata=Incubation;
+               var Incubationdelete=$scope.Incubationdata;
                  var sessiondata=$rootScope.session;
                  var geetingdata=sessiondata.response_info[0];
                  var userdata=geetingdata.user_id;
-                 Eventdata.created_by=userdata;
-                 delete Eventdata.is_active;
-                 Eventdata.is_active='0';
-                 var data = Eventdata;
-                preService.insertStory(data).then(function(res)
+                 Incubationdelete.created_by=userdata;
+                 delete Incubationdelete.is_active;
+                 Incubationdelete.is_active='0';
+                 var data = Incubationdelete;
+                preService.addIncubations(data).then(function(res)
                 {
             if(res.status==1)
             {
                 var data = {'is_active':'1'};
-            preService.getStories(data).then(function(res)
+            preService.getIncubations(data).then(function(res)
             {
-                $scope.Stories= res;
+                $scope.Incubations= res;
                      initController();
             },function(err) {
              window.alert("err");
