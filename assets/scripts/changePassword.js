@@ -1,8 +1,14 @@
 app.controller('changePasswordCntrl',function($rootScope,$scope,$state,$localStorage,localData,preService,$timeout){
       $scope.changePassword={}
+
+      $rootScope.session = localData.get();
       var sessiondata=$rootScope.session;
       var geetingdata=sessiondata.response_info[0];
-         $rootScope.userType=geetingdata.user_id;
+      $rootScope.userType = geetingdata.role_id  ;
+      $rootScope.username = geetingdata.first_name;
+
+
+
       $scope.message=""
       $scope.changePassword.email_id = localStorage.getItem("emailid");
       $scope.submitForm=function(changePassword){
