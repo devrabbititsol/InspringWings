@@ -1,5 +1,7 @@
-app.controller('forgotpassCntrl',function($rootScope,$scope,$state){
+app.controller('forgotpassCntrl',function($rootScope,$scope,$state,preService,$timeout){
+  alert("hi");
  $rootScope.memebers=false;
+ $scope.forgotdata={};
     $scope.homepage=function()
     {
     $rootScope.memebers=true;
@@ -11,10 +13,34 @@ app.controller('forgotpassCntrl',function($rootScope,$scope,$state){
        $state.go("Login");
     }
 
-     $scope.onSubmit=function(){
+     $scope.onSubmit=function(data){
+
+       $scope.message="";
      if ($scope.forgotpassword.$valid) {
-         
+
+       preService.forgotPassword(data).then(function(res) {
+
+       if(res.status == 1)
+       {
+           $scope.status=res.status;
+           $scope.message = res.message;
+           $timeout(function(){
+             $state.go("Login")
+           },2000);
+
+
      }
-     
+
+     else{
+
+       $scope.message =  res.message;
+
+     }
+   },function(err) {
+
+       window.alert("err");
+   });
+ }
+
      }
 });
