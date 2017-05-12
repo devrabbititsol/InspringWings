@@ -16,6 +16,8 @@ $scope.data={};
              $rootScope.username=x.response_info[0].first_name;
             $rootScope.userType = x.response_info[0].role_id;
            localStorage.setItem("emailid",x.response_info[0].email_id);
+           localStorage.setItem("userDetails",JSON.stringify(x.response_info[0]));
+        //   $scope.userDetails=JSON.parse(localStorage.getItem("userDetails"));
           $state.go("Dashboard");
          }
          else{

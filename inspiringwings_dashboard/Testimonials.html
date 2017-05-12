@@ -32,7 +32,7 @@
              <tr ng-repeat="testimonial in items">
 
                   <td ng-show="testimonial.testimonial_content.length <=15" >{{testimonial.testimonial_content | limitTo:letterLimit}}</td>
-                  <td  ng-show="testimonial.testimonial_content.length >16" ng-click="DescInfo(testimonial.testimonial_content)"  data-toggle="modal" data-target="{{DescModal}}">{{testimonial.testimonial_content | limitTo:letterLimit}}{{"......"}}{{" "}}{{" "}}<span style="color:red">{{"click for more"}}</span></td>
+                  <td  ng-show="testimonial.testimonial_content.length >16" ng-click="DescInfo(testimonial.testimonial_content)"  data-toggle="modal" data-target="{{DescModal}}">{{testimonial.testimonial_content | limitTo:letterLimit}}{{" "}}{{"......"}}{{" "}}{{" "}}<span style="color:red">{{"more"}}</span></td>
                   <td>{{testimonial.person_name}}</td>
                  <td>
                 <input type="checkbox" ng-checked="{{testimonial.is_active}}" disabled>

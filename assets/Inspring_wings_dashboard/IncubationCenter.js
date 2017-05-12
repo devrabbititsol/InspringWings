@@ -4,18 +4,32 @@ $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id;
-$rootScope.username = geetingdata.first_name; 
-    
+$rootScope.username = geetingdata.first_name;
+
 $scope.Incubationdata={};
 var data = {'is_active':'1'};
     $scope.pager={};
 $scope.loading=true;
+$scope.nodata='';
 //Get stories
-    
-    
+
+
       preService.getIncubations(data).then(function(res) {
            $scope.Incubations= res;
-          initController();
+          //   $scope.Incubations.length = 0;
+           if($scope.Incubations.length == 0){
+          //   alert("if")
+             $scope.loading = false;
+          //   alert($scope.loading);
+             $scope.nodata = true;
+        //     alert($scope.nodata);
+                    return;
+           }
+           else{
+                     initController();
+                     $scope.nodata= false ;
+           }
+
          },function(err) {
              window.alert("err");
          });
@@ -40,16 +54,17 @@ $scope.loading=true;
          });
       $scope.addinfo=function()
       {
+        $scope.nodata= false
             $scope.Incubationmodal="#Incubationmodal";
             $scope.title="Add New";
             $scope.message="";
            $scope.Incubationdata={};
             $scope.Incubation.$setPristine();
-         if ($scope.Incubation.$valid) { } 
+         if ($scope.Incubation.$valid) { }
     $scope.onSubmit=function()
         {
-        
-        
+
+
         var Incubationsadd=$scope.Incubationdata;
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];
@@ -90,7 +105,7 @@ $scope.loading=true;
          });
 
     }
-     
+
        }
 
 
@@ -144,17 +159,17 @@ $scope.loading=true;
 
             }
     }
-      
-      
+
+
 //Delete Story
-      
-      
+
+
     $scope.deleteInfo=function(Incubation)
     {
          var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.Incubationdata=Incubation;
                var Incubationdelete=$scope.Incubationdata;
                  var sessiondata=$rootScope.session;

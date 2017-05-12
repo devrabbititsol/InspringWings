@@ -4,7 +4,7 @@ var app=angular.module("InspiringWings",["ui.router",'ngMessages','ngStorage','7
 app.run(function($rootScope) {
      $rootScope.memebers=true;
      $rootScope.session = '';
-    
+
 });
 /********************ui Routing ****************/
 app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
@@ -63,32 +63,34 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            .state("SignUp",{
             url:'/SignUp',
             views: {'SignUp':{templateUrl:'Pages/SignUp.html', controller : "signUp"}}
-     
+
            })
            .state("Login",{
             url:'/Login',
             views: {'Login':{templateUrl:'Pages/Login.html', controller : "loginCntrl"}}
            })
-        
-            .state("ForgotPassword",{
-            url:'/ForgotPassword',
-             views: {'ForgotPassword':{ templateUrl:'Pages/ForgotPassword.html', controller : "forgotpassCntrl"}}
+
+            .state("myProfile",{
+            url:'/myProfile',
+             views: {'myProfile':{ templateUrl:'inspiringwings_dashboard/myProfile.html', controller : "myProfileCntrl"}}
            })
-    
+
+
+
               .state("Dashboard",{
             url:'/Dashboard',
             views: {'Dashboard':{templateUrl:'inspiringwings_dashboard/inspiring_dashboard.html', controller : "dashboardcntrl"}}
            })
-    
+
             .state("Opportunities",{
             url:'/Opportunities',
          views: {'Opportunities':{ templateUrl:'inspiringwings_dashboard/Opportunity.html',controller : "OpportunitiesCntrl"}}
-      
+
            })
               .state("OpportunityType",{
             url:'/OpportunityType',
          views: {'OpportunityType':{templateUrl:'inspiringwings_dashboard/Opportunity-type.html', controller : "OpportTypeCntrl"}}
-   
+
            })
             .state("StorysTypes",{
             url:'/StorysTypes',
@@ -97,7 +99,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             .state("Stories",{
             url:'/Stories',
          views: {'Stories':{  templateUrl:'inspiringwings_dashboard/Stories.html', controller : "StoriesCntrl"}}
-      
+
            })
             .state("Events",{
             url:'/Events',
@@ -143,11 +145,5 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/IncubationCenterCategorys',
             views: {'IncubationCenterCategorys':{ templateUrl:'inspiringwings_dashboard/IncubationTypes.html',controller : "incubationCenterCategoryCntrl"}}
            })
-            ; 
+            ;
 });
-
-
-
-
-
-
