@@ -6,17 +6,29 @@ var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id ;
 $rootScope.username = geetingdata.first_name;
-    
-    
+
+
 $scope.IncubationTypesdata={};
 var data = {'is_active':'1'};
 $scope.pager={};
 $scope.loading=true;
+$scope.nodata='';
 //Get StoryType
        preService.getIncubationsTypes(data).then(function(res)
         {
            $scope.IncbationTypes= res;
-           initController();
+           if($scope.IncbationTypes.length == 0){
+          //   alert("if")
+             $scope.loading = false;
+          //   alert($scope.loading);
+             $scope.nodata = true;
+        //     alert($scope.nodata);
+                    return;
+           }
+           else{
+                     initController();
+                     $scope.nodata= false ;
+           }
          },
         function(err)
         {
@@ -69,6 +81,7 @@ $scope.loading=true;
                if(res.status==1)
                {
                     $scope.message="Inserted successfully";
+                     $scope.nodata= false;
                     var data = {'is_active':'1'};
                     preService.getIncubationsTypes(data).then(function(res)
                     {
@@ -95,13 +108,13 @@ $scope.loading=true;
                  window.alert("err");
             });
     }
-             
+
            }
 
  //Edit StoryType
       $scope.editInfo=function(IncbationType)
     {
-          
+
       $scope.IncbationTypeModal="#IncbationTypeModal";
       $scope.title="Edit";
       $scope.message="";
@@ -156,13 +169,13 @@ $scope.loading=true;
     }
 
     }
-  //Delete StoryType     
+  //Delete StoryType
    $scope.deleteInfo=function(IncbationType)
     {
          var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.IncubationTypesdata=IncbationType;
                var deleteincubationtype=$scope.IncubationTypesdata;
                  delete deleteincubationtype.is_active;
@@ -189,6 +202,6 @@ $scope.loading=true;
                  });
              }
              else{}
-    }   
-      
+    }
+
 });

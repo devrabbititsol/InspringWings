@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-sm-12"> <a  data-toggle="modal" data-target="{{opprtunitymodal}}" ng-click="addinfo()"  class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Opportunities</a> </div>
           </div>
-          <div class="table-responsive">
+          <div class="table-responsive" ng-show="!nodata">
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr>
@@ -64,7 +64,9 @@
         </div>
       </section>
       <!-- end: page -->
-
+      <div ng-show="nodata">
+        <p>no records found</p>
+      </div>
 
 <div id="opprtunitymodal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -104,7 +106,7 @@
               <textarea class="form-control" rows="3" id="textareaDefault" name="OpportunityContent" ng-model="opportunity.opportunity_content" required></textarea>
                  <span ng-show="opportunityform.OpportunityContent.$invalid && !opportunityform.OpportunityContent.$pristine" style="color:red">
                     <span style="color:red;" ng-show="opportunityform.OpportunityContent.$error.required">Opportunity Description  required.</span>
-                   </span> 
+                   </span>
             </div>
           </div>
           <div class="form-group">

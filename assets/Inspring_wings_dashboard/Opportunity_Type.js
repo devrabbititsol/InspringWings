@@ -3,18 +3,31 @@ app.controller('OpportTypeCntrl',function($rootScope,$scope,$state,$http,httpSer
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id;
-$rootScope.username = geetingdata.first_name; 
-    
+$rootScope.username = geetingdata.first_name;
+
 $scope.opportunitytype={}
 $scope.data = {};
 $scope.pager={};
 $scope.loading=true;
+$scope.nodata='';
    var data={'is_active':'1'};
   preService.getAllOpp_categories(data).then(function(res) {
            $scope.OpportTypes= res;
-      
+           
+           if($scope.OpportTypes.length == 0){
+          //   alert("if")
+             $scope.loading = false;
+          //   alert($scope.loading);
+             $scope.nodata = true;
+        //     alert($scope.nodata);
+                    return;
+           }
+           else{
+                     initController();
+                     $scope.nodata= false ;
+           }
         //   alert(JSON.stringify($scope.OpportTypes));
-              initController();
+
          },function(err) {
 
              window.alert("err");
@@ -39,11 +52,12 @@ $scope.loading=true;
           }
 
          $scope.addinfo=function(){
+
               $scope.message="";
             $scope.opprtunitymodal="#opprtunityTypes";
           $scope.opportunitytype=null;
              $scope.OpportunityTypeForm.$setPristine();
-             if ($scope.OpportunityTypeForm.$valid) {}  
+             if ($scope.OpportunityTypeForm.$valid) {}
           $scope.onSubmit=function(){
             //  window.alert('hi');
 
@@ -76,7 +90,7 @@ $scope.loading=true;
                           var data={'is_active':'1'};
                       preService.getAllOpp_categories(data).then(function(res) {
                     $scope.OpportTypes= res;
-
+                        $scope.nodata= false;
                       initController();
                   $('#opprtunityTypes').modal('hide');
                   //   alert(JSON.stringify($scope.OpportTypes))
@@ -96,7 +110,7 @@ $scope.loading=true;
 
 
              }
-             
+
         }
 
          $scope.editInfo=function(OpportType){
@@ -154,12 +168,12 @@ $scope.loading=true;
 
       $scope.deleteInfo=function(OpportType){
    var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.Storiesdata=OpportType;
                var Eventdata=$scope.Storiesdata;
-               
+
                  delete Eventdata.is_active;
                  Eventdata.is_active='0';
                  var data = Eventdata;

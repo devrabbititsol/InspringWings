@@ -4,16 +4,28 @@ app.controller('EventsCntrl',function($rootScope,$scope,$localStorage,localData,
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id;
-$rootScope.username = geetingdata.first_name; 
+$rootScope.username = geetingdata.first_name;
     $scope.Event={};
     var data = {};
     $scope.pager={};
     $scope.loading=true;
+    $scope.nodata='';
 //Get Event data
        preService.Eventget(data).then(function(res)
         {
             $scope.Events= res;
-            initController();
+            if($scope.Events.length == 0){
+           //   alert("if")
+              $scope.loading = false;
+           //   alert($scope.loading);
+              $scope.nodata = true;
+         //     alert($scope.nodata);
+                     return;
+            }
+            else{
+                      initController();
+                      $scope.nodata= false ;
+            }
         },
         function(err)
         {
@@ -62,6 +74,7 @@ $rootScope.username = geetingdata.first_name;
             if(res.status==1)
             {
                 $scope.message="Inserted successfully";
+                $scope.nodata= false;
                 var data = {};
                 preService.Eventget(data).then(function(res)
                 {
@@ -83,7 +96,7 @@ $rootScope.username = geetingdata.first_name;
             window.alert("err");
          });
     }
-             
+
        }
 
  //Edit Event

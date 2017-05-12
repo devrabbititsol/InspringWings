@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-sm-12"> <a  data-toggle="modal"  data-target="#opprtunityTypes" ng-click="addinfo()"class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add Oppurtunity Type</a> </div>
           </div>
-          <div class="table-responsive">
+          <div class="table-responsive" ng-show="!nodata">
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr>
@@ -63,7 +63,9 @@
       </section>
       <!-- end: page -->
 
-
+      <div ng-show="nodata">
+        <p>no records found</p>
+      </div>
 
       <!-- end: page -->
       <!---modal --->

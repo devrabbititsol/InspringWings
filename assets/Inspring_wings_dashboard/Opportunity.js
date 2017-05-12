@@ -1,18 +1,30 @@
 app.controller('OpportunitiesCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService,$timeout){
-    
-    
+
+
       $rootScope.session = localData.get();
     var sessiondata=$rootScope.session;
      var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id  ;
-$rootScope.username = geetingdata.first_name; 
+$rootScope.username = geetingdata.first_name;
        $scope.opportunity={};
        var data={'is_active':'1'};
        $scope.pager={};
        $scope.loading=true;
+       $scope.nodata='';
              preService.allOpportunities(data).then(function(res) {
            $scope.Opportunities= res;
-              initController();
+           if($scope.Opportunities.length == 0){
+          //   alert("if")
+             $scope.loading = false;
+          //   alert($scope.loading);
+             $scope.nodata = true;
+        //     alert($scope.nodata);
+                    return;
+           }
+           else{
+                     initController();
+                     $scope.nodata= false ;
+           }
          },function(err) {
 
              window.alert("err");
@@ -46,11 +58,12 @@ $rootScope.username = geetingdata.first_name;
                 });
 
          $scope.addinfo=function(){
+
           $scope.message="";
             $scope.opprtunitymodal="#opprtunitymodal";
            $scope.opportunity=null;
              $scope.opportunityform.$setPristine();
-            if ($scope.opportunityform.$valid) { }  
+            if ($scope.opportunityform.$valid) { }
            $scope.onSubmit=function(){
              $scope.submitted = true;
               var opportunitydata=$scope.opportunity;
@@ -80,7 +93,7 @@ $rootScope.username = geetingdata.first_name;
                       var data={'is_active':'1'};
                     preService.allOpportunities(data).then(function(res) {
                   $scope.Opportunities= res;
-
+                   $scope.nodata= false;
                   initController();
                    $('#opprtunitymodal').modal('hide');
 
@@ -98,7 +111,7 @@ $rootScope.username = geetingdata.first_name;
 
 
            }
-           
+
         }
 
         $scope.editInfo=function(opportunitydata){
@@ -116,7 +129,7 @@ $rootScope.username = geetingdata.first_name;
        var userdata=geetingdata.user_id;
       opportunitydata.created_by=userdata;
 
-     
+
       //  window.alert(opportunitydata.created_by);
       if(opportunitydata.is_active == true){
        // opportunityDate.is_active ="1";
@@ -153,12 +166,12 @@ $rootScope.username = geetingdata.first_name;
     }
 }
 
-        
+
               $scope.deleteInfo=function(opportunitydata){
    var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.Storiesdata=opportunitydata;
                var Eventdata=$scope.Storiesdata;
                 var sessiondata=$rootScope.session;
@@ -168,7 +181,7 @@ $rootScope.username = geetingdata.first_name;
                  delete Eventdata.is_active;
                  Eventdata.is_active='0';
                  var data = Eventdata;
-                
+
                 preService.addORUpdateOpp(data).then(function(res)
                 {
             if(res.status==1)

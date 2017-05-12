@@ -4,18 +4,30 @@ $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id;
-$rootScope.username = geetingdata.first_name; 
-    
+$rootScope.username = geetingdata.first_name;
+
 $scope.Storiesdata={};
 var data = {'is_active':'1'};
     $scope.pager={};
 $scope.loading=true;
+$scope.nodata='';
 //Get stories
-    
-    
+
+
       preService.getStories(data).then(function(res) {
            $scope.Stories= res;
-          initController();
+           if($scope.Stories.length == 0){
+          //   alert("if")
+             $scope.loading = false;
+          //   alert($scope.loading);
+             $scope.nodata = true;
+        //     alert($scope.nodata);
+                    return;
+           }
+           else{
+                     initController();
+                     $scope.nodata= false ;
+           }
          },function(err) {
              window.alert("err");
          });
@@ -45,11 +57,11 @@ $scope.loading=true;
             $scope.message="";
            $scope.Storiesdata={};
             $scope.Story.$setPristine();
-         if ($scope.Story.$valid) { } 
+         if ($scope.Story.$valid) { }
     $scope.onSubmit=function()
         {
-        
-        
+
+
         var stories=$scope.Storiesdata;
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];
@@ -70,6 +82,7 @@ $scope.loading=true;
            if(res.status==1)
            {
              $scope.message="Inserted successfully";
+             $scope.nodata= false;
              var data = {'is_active':'1'};
                 preService.getStories(data).then(function(res)
                 {
@@ -90,7 +103,7 @@ $scope.loading=true;
          });
 
     }
-     
+
        }
 //Insert Story
 
@@ -148,9 +161,9 @@ $scope.loading=true;
     $scope.deleteInfo=function(Story)
     {
          var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.Storiesdata=Story;
                var Eventdata=$scope.Storiesdata;
                  var sessiondata=$rootScope.session;

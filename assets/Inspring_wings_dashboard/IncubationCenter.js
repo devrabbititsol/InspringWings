@@ -54,7 +54,7 @@ $scope.nodata='';
          });
       $scope.addinfo=function()
       {
-        $scope.nodata= false
+
             $scope.Incubationmodal="#Incubationmodal";
             $scope.title="Add New";
             $scope.message="";
@@ -85,6 +85,7 @@ $scope.nodata='';
            if(res.status==1)
            {
              $scope.message="Inserted successfully";
+             $scope.nodata= false;
              var data = {'is_active':'1'};
                 preService.getIncubations(data).then(function(res)
                 {

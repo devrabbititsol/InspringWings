@@ -1,27 +1,38 @@
 app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService,PaginationService)
 {
-    
+
     $rootScope.session = localData.get();
     var sessiondata=$rootScope.session;
      var geetingdata=sessiondata.response_info[0];
     $rootScope.userType = geetingdata.role_id  ;
-    $rootScope.username = geetingdata.first_name; 
-    
+    $rootScope.username = geetingdata.first_name;
+    $scope.nodata='';
     $scope.register={};
     var data = {};
     $scope.pager={};
     $scope.loading=true;
-   
+
     preService.getUsers(data).then(function(res)
     {
             $scope.Users= res;
-            initController();
+            if($scope.Users.length == 0){
+           //   alert("if")
+              $scope.loading = false;
+           //   alert($scope.loading);
+              $scope.nodata = true;
+         //     alert($scope.nodata);
+                     return;
+            }
+            else{
+                      initController();
+                      $scope.nodata= false ;
+            }
     },
     function(err)
     {
            window.alert("err");
     });
-    function initController() 
+    function initController()
     {
              $scope.setPage(1);
     }
@@ -37,9 +48,9 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
     //Add Action
    $scope.addinfo=function()
            {
-           
+
              $scope.usermodal="#usermodal";
-            
+
              $scope.title="Add New staff";
              $scope.staff=true;
              $scope.message="";
@@ -52,11 +63,11 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
              $scope.register.password=null;
              $scope.register.gender=null;
        $scope.signUp.$setPristine();
-             //Insert StoryType 
+             //Insert StoryType
         $scope.register.role_id = "4";
-        if ($scope.signUp.$valid) 
+        if ($scope.signUp.$valid)
         {
-            
+
         }
     $scope.onSubmit=function()
         {
@@ -72,14 +83,15 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
             }
             var sessiondata=$rootScope.session;
             var gettingdata=sessiondata.response_info[0];
-            var userdata=gettingdata.user_id; 
+            var userdata=gettingdata.user_id;
             stories.created_by=userdata;
             var data = stories;
-            preService.register(data).then(function(res) 
+            preService.register(data).then(function(res)
             {
                if(res.status==1)
                {
                     $scope.message="Inserted successfully";
+                    $scope.nodata= false;
                     var data = {};
                     preService.getUsers(data).then(function(res)
                     {
@@ -87,7 +99,7 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
                         initController();
                          $('#usermodal').modal('hide');
                     },
-                    function(err) 
+                    function(err)
                     {
 
                      window.alert("err");
@@ -99,7 +111,7 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
 
                 }
            },
-           function(err) 
+           function(err)
             {
 
                  window.alert("err");
@@ -107,24 +119,24 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
     }
            }
 
- //Edit StoryType   
+ //Edit StoryType
       $scope.editInfo=function(User)
     {
-          
+
       $scope.usermodal="#usermodal";
       $scope.title="Edit Register";
         $scope.staff=false;
       $scope.message="";
-      $scope.register=User;   
+      $scope.register=User;
       $scope.onSubmit=function()
       {
             var Eventdata=$scope.register;
             var sessiondata=$rootScope.session;
             var geetingdata=sessiondata.response_info[0];
-            var userdata=geetingdata.user_id; 
+            var userdata=geetingdata.user_id;
             Eventdata.created_by=userdata;
             var data = Eventdata;
-            preService.edituser(data).then(function(res) 
+            preService.edituser(data).then(function(res)
             {
                 if(res.status==1)
                {
@@ -137,23 +149,23 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
                            initController();
                         $('#usermodal').modal('hide');
                     },
-                    function(err) 
+                    function(err)
                     {
                      window.alert("err");
                     });
                }
                 else
                 {
-                  
+
                   $scope.message="Invalid Data";
                 }
             },
-            function(err) 
+            function(err)
             {
                  window.alert("err");
             });
 
-    } 
-        
+    }
+
     }
 });

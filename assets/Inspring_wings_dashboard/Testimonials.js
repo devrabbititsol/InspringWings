@@ -4,16 +4,28 @@ $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id  ;
-$rootScope.username = geetingdata.first_name; 
-    
+$rootScope.username = geetingdata.first_name;
+
      $scope.letterLimit = 18;
      $scope.testimonial ={};
      $scope.loading=true;
      $scope.pager={};
+     $scope.nodata='';
     var data={'is_active':'1'};
      preService.getTestimonials(data).then(function(res) {
      $scope.testimonials= res;
-     initController();
+     if($scope.testimonials.length == 0){
+    //   alert("if")
+       $scope.loading = false;
+    //   alert($scope.loading);
+       $scope.nodata = true;
+  //     alert($scope.nodata);
+              return;
+     }
+     else{
+               initController();
+               $scope.nodata= false ;
+     }
      },function(err) {
        window.alert("err");
      });
@@ -67,6 +79,7 @@ $rootScope.username = geetingdata.first_name;
          {
            $scope.message="Inserted successfully";
            var data = {'is_active':'1'};
+           $scope.nodata= false;
               preService.getTestimonials(data).then(function(res){
                   $scope.testimonials= res;
                   initController();
@@ -84,7 +97,7 @@ $rootScope.username = geetingdata.first_name;
        });
 
         }
-        
+
      }
 
 
@@ -136,14 +149,14 @@ $rootScope.username = geetingdata.first_name;
 
            }
    }
-     
-     
+
+
      $scope.deleteInfo=function(testimonial)
          {
          var result = confirm("Want to Delete ?");
-             
+
              if(result == true){
-             
+
              $scope.Storiesdata=testimonial;
                var Eventdata=$scope.Storiesdata;
                  delete Eventdata.is_active;
