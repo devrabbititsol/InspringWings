@@ -33,8 +33,30 @@ $scope.pageSize=6;
            window.alert("err");
          });
 $scope.numLimit=15;
-$scope.readMore=function(){
-$scope.numLimit=10000;
+$scope.showA = true;
+ $scope.showb = false;   
+$scope.readMore=function(opportunity){
+  
+   if(opportunity === opportunity){
+       window.alert(opportunity);
+       $scope.numLimit=10000;
+     $scope.showb = true;
+    $scope.showA = false;
+       
+      }
+    else{
+    
+    
+    }
+
+};
+    $scope.readLess=function(opportunity){
+        if(opportunity === opportunity){
+    $scope.showb = false;
+    $scope.showA = true;
+$scope.numLimit=15;
+        }
+        else{}
 };
  /*   $scope.display=function(opportunitycontent){
     $scope.demo='#demo';

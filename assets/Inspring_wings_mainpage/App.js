@@ -74,8 +74,10 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
             url:'/myProfile',
              views: {'myProfile':{ templateUrl:'inspiringwings_dashboard/myProfile.html', controller : "myProfileCntrl"}}
            })
-
-
+                .state("ForgotPassword",{
+            url:'/ForgotPassword',
+             views: {'ForgotPassword':{ templateUrl:'Pages/ForgotPassword.html', controller : "forgotpassCntrl"}}
+           })
 
               .state("Dashboard",{
             url:'/Dashboard',

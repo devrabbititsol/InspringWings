@@ -123,7 +123,6 @@ app.service('preService',function($http,httpService){
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
-
             this.getIncubations=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/incubation_centers.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
@@ -134,13 +133,11 @@ app.service('preService',function($http,httpService){
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
-
             this.getIncubationsTypes=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/incubation_categories.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
       return httpService.httpRequest(url, "P", data,headers)
       }
-
     this.addIncubationsTypes=function(data){
       var url = "http://devrabbit.com/inspiring_wings/web_services/incubation_categories_action.php";
       var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
@@ -151,12 +148,9 @@ app.service('preService',function($http,httpService){
        var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
         return httpService.httpRequest(url, "P", data,headers)
        }
-       
     this.forgotPassword=function(data){
     var url = "http://devrabbit.com/inspiring_wings/web_services/forgot_password.php";
     var headers={"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"};
     return httpService.httpRequest(url, "P", data,headers)
     }
-
-
 });

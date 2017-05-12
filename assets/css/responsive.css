@@ -354,6 +354,13 @@ ul.social_icons li {
 	display:block;
 	width: 100%
 }	
-	
+.createby{
+	float: left;
+	width: 100%;
+}
+
+.create-date{
+	float: left;
+}	
 	
 }

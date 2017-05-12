@@ -1,1 +1,29 @@
-<div class="container" >IncubationCenters</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <h2 class="page-header">Incubations <span style="color:black"> : {{selectedname}}</span></h2>
+    </div>
+  </div>
+  <div class="row" >
+      <div class="h-scroll-page">
+    <div class="col-sm-6" ng-repeat="Incubation in Incubations | filter: {incubation_center_category_id:selectedid} ">
+      <div class="story-pannel-body story-bg1">
+        <div class="story-list">
+          <ul>
+            <li><span>Title : </span> {{Incubation.incubation_center_title}}</li>
+           
+          </ul>
+        </div>
+        <p class="mt-10">{{Incubation.incubation_center_content}} </p>
+          <div class="created-wrap clearfix">
+        <div class="createby">Created By: <strong class="text-black">{{Incubation.created_by}}</strong></div>
+        <div class="create-date">{{Incubation.created_date}}</div>
+		  </div>
+        <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
+      </div>
+    </div>
+</div>
+  </div>
+
+</div>
+
