@@ -124,7 +124,7 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
             var userdata=geetingdata.user_id; 
             Eventdata.created_by=userdata;
             var data = Eventdata;
-            preService.register(data).then(function(res) 
+            preService.edituser(data).then(function(res) 
             {
                 if(res.status==1)
                {
@@ -135,7 +135,7 @@ app.controller('UsersCntrl',function($rootScope,$scope,$state,$http,httpService,
                     {
                         $scope.Users= res;
                            initController();
-                        $('#StoryTypeModal').modal('hide');
+                        $('#usermodal').modal('hide');
                     },
                     function(err) 
                     {

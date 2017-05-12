@@ -10,6 +10,12 @@ var data = {};
     $scope.pager={};
 $scope.loading=true;
 //Get stories
+                $scope.convertToDate = function (stringDate){
+            var dateOut = new Date(stringDate);
+            dateOut.setDate(dateOut.getDate());
+            return dateOut;
+};
+    
       preService.allRequest(data).then(function(res) {
            $scope.viewallrequets= res;
         //window.alert(JSON.stringify(res));
@@ -53,15 +59,15 @@ $scope.loading=true;
                 $scope.onSubmit=function()
         {
         var takeupproblem=$scope.takeupdata;
-        //var sessiondata=$rootScope.session;
-        //var gettingdata=sessiondata.response_info[0];
-        //var userdata=gettingdata.user_id;
+        var sessiondata=$rootScope.session;
+        var gettingdata=sessiondata.response_info[0];
+        var userdata=gettingdata.user_id;
         var requestdata=allrequests;
         takeupproblem.helper_request_id=requestdata.request_id;
         takeupproblem.takeup_status=requestdata.request_status;
         takeupproblem.takeup_id='0';
-         takeupproblem.helper_id='19';
-        takeupproblem.created_by='19';//insert the loggin user data
+         takeupproblem.helper_id=userdata;
+        takeupproblem.created_by=userdata;//insert the loggin user data
         var data = takeupproblem;
            preService.addtakeupproblem(data).then(function(res) {
            if(res.status==1)

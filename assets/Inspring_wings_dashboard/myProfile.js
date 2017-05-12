@@ -1,6 +1,6 @@
 app.controller('myProfileCntrl',function($rootScope,$scope,$state,$http,httpService,$localStorage,localData,preService){
 
-   alert("pro");
+   
 
    $scope.userDetails=JSON.parse(localStorage.getItem("userDetails"));
    //alert("login");

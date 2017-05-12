@@ -38,8 +38,9 @@ $scope.showA = true;
 $scope.readMore=function(opportunity){
   
    if(opportunity === opportunity){
+       
        window.alert(opportunity);
-       $scope.numLimit=10000;
+       $scope.numLimit=100000;
      $scope.showb = true;
     $scope.showA = false;
        
