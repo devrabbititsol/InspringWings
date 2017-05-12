@@ -1,4 +1,4 @@
-[ng\:cloak], [ng-cloak], .ng-cloak {
+ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
@@ -4342,11 +4342,11 @@ html.no-overflowscrolling.custom-scroll .nano > .nano-content {
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}
-    
+
 .chat .modal-dialog {
     width:350px;
-}	
-	
+}
+
 }
 /* Toolbar */
 .inner-toolbar {
@@ -4497,7 +4497,7 @@ body .btn {
 	white-space: normal;
 	-webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
-	
+
 }
 
 body .btn-facebook, body .btn-facebook:active, body .btn-facebook:hover, body .btn-facebook:focus,
@@ -14131,7 +14131,7 @@ html.dark .invoice table.table > tbody tr > td {
 }
 
 /*****************************************************
-******************** hamburger ***********************       
+******************** hamburger ***********************
 *****************************************************/
 
 #hamburger {
@@ -14397,4 +14397,8 @@ html.dark .invoice table.table > tbody tr > td {
 .chat-date{
 	float: right;
 }
-
+.testimonial{
+    height: 256px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

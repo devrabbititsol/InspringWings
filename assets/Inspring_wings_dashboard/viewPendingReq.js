@@ -7,6 +7,7 @@ $rootScope.username = geetingdata.first_name;
 $scope.loading=true;
 $scope.data={};
 $scope.pager={};
+$scope.nodata='';
 preService.allRequest($scope.data).then(function(res) {
      $scope.Stories= res;
      var length = $scope.Stories.length;
@@ -19,7 +20,18 @@ preService.allRequest($scope.data).then(function(res) {
   //    }
   //  }
     //      alert($scope.newList.length);
-    initController();
+    if($scope.Stories.length == 0){
+   //   alert("if")
+      $scope.loading = false;
+   //   alert($scope.loading);
+      $scope.nodata = true;
+ //     alert($scope.nodata);
+             return;
+    }
+    else{
+              initController();
+              $scope.nodata= false ;
+    }
    },function(err) {
        window.alert("err");
    });

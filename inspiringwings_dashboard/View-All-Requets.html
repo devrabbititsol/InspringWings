@@ -1,5 +1,5 @@
-<div  ng-cloak>    
-    
+<div  ng-cloak>
+
       <header class="page-header">
         <h2>View All Requests</h2>
         <div class="right-wrapper pull-right">
@@ -14,9 +14,9 @@
       </div>
       <!-- start: page -->
       <section ng-show="!loading" class="panel">
-        <div class="panel-body">
-       
-          <div class="table-responsive">
+        <div class="panel-body" ng-show="!nodata">
+
+          <div class="table-responsive" >
             <table class="table table-striped table-bordered mb-none table-hover">
               <thead>
                 <tr>
@@ -31,7 +31,7 @@
               </thead>
               <tbody>
              <tr ng-repeat="allrequests in items">
-                
+
                   <td>{{allrequests.receiver}}</td>
                   <td>{{allrequests.contact_number}}</td>
                   <td>{{allrequests.opportunity_category_name}}</td>
@@ -40,7 +40,7 @@
                   <td>{{allrequests.request_content}}</td>
                   <td class="actions"><a ng-click="takeupcomment(allrequests)"  data-toggle="modal" data-target="{{takeupmodalModal}}"> TakeUp Action </a> </td>
                 </tr>
-           
+
               </tbody>
             </table>
           </div>
@@ -60,9 +60,11 @@
         </div>
         </div>
       </section>
-      <!-- end: page --> 
-  
+      <!-- end: page -->
 
+      <div ng-show="nodata">
+        <p>no records found</p>
+      </div>
 
 <!--<div id="takeupmodalModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -74,7 +76,7 @@
         <div style="margin-top:5%;margin-left:40%" ng-show="loading1">
       <div class="loader1"></div>
       </div>
-        
+
       <div class="modal-body">
            <div style="color:green;text-align:center">{{message}}</div>
           <div ng-repeat="takeupcomment in takeupcomments" ng-show="!loading1">
@@ -83,13 +85,13 @@
       <form id="form" method="POST" name="takeup" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
         <div class="modal-footer">
        <div class="form-group">
-           
+
             <div class="col-sm-6">
               <input type="text" name="title" class="form-control" ng-model="takeupdata.comment" required placeholder="Comment">
              <span ng-show="Story.title.$dirty && Story.title.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" Story.title.$error.required">Story Title is required.</span>
                    </span>
-                 
+
             </div>
            <div class="col-sm-2">
           <button type="submit"  class="btn btn-primary mb-sm" >Post</button>
@@ -98,7 +100,7 @@
       </div>
         </form>
       </div>
-      
+
     </div>
   </div>
 </div>-->
@@ -144,27 +146,27 @@
 						<div class="chat-date">Apr 15</div>
 					</div>
                     </div>
-					
+
                 </div>
             </article>-->
 
-      
+
 
         </section>
               <form id="form" method="POST" name="comments" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
-        
-    
-    
-     
+
+
+
+
         <div class="modal-footer">
        <div class="form-group">
-           
+
             <div class="col-sm-6">
               <input type="text" name="title" class="form-control" ng-model="takeupdata.comment" required placeholder="Comment">
              <span ng-show="Story.title.$dirty && Story.title.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" Story.title.$error.required">Story Title is required.</span>
                    </span>
-                 
+
             </div>
            <div class="col-sm-2">
           <button type="submit"  class="btn btn-primary mb-sm" >Post</button>
@@ -173,10 +175,9 @@
       </div>
         </form>
     </section>
-        
-        
+
+
       </div>
     </div>
   </div>
-</div>  
-  
+</div>

@@ -2444,3 +2444,10 @@ display: none;
 .text-black{
 	color: #000000;
 }
+
+
+.testimonial{
+    height: 256px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

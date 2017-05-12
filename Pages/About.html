@@ -52,20 +52,14 @@
         <!--/.tab-wrap--> 
       </div>
       <!--/.col-sm-6-->
-      <div class="col-xs-12 col-sm-4 wow fadeInDown">
+          <div class="col-xs-12 col-sm-4 wow fadeInDown" ng-controller="testimonialmainCntrl">
         <div class="testimonial">
           <h2>Testimonials</h2>
-          <div class="media testimonial-inner">
+          <div class="media testimonial-inner" ng-repeat="testimonial in Testimonials | limitTo:1">
             <div class="pull-left"> @*<img class="img-responsive img-circle" src="assets/images/testimonials1.png">*@ </div>
             <div class="media-body">
-              <p>I recevied support in my father's operation. In private hospital we were informed that it will cost around 6 Lakhs. With the support of Mr. Krishna we completed operations in Med Hospital at free of cost. Thanks a lot</p>
-              <span><strong>-Annapurna/</strong> from Vijayawada</span> </div>
-          </div>
-          <div class="media testimonial-inner">
-            <div class="pull-left"> @*<img class="img-responsive img-circle" src="assets/images/testimonials1.png">*@ </div>
-            <div class="media-body">
-              <p>Did B.Com and did job search for almost 6 months. It was happiest moment when I got right job with the help of Mr. Pasha through inspiring wigs</p>
-              <span><strong>-John /</strong> Karimnagar</span> </div>
+              <p>{{testimonial.testimonial_content}}</p>
+              <span><strong>{{testimonial.person_name}}</strong> from Vijayawada</span> </div>
           </div>
         </div>
       </div>

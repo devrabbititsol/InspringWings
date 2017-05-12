@@ -4,22 +4,34 @@ $rootScope.session = localData.get();
 var sessiondata=$rootScope.session;
 var geetingdata=sessiondata.response_info[0];
 $rootScope.userType = geetingdata.role_id;
-$rootScope.username = geetingdata.first_name; 
+$rootScope.username = geetingdata.first_name;
 $scope.takeupdata={};
 var data = {};
     $scope.pager={};
 $scope.loading=true;
+$scope.nodata='';
 //Get stories
                 $scope.convertToDate = function (stringDate){
             var dateOut = new Date(stringDate);
             dateOut.setDate(dateOut.getDate());
             return dateOut;
 };
-    
+
       preService.allRequest(data).then(function(res) {
            $scope.viewallrequets= res;
         //window.alert(JSON.stringify(res));
-          initController();
+        if($scope.viewallrequets.length == 0){
+          alert("if")
+          $scope.loading = false;
+       //   alert($scope.loading);
+          $scope.nodata = true;
+     //     alert($scope.nodata);
+                 return;
+        }
+        else{
+                  initController();
+                  $scope.nodata= false ;
+        }
          },function(err) {
              window.alert("err");
          });
@@ -38,7 +50,7 @@ $scope.loading=true;
               $scope.loading=false;
           }
 //Takeup Action
-             $scope.takeupcomment=function(allrequests) 
+             $scope.takeupcomment=function(allrequests)
               {
                 $scope.takeupmodalModal="#takeupmodalModal";
                  $scope.loading1 = true;
@@ -49,13 +61,13 @@ $scope.loading=true;
                 {
                     $scope.takeupcomments= res;
                     $scope.loading1=false;
-           
+
                 },
             function(err)
             {
              window.alert("err");
             });
- 
+
                 $scope.onSubmit=function()
         {
         var takeupproblem=$scope.takeupdata;
@@ -78,7 +90,7 @@ $scope.loading=true;
                 {
                     $scope.takeupcomments= res;
                     initController();
-           
+
                 },
             function(err)
             {
@@ -93,10 +105,7 @@ $scope.loading=true;
          });
 
     }
-                 
+
               }
 
   });
-
-
-

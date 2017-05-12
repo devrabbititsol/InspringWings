@@ -8,10 +8,22 @@ app.controller('closedReqCntrl',function($rootScope,$scope,$state,
     $scope.loading=true;
 $scope.data={'request_status':'Closed'};
 $scope.pager={};
+$scope.nodata='';
 preService.allRequest($scope.data).then(function(res) {
      $scope.Stories= res;
      var length = $scope.Stories.length;
-    initController();
+     if($scope.Stories.length == 0){
+    //   alert("if")
+       $scope.loading = false;
+    //   alert($scope.loading);
+       $scope.nodata = true;
+  //     alert($scope.nodata);
+              return;
+     }
+     else{
+               initController();
+               $scope.nodata= false ;
+     }
    },function(err) {
        window.alert("err");
    });

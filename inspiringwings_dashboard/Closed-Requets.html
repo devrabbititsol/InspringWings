@@ -14,7 +14,7 @@
    </div>
       <!-- start: page -->
       <section ng-show="!loading" class="panel">
-        <div class="panel-body">
+        <div class="panel-body" ng-show="!nodata">
           <!-- <div class="row">
             <div class="col-sm-12"> <a  data-toggle="modal" data-target="{{StoryTypeModal}}" ng-click="addinfo()" class="btn btn-primary mb-md pull-right"><i class="fa fa-plus"></i> Add New Story Type</a> </div>
           </div> -->
@@ -29,7 +29,7 @@
                   <th>Created Date</th>
                   <th>Problem Status</th>
                   <th>Description</th>
-                  
+
                 </tr>
               </thead>
               <tbody>
@@ -65,6 +65,9 @@
       </section>
       <!-- end: page -->
 
+      <div ng-show="nodata">
+        <p>no records found</p>
+      </div>
 
 
 <div id="StoryTypeModal" class="modal fade" role="dialog">
