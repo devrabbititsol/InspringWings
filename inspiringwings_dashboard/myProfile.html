@@ -11,9 +11,13 @@
 
 
       <!-- start: page -->
-      <div  style="width:40%;margin-top:10%;margin-left:30%;" class="panel panel-sign" ng-show="!loading" class="panel">
+
+      
+     <section class="panel" ng-show="!loading">
         <div class="panel-body">
-          <form name="signUp" class="form-horizontal "  novalidate method="POST" enctype="multipart/form-data" ng-submit="onSubmit();" >
+          <div class="col-md-6">
+       
+                      <form name="signUp" class="form-horizontal "  novalidate method="POST" enctype="multipart/form-data" ng-submit="onSubmit();" >
                  <div class="form-group mb-lg" ng-class="{'has-error' : signUp.firstname.$invalid && !signUp.firstname.$pristine}">
                           <label>First Name</label>
                           <div class="input-group input-group-icon">
@@ -101,5 +105,8 @@
               </div>
             </div>
           </form>
+          </div>
         </div>
-      </div>
+      </section>
+    
+    </div>

@@ -126,7 +126,7 @@ $scope.nodata='';
               var sessiondata=$rootScope.session;
               var geetingdata=sessiondata.response_info[0];
               var userdata=geetingdata.user_id;
-              alert(opportunityDate.is_active);
+              
               if(opportunityDate.is_active == true){
                // opportunityDate.is_active ="1";
               }
@@ -138,7 +138,7 @@ $scope.nodata='';
               }
 
                preService.addNewOpp_categories(opportunityDate).then(function(res) {
-                 window.alert(res.message);
+                 
                  if(res.status == 1){
                       $scope.message="Updated SuccessFully";
                        var data={'is_active':'1'};

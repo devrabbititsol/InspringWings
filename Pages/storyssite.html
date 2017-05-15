@@ -16,8 +16,8 @@
         </div>
         <p class="mt-10">{{Story.story_content}} </p>
           <div class="created-wrap clearfix">
-        <div class="createby">Created By: <strong class="text-black">John Deo</strong></div>
-        <div class="create-date">Apr 11, 2017</div>
+        <div class="createby">Created By: <strong class="text-black">{{Story.created_by}}</strong></div>
+        <div class="create-date" ng-bind="convertToDate(Story.created_date) | date:'MMM-dd'"></div>
 		  </div>
         <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
       </div>

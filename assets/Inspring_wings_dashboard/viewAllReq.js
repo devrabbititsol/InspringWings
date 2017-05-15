@@ -21,7 +21,7 @@ $scope.nodata='';
            $scope.viewallrequets= res;
         //window.alert(JSON.stringify(res));
         if($scope.viewallrequets.length == 0){
-          alert("if")
+         
           $scope.loading = false;
        //   alert($scope.loading);
           $scope.nodata = true;

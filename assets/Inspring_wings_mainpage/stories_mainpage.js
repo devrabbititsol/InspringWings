@@ -2,7 +2,11 @@ app.controller('storycntrl',function($rootScope,$scope,$localStorage,localData,p
     var data={'is_active':'1'};
 $scope.pager={};
 $scope.pageSize=6;
-    
+                        $scope.convertToDate = function (stringDate){
+            var dateOut = new Date(stringDate);
+            dateOut.setDate(dateOut.getDate());
+            return dateOut;
+};
     
         preService.getStoryType(data).then(function(res)
         {

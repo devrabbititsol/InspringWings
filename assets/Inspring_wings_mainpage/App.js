@@ -54,7 +54,7 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
            })
            .state("IncubationCenters",{
             url:'/IncubationCenters',
-               views: {'IncubationCenters':{templateUrl:'Pages/IncubationCenters.html'} }
+               views: {'IncubationCenters':{templateUrl:'Pages/IncubationCenters.html',controller :"Main_IncubationsCntrl"} }
            })
            .state("About",{
             url:'/About',

@@ -181,8 +181,8 @@
                     <div class="msg_inner">
                     <p >{{takeupcomment.comment}}</p>
                     <div class="chat-history-wrap">
-						<div class="chat-time">2:45 PM</div>
-						<div class="chat-date">Apr 15</div>
+						<div class="chat-time" ng-bind="convertToDate(takeupcomment.comment_date) | date:'hh:mm'"></div>
+						<div class="chat-date" ng-bind="convertToDate(takeupcomment.comment_date) | date:'MMM-dd'"></div>
 					</div>
                     </div>
                 </div>

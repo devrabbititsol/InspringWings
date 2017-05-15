@@ -2,6 +2,12 @@ app.controller('Main_IncubationsCntrl',function($rootScope,$scope,$localStorage,
     var data={'is_active':'1'};
 $scope.pager={};
 $scope.pageSize=6;
+    
+                        $scope.convertToDate = function (stringDate){
+            var dateOut = new Date(stringDate);
+            dateOut.setDate(dateOut.getDate());
+            return dateOut;
+};
         preService.getIncubationsTypes(data).then(function(res)
         {
             $scope.IncubationsTypes= res;

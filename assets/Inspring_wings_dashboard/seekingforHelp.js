@@ -12,6 +12,12 @@ var data = {"receiver_id" : geetingdata.user_id};
     $scope.pager={};
 $scope.loading=true;
 //Get stories
+                    $scope.convertToDate = function (stringDate){
+            var dateOut = new Date(stringDate);
+            dateOut.setDate(dateOut.getDate());
+            return dateOut;
+};
+    
       preService.allRequest(data).then(function(res) {
            $scope.viewallrequets= res;
           initController();
@@ -51,7 +57,7 @@ $scope.loading=true;
          if ($scope.seekingforhelpform.$valid) { }
                 $scope.onSubmit=function()
         {
-            window.alert('hi');
+        
         var requets=$scope.request;
         var sessiondata=$rootScope.session;
         var gettingdata=sessiondata.response_info[0];

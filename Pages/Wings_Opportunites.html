@@ -7,7 +7,7 @@
   <div class="row" >
     <div class="h-scroll-page">
     <div class="col-sm-6" ng-repeat="(i,opportunity) in opportunities  | filter: {opportunity_category_id:selectedid}" ng-init="i=0">
-    
+
 
         <div class="story-pannel-body" style="background-color:{{persons[i]}}">
         <div class="story-list">
@@ -16,14 +16,23 @@
             <li><span>Person Name:</span> {{opportunity.created_by}}</li>
           </ul>
         </div>
+
            <p class="mt-10" ng-show="opportunity.opportunity_content.length <=15">{{opportunity.opportunity_content |  limitTo:numLimit}} </p>
-        <p class="mt-10"  ng-show="opportunity.opportunity_content.length >16" id="{{opportunity.opportunity_id}}">{{opportunity.opportunity_content |  limitTo:numLimit}}<span style="color:black" > </span> </p>
-            
+                  <p class="mt-10" data-toggle="collapse" data-target="#{{opportunity.opportunity_id}}" ng-show="opportunity.opportunity_content.length >16" >{{opportunity.opportunity_content |  limitTo:numLimit}}
+                    <span style="color:black" > </span> </p>
+                    <span ng-click="readMore(opportunity.opportunity_id)" ng-show='showA{{opportunity.opportunity_id}}=={{opportunity.opportunity_id}}'>{{".. more"}}</span>
+                    <span ng-click="readLess(opportunity.opportunity_id)" ng-show='showb{{opportunity.opportunity_id}} == {{opportunity.opportunity_id}}'>{{".. less"}}</span>
+
+
+      <!--
+<p class="mt-10" ng-show="opportunity.opportunity_content.length <=15">{{opportunity.opportunity_content |  limitTo:numLimit}} </p>
+<p class="mt-10"  ng-show="opportunity.opportunity_content.length >16" id="{{opportunity.opportunity_id}}">{{opportunity.opportunity_content |  limitTo:numLimit}}<span style="color:black" > </span> </p>
+
             <span ng-click="readMore(opportunity.opportunity_id)" ng-show='showA==true' >{{".. more"}}</span>
-            <span ng-click="readLess(opportunity.opportunity_id)" ng-show='showb == true'>{{".. less"}}</span>
+            <span ng-click="readLess(opportunity.opportunity_id)" ng-show='showb == true'>{{".. less"}}</span>-->
             <div class="created-wrap clearfix">
-        <div class="createby">Created By: <strong class="text-black">John Deo</strong></div>
-        <div class="create-date">Apr 11, 2017</div>
+        <div class="createby">Created By: <strong class="text-black">{{opportunity.created_by}}</strong></div>
+                <div class="create-date" ng-bind="convertToDate(opportunity.created_date) | date:'MMM-dd'"></div>
 		  </div>
         <div class="story-wrp-icon"><img src="assets/images/icon-story.png" alt="story"></div>
       </div>
@@ -32,4 +41,3 @@
   </div>
 
 </div>
- 
