@@ -47,7 +47,15 @@
         <div class="date-disc-wrap">
           <div class="event-header">{{Event.event_name}}</div>
           <div class="event-disc">
-            <p>{{Event.event_content}} </p>
+          
+            <p ng-show="Event.event_content.length <=20">{{Event.event_content |  limitTo:20}} </p>
+            <p ng-show="Event.event_content.length >20">{{Event.event_content| limitTo:
+                     Event.is_active ?  100:Event.event_content }}
+                     <span style="color:black" > </span>
+                     <span ng-click="showchanges(items.indexOf(Event))" ng-if="Event.is_active==true" ><strong>{{".. more"}}</strong></span>
+                     <span ng-click="showchanges(items.indexOf(Event))" ng-if="Event.is_active==false"><strong>{{".. less"}}</strong></span>
+                   </p>
+
           </div>
         </div>
       </div>

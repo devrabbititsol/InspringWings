@@ -1,5 +1,5 @@
 app.controller('forgotpassCntrl',function($rootScope,$scope,$state,preService,$timeout){
-  alert("hi");
+  
  $rootScope.memebers=false;
  $scope.forgotdata={};
     $scope.homepage=function()

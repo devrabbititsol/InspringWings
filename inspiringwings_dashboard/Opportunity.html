@@ -4,7 +4,7 @@
         <h2>Opportunities</h2>
         <div class="right-wrapper pull-right">
           <ol class="breadcrumbs">
-            <li> <a href="#"> <i class="fa fa-home"></i> </a> </li>
+            <li> <a href=""> <i class="fa fa-home"></i> </a> </li>
             <li><span>Opportunities</span></li>
           </ol>
         </div>
@@ -42,7 +42,7 @@
                   <td>{{opportunitydata.created_by}}</td>
                   <td>{{opportunitydata.created_date}}</td>
 
-                  <td class="actions"><a ng-click="editInfo(opportunitydata)" data-toggle="modal" data-target="{{opprtunitymodal}}" ><i class="fa fa-pencil"></i></a> <a ng-click="deleteInfo(opportunitydata)"><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(opportunitydata)" data-toggle="modal" data-target="{{opprtunitymodal}}" ><i class="fa fa-pencil" data-toggle="tooltip" title="Edit!"></i></a> <a ng-click="deleteInfo(opportunitydata)"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete!"></i></a></td>
                 </tr>
                 </tbody>
             </table>

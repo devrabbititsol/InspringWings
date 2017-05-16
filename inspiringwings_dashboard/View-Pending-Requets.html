@@ -4,7 +4,7 @@
         <h2>Pending Requests</h2>
         <div class="right-wrapper pull-right">
           <ol class="breadcrumbs">
-            <li> <a href="#"> <i class="fa fa-home"></i> </a> </li>
+            <li> <a href=""> <i class="fa fa-home"></i> </a> </li>
             <li><span>Pending Requests</span></li>
           </ol>
         </div>
@@ -43,7 +43,7 @@
                   <td>{{Pending.request_status}}</td>
                   <td>{{Pending.request_content}}</td>
 
-                  <td class="actions"><a ng-click="editInfo(StorysType)"  data-toggle="modal" data-target="{{StoryTypeModal}}"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(StorysType)"  data-toggle="modal" data-target="{{StoryTypeModal}}"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit!"></i></a> <a href=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete!"></i></a></td>
                 </tr>
 
               </tbody>

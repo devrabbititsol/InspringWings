@@ -4,7 +4,7 @@
         <h2>Events</h2>
         <div class="right-wrapper pull-right">
           <ol class="breadcrumbs">
-            <li> <a href="#"> <i class="fa fa-home"></i> </a> </li>
+            <li> <a href=""> <i class="fa fa-home"></i> </a> </li>
             <li><span>Events</span></li>
           </ol>
         </div>
@@ -33,7 +33,7 @@
                   <td>{{Event.event_name}}</td>
                   <td>{{Event.event_date}}</td>
                   <td>{{Event.event_content}}</td>
-                  <td class="actions"><a ng-click="editInfo(Event)"  data-toggle="modal" data-target="{{Eventmodal}}"><i class="fa fa-pencil" ></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(Event)"  data-toggle="modal" data-target="{{Eventmodal}}"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit!" ></i></a> <a href=""><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete!"></i></a></td>
                 </tr>
               </tbody>
             </table>

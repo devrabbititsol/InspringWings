@@ -108,5 +108,12 @@ $scope.pageSize=6;
               });
         }
 
+        $scope.showchanges=function(id){
+          if ($scope.items[id].is_active) {
+             $scope.items[id].is_active = false;
 
+          }else{
+                $scope.items[id].is_active = true;
+          }
+        };
 });

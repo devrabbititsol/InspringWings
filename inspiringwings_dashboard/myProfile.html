@@ -3,7 +3,7 @@
         <h2>My Profile</h2>
         <div class="right-wrapper pull-right">
           <ol class="breadcrumbs">
-            <li> <a href="#"> <i class="fa fa-home"></i> </a> </li>
+            <li> <a href=""> <i class="fa fa-home"></i> </a> </li>
             <li><span>My Profile</span></li>
           </ol>
         </div>
@@ -12,11 +12,11 @@
 
       <!-- start: page -->
 
-      
+
      <section class="panel" ng-show="!loading">
         <div class="panel-body">
           <div class="col-md-6">
-       
+
                       <form name="signUp" class="form-horizontal "  novalidate method="POST" enctype="multipart/form-data" ng-submit="onSubmit();" >
                  <div class="form-group mb-lg" ng-class="{'has-error' : signUp.firstname.$invalid && !signUp.firstname.$pristine}">
                           <label>First Name</label>
@@ -97,7 +97,7 @@
                      </span>
             </div>
 
-            
+
             <div class="row mb-lg">
               <div class="col-sm-12 text-right">
                 <button type="submit" class="btn btn-primary hidden-xs" data-toggle="modal" data-target="{{success}}" ng-disabled="signUp.$invalid">Save</button>
@@ -108,5 +108,5 @@
           </div>
         </div>
       </section>
-    
+
     </div>

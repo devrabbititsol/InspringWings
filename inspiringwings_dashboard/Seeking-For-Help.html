@@ -1,10 +1,10 @@
-<div ng-cloak>    
-    
+<div ng-cloak>
+
       <header class="page-header">
         <h2>Seeking For Help ?</h2>
         <div class="right-wrapper pull-right">
           <ol class="breadcrumbs">
-            <li> <a href="#"> <i class="fa fa-home"></i> </a> </li>
+            <li> <a href=""> <i class="fa fa-home"></i> </a> </li>
             <li><span>Seeking For Help ?</span></li>
           </ol>
         </div>
@@ -39,7 +39,7 @@
                 <td class="actions"><a ng-click="comment(allrequets)"  data-toggle="modal" data-target="{{commentmodel}}"> TakeUp Action </a> </td>
                   <td class="actions"><a ng-click="editInfo(allrequets)"  data-toggle="modal" data-target="{{seekingforhelp}}"><i class="fa fa-pencil"></i></a> <a href=""><i class="fa fa-trash-o"></i></a></td>
                 </tr>
-           
+
               </tbody>
             </table>
           </div>
@@ -59,7 +59,7 @@
         </div>
         </div>
       </section>
-      <!-- end: page --> 
+      <!-- end: page -->
 <div id="seekingforhelp" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -67,13 +67,13 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">{{title}} Request</h4>
       </div>
-       
-        
+
+
       <div class="modal-body">
         <div style="color:green;text-align:center" ng-if=" status !=''">{{message}}</div>
-          
+
     <form id="form" method="POST" name="seekingforhelpform" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
-        
+
       <div class="form-group" ng-class="{'has-error' : seekingforhelpform.EventName.$invalid && !seekingforhelpform.EventName.$pristine}">
             <label class="col-sm-4 control-label">Select Opportunity Type <span class="required">*</span></label>
             <div class="col-sm-7">
@@ -98,7 +98,7 @@
 
             </div>
           </div>
-    
+
           <div class="form-group" ng-class="{'has-error' : seekingforhelpform.EventName.$invalid && !seekingforhelpform.EventName.$pristine}">
             <label class="col-md-4 control-label" for="textareaDefault">Brief Your Request</label>
             <div class="col-md-7">
@@ -135,19 +135,19 @@
           {{takeupcomment.comment}}
           </div>
     <form id="form" method="POST" name="comments" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
-        
-    
-    
-     
+
+
+
+
         <div class="modal-footer">
        <div class="form-group">
-           
+
             <div class="col-sm-6">
               <input type="text" name="title" class="form-control" ng-model="commentdata.comment" required placeholder="Comment">
              <span ng-show="Story.title.$dirty && Story.title.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" Story.title.$error.required">Story Title is required.</span>
                    </span>
-                 
+
             </div>
            <div class="col-sm-2">
           <button type="submit"  class="btn btn-primary mb-sm" >Post</button>
@@ -181,7 +181,7 @@
                     <div class="msg_inner">
                     <p >{{takeupcomment.comment}}</p>
                     <div class="chat-history-wrap">
-						<div class="chat-time" ng-bind="convertToDate(takeupcomment.comment_date) | date:'hh:mm'"></div>
+						<div class="chat-time" ng-bind="convertToDate(takeupcomment.comment_date) | date:'HH:mm' "></div>
 						<div class="chat-date" ng-bind="convertToDate(takeupcomment.comment_date) | date:'MMM-dd'"></div>
 					</div>
                     </div>
@@ -201,27 +201,27 @@
 						<div class="chat-date">Apr 15</div>
 					</div>
                     </div>
-					
+
                 </div>
             </article>-->
 
-      
+
 
         </section>
               <form id="form" method="POST" name="comments" class="form-horizontal" enctype="multipart/form-data" ng-submit="onSubmit();">
-        
-    
-    
-     
+
+
+
+
         <div class="modal-footer">
        <div class="form-group">
-           
+
             <div class="col-sm-6">
               <input type="text" name="title" class="form-control" ng-model="commentdata.comment" required placeholder="Comment">
              <span ng-show="Story.title.$dirty && Story.title.$invalid" style="color:red">
                     <span style="color:red;" ng-show=" Story.title.$error.required">Story Title is required.</span>
                    </span>
-                 
+
             </div>
            <div class="col-sm-2">
           <button type="submit"  class="btn btn-primary mb-sm" >Post</button>
@@ -230,14 +230,12 @@
       </div>
         </form>
     </section>
-        
-        
+
+
       </div>
     </div>
   </div>
-</div>  
-    
-    
-   </div> 
+</div>
 
 
+   </div>

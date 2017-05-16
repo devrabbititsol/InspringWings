@@ -4,7 +4,7 @@
         <h2>Story Types</h2>
         <div class="right-wrapper pull-right">
           <ol class="breadcrumbs">
-            <li> <a href="#"> <i class="fa fa-home"></i> </a> </li>
+            <li> <a href=""> <i class="fa fa-home"></i> </a> </li>
             <li><span>Story Types</span></li>
           </ol>
         </div>
@@ -37,7 +37,7 @@
                 <input type="checkbox" ng-checked="{{StorysType.is_active=='1' ? true : false}}" disabled>
                 <label ></label>
                   </td>
-                  <td class="actions"><a ng-click="editInfo(StorysType)"  data-toggle="modal" data-target="{{StoryTypeModal}}"><i class="fa fa-pencil"></i></a> <a ng-click="deleteInfo(StorysType)"><i class="fa fa-trash-o"></i></a></td>
+                  <td class="actions"><a ng-click="editInfo(StorysType)"  data-toggle="modal" data-target="{{StoryTypeModal}}"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit!"></i></a> <a ng-click="deleteInfo(StorysType)"><i class="fa fa-trash-o" data-toggle="tooltip" title="Delete!"></i></a></td>
                 </tr>
 
               </tbody>

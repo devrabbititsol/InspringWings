@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-        <h2 class="page-header">Stories <span style="color:black"> : {{selectedname}}</span></h2>
+        <h2 class="page-header">Stories <span style="color:black" ng-show="selectedname !='' "> : {{selectedname}}</span></h2>
     </div>
   </div>
   <div class="row" >
@@ -14,7 +14,14 @@
             <li><span>Person Name:</span> {{Story.story_person_name}}</li>
           </ul>
         </div>
-        <p class="mt-10">{{Story.story_content}} </p>
+
+        <p class="mt-10" ng-show="Story.story_content.length <=20">{{Story.story_content |  limitTo:20}} </p>
+        <p class="mt-10" ng-show="Story.story_content.length >20">{{Story.story_content | limitTo:
+                 Story.is_active ?  100:Story.story_content }}
+                 <span style="color:black" > </span>
+                 <span ng-click="showchanges(Storys.indexOf(Story))" ng-if="Story.is_active==true" ><strong>{{".. more"}}</strong></span>
+                 <span ng-click="showchanges(Storys.indexOf(Story))" ng-if="Story.is_active==false"><strong>{{".. less"}}</strong></span>
+               </p>
           <div class="created-wrap clearfix">
         <div class="createby">Created By: <strong class="text-black">{{Story.created_by}}</strong></div>
         <div class="create-date" ng-bind="convertToDate(Story.created_date) | date:'MMM-dd'"></div>
