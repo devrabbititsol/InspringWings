@@ -1,4 +1,4 @@
-[ng\:cloak], [ng-cloak], .ng-cloak {
+ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
 
@@ -14397,8 +14397,4 @@ html.dark .invoice table.table > tbody tr > td {
 .chat-date{
 	float: right;
 }
-.testimonial{
-    height: 256px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+

@@ -1,5 +1,6 @@
 app.controller('Events',function($rootScope,$scope,$localStorage,localData,preService,PaginationService){
     var data={};
+    $scope.date={};
 $scope.filter=false;
 $scope.pager={};
 $scope.pager1={};
@@ -63,9 +64,12 @@ $scope.pageSize=6;
                }
 
 
-        $scope.search=function(startDate,endDate){
-      //    alert(startDate)
-    //      alert(endDate)
+        $scope.submitForm=function(startDate){
+        //  alert("hi")
+        //  alert(JSON.stringify(startDate))
+         if($scope.registrationForm.$valid){
+        //  alert($scope.registrationForm.$valid)
+        //  alert(startDate.fromdate)
     //      alert("search")
            var calendar = new Array();
 
@@ -84,10 +88,10 @@ $scope.pageSize=6;
                     //  alert(s);
                     //   var e = moment(endDate, "YYYY-MM-dd");
                     //   alert("e")
-                var s = moment(startDate);
+                var s = moment(startDate.fromdate);
               //  alert("s")
               //  alert(s);
-                var e = moment(endDate);
+                var e = moment(startDate.todate);
               //  alert("e")
               //    alert(e);
                             if(x >=s  && x <= e){
@@ -106,6 +110,9 @@ $scope.pageSize=6;
             {
                 window.alert("err");
               });
+            }else{
+
+            }
         }
 
         $scope.showchanges=function(id){

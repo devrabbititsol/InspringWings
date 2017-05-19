@@ -5,34 +5,43 @@
   </div>
         </div>
                 <div class="row">
+                  <form name="registrationForm"  ng-submit="submitForm(date)" method="POST" enctype="multipart/form-data" novalidate >
     <div class="col-sm-3">
-      <div class="form-group mb-lg">
+      <div class="form-group mb-lg" ng-class="{'has-error' : registrationForm.fromdate.$invalid && !registrationForm.fromdate.$pristine}">
         <label>Event From</label>
         <div class="input-group input-group-icon">
             <datepicker date-format="yyyy-MM-dd">
                   <!--  <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>-->
-                  <input type="text" class="form-control datepicker" ng-model="fromdate">
+                  <input type="text" name = "fromdate" ng-required="true" class="form-control datepicker" ng-model="date.fromdate" required>
                 </datepicker>
 
           <span class="input-group-addon"> <span class="icon"> <i class="fa fa-calendar"></i> </span> </span> </div>
       </div>
+      <span ng-show="registrationForm.fromdate.$invalid && !registrationForm.fromdate.$pristine" style="color:red">
+                          <span style="color:red;" ng-show=" registrationForm.fromdate.$error.required">Email is required.</span>
+                      </span>
     </div>
 
     <div class="col-sm-3">
-      <div class="form-group mb-lg">
+      <div class="form-group mb-lg" ng-class="{'has-error' : registrationForm.todate.$invalid && !registrationForm.todate.$pristine}">
         <label>Event to</label>
         <div class="input-group input-group-icon">
           <datepicker date-format="yyyy-MM-dd">
                   <!--  <input type="text" name="dateofbirth" class="form-control" ng-model="register.dob"  required/>-->
-                  <input type="text" class="form-control datepicker" ng-model="todate">
+                  <input type="text" name="todate" class="form-control datepicker" ng-required="true" ng-model="date.todate" required>
                 </datepicker>
           <span class="input-group-addon"> <span class="icon"> <i class="fa fa-calendar"></i> </span> </span> </div>
       </div>
+      <span ng-show="registrationForm.todate.$invalid && !registrationForm.todate.$pristine" style="color:red">
+                          <span style="color:red;" ng-show=" registrationForm.todate.$error.required">Email is required.</span>
+                      </span>
     </div>
     <div class="col-sm-3 page-search-wrap">
-      <button class="btn btn-primary" ng-click="search(fromdate,todate);"><i class="fa fa-search"></i> Search</button>
+      <button  ng-disabled="registrationForm.$invalid" type="submit" class="btn btn-primary hidden-xs">Sign In</button>
+      <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" ng-disabled="registrationForm.$invalid">Sign In</button>
+      <!-- <button ng-disabled="registrationForm.$invalid" type="submit"  class="btn btn-primary hidden-xs"><i class="fa fa-search"></i> Search</button> -->
     </div>
-
+ </form>
                </div>
 
 
@@ -47,7 +56,7 @@
         <div class="date-disc-wrap">
           <div class="event-header">{{Event.event_name}}</div>
           <div class="event-disc">
-          
+
             <p ng-show="Event.event_content.length <=20">{{Event.event_content |  limitTo:20}} </p>
             <p ng-show="Event.event_content.length >20">{{Event.event_content| limitTo:
                      Event.is_active ?  100:Event.event_content }}

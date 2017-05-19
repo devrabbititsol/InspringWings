@@ -7,9 +7,10 @@ app.run(function($rootScope) {
 
 });
 /********************ui Routing ****************/
-app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
+app.config(function($stateProvider,$urlRouterProvider,$locationProvider,$provide){
 
-
+$provide.constant('header',{"Auth-Key":"55a2bc0181d79fd2db84d5e147698dc7"})
+$provide.constant('webUrl',"http://devrabbit.com/inspiring_wings/web_services/")
    $urlRouterProvider.otherwise('/Home');
     $stateProvider
     .state("Home",{
